@@ -1,0 +1,19 @@
+{
+  "name": "gtm-tna-scripts",
+  "version": "1.0.0",
+  "description": "This will compile all scripts, run tests for all scripts added in google tag manager.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://punalsc@github.com/nationalarchives/tna-google-tag-manager-scripts.git"
+  },
+  "author": "Punal Chotrani, Mihai Diaconita, Helen Oake, Gwyn Jones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nationalarchives/tna-google-tag-manager-scripts/issues"
+  },
+  "homepage": "https://github.com/nationalarchives/tna-google-tag-manager-scripts#readme"
+}
