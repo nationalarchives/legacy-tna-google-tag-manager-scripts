@@ -4,7 +4,7 @@
  * Developer: Punal Chotrani
  **/
 
-function gtmLoadEvent(func){
+let gtmLoadEvent = (func) => {
     let oldOnLoad = window.onload;
     if (typeof window.onload !== 'function') {
         window.onload = func;
@@ -14,7 +14,7 @@ function gtmLoadEvent(func){
             func();
         };
     }
-}
+};
 gtmLoadEvent(() => {
     let metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
         $metaDataContent = metaTag.getAttribute("content"),
