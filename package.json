@@ -2,7 +2,6 @@
   "name": "gtm-tna-scripts",
   "version": "1.0.0",
   "description": "This will compile all scripts, run tests for all scripts added in google tag manager.",
-  "main": "index.js",
   "scripts": {
     "test": "test"
   },
@@ -15,5 +14,15 @@
   "bugs": {
     "url": "https://github.com/nationalarchives/tna-google-tag-manager-scripts/issues"
   },
-  "homepage": "https://github.com/nationalarchives/tna-google-tag-manager-scripts#readme"
+  "homepage": "https://github.com/nationalarchives/tna-google-tag-manager-scripts#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "eslint": "^4.19.1",
+    "grunt": "^1.0.2",
+    "grunt-babel": "^7.0.0",
+    "grunt-contrib-watch": "^1.1.0"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
+  }
 }
