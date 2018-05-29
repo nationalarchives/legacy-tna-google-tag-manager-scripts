@@ -5,7 +5,7 @@
  **/
 let discoveryDetailsContentGroup = () => {
     let metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
-        $metaDataContent = metaTag.getAttribute("content"),
+        $metaDataContent = metaTag.getAttribute('content'),
         $metaDataName = metaTag.getAttribute('name'),
         $discovery = 'Discovery';
 
@@ -18,7 +18,7 @@ let discoveryDetailsContentGroup = () => {
                 'eventLabel'    : $metaDataContent,
                 'ContentGroup' : $metaDataContent
             });
-        }
+        };
     }
 };
 

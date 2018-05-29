@@ -7,7 +7,7 @@
  **/
 var discoveryDetailsContentGroup = function discoveryDetailsContentGroup() {
     var metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
-        $metaDataContent = metaTag.getAttribute("content"),
+        $metaDataContent = metaTag.getAttribute('content'),
         $metaDataName = metaTag.getAttribute('name'),
         $discovery = 'Discovery';
 
