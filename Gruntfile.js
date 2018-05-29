@@ -5,7 +5,10 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
 
         eslint: {
-            all: ['src/*.js', '!node_modules/**/*.js']
+            all: ['src/*.js', '!node_modules/**/*.js'],
+            options: {
+                configFile: 'conf/eslintrc.json'
+            },
         },
 
         babel: {

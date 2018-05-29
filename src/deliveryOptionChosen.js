@@ -3,7 +3,7 @@
  * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
  * Developer: Punal Chotrani
  **/
-
+import 'babel-polyfill';
 let deliveryOptionButton = document.querySelector('.order-option-wrapper a');
 
 deliveryOptionButton.addEventListener('click', function(e) {

@@ -1,12 +1,13 @@
 'use strict';
 
-/**
- * ------------  THE NATIONAL ARCHIVES  -----------------
- * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
- * Developer: Punal Chotrani
- **/
+require('babel-polyfill');
 
-var deliveryOptionButton = document.querySelector('.order-option-wrapper a');
+var deliveryOptionButton = document.querySelector('.order-option-wrapper a'); /**
+                                                                               * ------------  THE NATIONAL ARCHIVES  -----------------
+                                                                               * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
+                                                                               * Developer: Punal Chotrani
+                                                                               **/
+
 
 deliveryOptionButton.addEventListener('click', function (e) {
     e.preventDefault();
