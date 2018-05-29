@@ -6,7 +6,7 @@
 import 'babel-polyfill';
 let deliveryOptionButton = document.querySelector('.order-option-wrapper a');
 
-deliveryOptionButton.addEventListener('click', function(e) {
+deliveryOptionButton.addEventListener('click', (e) => {
     e.preventDefault();
     let $discovery = 'Discovery',
         $eventAction = 'Delivery option chosen',

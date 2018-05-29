@@ -13,7 +13,7 @@ deliveryOptionButton.addEventListener('click', function (e) {
     e.preventDefault();
     var $discovery = 'Discovery',
         $eventAction = 'Delivery option chosen',
-        $eventLabel = this.dataset.webtrendsCall;
+        $eventLabel = undefined.dataset.webtrendsCall;
 
     return function () {
         window.dataLayer.push({
