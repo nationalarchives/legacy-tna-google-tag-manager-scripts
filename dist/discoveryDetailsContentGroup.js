@@ -25,4 +25,8 @@ var discoveryDetailsContentGroup = function discoveryDetailsContentGroup() {
 };
 
 discoveryDetailsContentGroup();
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;
+}
 //# sourceMappingURL=discoveryDetailsContentGroup.js.map
