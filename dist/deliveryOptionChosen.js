@@ -1,27 +1,46 @@
 'use strict';
 
-require('babel-polyfill');
+/**
+ * ------------  THE NATIONAL ARCHIVES GTM SCRIPTS  -----------------
+ * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
+ * Developer: Punal Chotrani
+ **/
 
-var deliveryOptionButton = document.querySelector('.order-option-wrapper a'); /**
-                                                                               * ------------  THE NATIONAL ARCHIVES  -----------------
-                                                                               * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
-                                                                               * Developer: Punal Chotrani
-                                                                               **/
+var deliveryOptionButton = document.querySelector('.order-option-wrapper a');
+if (deliveryOptionButton.addEventListener) {
+    deliveryOptionButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        var $discovery = 'Discovery',
+            $eventAction = 'Delivery option chosen',
+            $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
+            $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
 
+        return function () {
+            window.dataLayer.push({
+                'event': $discovery,
+                'eventCategory': $discovery,
+                'eventAction': $eventAction,
+                'eventLabel': $eventLabel
+            });
+        };
+    }, false);
+} else {
+    // only for IE8 option
+    deliveryOptionButton.attachEvent('onclick', function (e) {
+        e.preventDefault();
+        var $discovery = 'Discovery',
+            $eventAction = 'Delivery option chosen',
+            $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
+            $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
 
-deliveryOptionButton.addEventListener('click', function (e) {
-    e.preventDefault();
-    var $discovery = 'Discovery',
-        $eventAction = 'Delivery option chosen',
-        $eventLabel = undefined.dataset.webtrendsCall;
-
-    return function () {
-        window.dataLayer.push({
-            'event': $discovery,
-            'eventCategory': $discovery,
-            'eventAction': $eventAction,
-            'eventLabel': $eventLabel
-        });
-    };
-}, false);
+        return function () {
+            window.dataLayer.push({
+                'event': $discovery,
+                'eventCategory': $discovery,
+                'eventAction': $eventAction,
+                'eventLabel': $eventLabel
+            });
+        };
+    });
+}
 //# sourceMappingURL=deliveryOptionChosen.js.map

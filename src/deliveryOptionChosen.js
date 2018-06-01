@@ -1,23 +1,42 @@
 /**
- * ------------  THE NATIONAL ARCHIVES  -----------------
+ * ------------  THE NATIONAL ARCHIVES GTM SCRIPTS  -----------------
  * JS - getting the data attributes when the user clicks on a delivery option in Discovery Details page for Google Tag Manager
  * Developer: Punal Chotrani
  **/
-import 'babel-polyfill';
+
 let deliveryOptionButton = document.querySelector('.order-option-wrapper a');
+if (deliveryOptionButton.addEventListener) {
+    deliveryOptionButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        let $discovery = 'Discovery',
+            $eventAction = 'Delivery option chosen',
+            $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
+            $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
 
-deliveryOptionButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    let $discovery = 'Discovery',
-        $eventAction = 'Delivery option chosen',
-        $eventLabel = this.dataset.webtrendsCall;
+        return () => {
+            window.dataLayer.push({
+                'event'         : $discovery,
+                'eventCategory' : $discovery,
+                'eventAction'   : $eventAction,
+                'eventLabel'    : $eventLabel
+            });
+        };
+    }, false);
+} else { // only for IE8 option
+    deliveryOptionButton.attachEvent('onclick', function (e) {
+        e.preventDefault();
+        let $discovery = 'Discovery',
+            $eventAction = 'Delivery option chosen',
+            $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
+            $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
 
-    return () => {
-        window.dataLayer.push({
-            'event'         : $discovery,
-            'eventCategory' : $discovery,
-            'eventAction'   : $eventAction,
-            'eventLabel'    : $eventLabel
-        });
-    };
-}, false);
+        return () => {
+            window.dataLayer.push({
+                'event'         : $discovery,
+                'eventCategory' : $discovery,
+                'eventAction'   : $eventAction,
+                'eventLabel'    : $eventLabel
+            });
+        };
+    });
+}
