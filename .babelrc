@@ -14,13 +14,13 @@
             ],
             "modules": false,
             "useBuiltIns": true,
-            "debug": true
+            "debug": false
         }
         ]
     ],
     "env": {
       "test": {
-          "presets": ["es2015"]
+          "presets": ["env"]
       }
     },
     "plugins": [
