@@ -1,0 +1,1 @@
+import {discoveryDetailsContentGroup} from '../src/discoveryDetailsContentGroup.js';
