@@ -22,7 +22,7 @@
     "babel-plugin-transform-es3-property-literals": "^6.22.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es3": "^1.0.1",
-    "grunt": "^1.0.2",
+    "grunt": "^1.0.3",
     "grunt-babel": "^7.0.0",
     "grunt-contrib-watch": "^1.1.0",
     "grunt-eslint": "^20.1.0",

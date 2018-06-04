@@ -7,5 +7,6 @@
 let helloWorld = () => 'Hello World';
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports.hello = hello;
+    module.exports.helloWorld = helloWorld;
+    
 }
