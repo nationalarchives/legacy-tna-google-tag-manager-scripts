@@ -4,7 +4,7 @@
  * Developer: Punal Chotrani
  **/
 
-let hello = () => 'Hello';
+let helloWorld = () => 'Hello World';
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.hello = hello;
