@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This will compile all scripts, run tests for all scripts added in google tag manager.",
   "scripts": {
-    "test": "test"
+    "test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -25,7 +25,8 @@
     "grunt": "^1.0.2",
     "grunt-babel": "^7.0.0",
     "grunt-contrib-watch": "^1.1.0",
-    "grunt-eslint": "^20.1.0"
+    "grunt-eslint": "^20.1.0",
+    "jest": "^23.1.0"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0"

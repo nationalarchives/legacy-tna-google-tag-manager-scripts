@@ -14,10 +14,15 @@
             ],
             "modules": false,
             "useBuiltIns": true,
-            "debug": true
+            "debug": false
         }
         ]
     ],
+    "env": {
+      "test": {
+          "presets": ["env"]
+      }
+    },
     "plugins": [
         "transform-es2015-modules-commonjs",
         "transform-es3-property-literals",
