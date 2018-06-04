@@ -4,9 +4,31 @@
  * Developer: Punal Chotrani
  **/
 
-let helloWorld = () => 'Hello World';
+let discoveryDetailsContentGroup = () => {
+    let $metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
+        $metaDataContent = $metaTag.getAttribute('content'),
+        $metaDataName = $metaTag.getAttribute('name'),
+        $discovery = 'Discovery';
+        //$metaObj;
+
+    //console.log($metaDataContent);
+
+    if ($metaDataName === 'WT.cg_n' ) {
+        return  {
+            'event'         : $discovery,
+            'eventCategory' : $discovery,
+            'eventAction'   : $metaDataName,
+            'eventLabel'    : $metaDataContent,
+            'ContentGroup' :  $metaDataContent
+        };
+    }
+};
+
+//discoveryDetailsContentGroup();
+
+let hello = () => 'Hello';
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports.helloWorld = helloWorld;
-    
+    module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;
+    module.exports.hello = hello;
 }
