@@ -1,4 +1,4 @@
-import {helloWorld} from '../src/discoveryDetailsContentGroup';
+import {helloWorld } from '../src/discoveryDetailsContentGroup';
 
 describe('hello', () => {
     it('should output hello world', () => {
