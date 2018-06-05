@@ -9,9 +9,6 @@ let discoveryDetailsContentGroup = () => {
         $metaDataContent = $metaTag.getAttribute('content'),
         $metaDataName = $metaTag.getAttribute('name'),
         $discovery = 'Discovery';
-        //$metaObj;
-
-    //console.log($metaDataContent);
 
     if ($metaDataName === 'WT.cg_n' ) {
         return  {
@@ -24,11 +21,11 @@ let discoveryDetailsContentGroup = () => {
     }
 };
 
-//discoveryDetailsContentGroup();
 
-let hello = () => 'Hello';
+
+//let hello = () => 'Hello';
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;
-    module.exports.hello = hello;
+    //module.exports.hello = hello;
 }
