@@ -16,15 +16,11 @@ let discoveryDetailsContentGroup = () => {
             'eventCategory' : $discovery,
             'eventAction'   : $metaDataName,
             'eventLabel'    : $metaDataContent,
-            'ContentGroup' :  $metaDataContent
+            'contentGroup' :  $metaDataContent
         };
     }
 };
 
-//let stuff = Object.getOwnPropertyNames(discoveryDetailsContentGroup());
-//console.log(Object.getOwnPropertyNames(discoveryDetailsContentGroup()));
-
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;
-    //module.exports.hello = hello;
 }
