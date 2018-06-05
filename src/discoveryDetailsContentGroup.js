@@ -21,9 +21,8 @@ let discoveryDetailsContentGroup = () => {
     }
 };
 
-
-
-//let hello = () => 'Hello';
+//let stuff = Object.getOwnPropertyNames(discoveryDetailsContentGroup());
+//console.log(Object.getOwnPropertyNames(discoveryDetailsContentGroup()));
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;
