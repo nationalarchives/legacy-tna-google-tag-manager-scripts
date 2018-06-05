@@ -9,7 +9,7 @@ install:
   - npm install
 
 script:
-
+  - npm test
 
 notifications:
   slack:

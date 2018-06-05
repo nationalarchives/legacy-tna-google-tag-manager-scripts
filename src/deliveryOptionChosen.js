@@ -44,3 +44,7 @@ let deliveryOption = () => {
 };
 
 deliveryOption();
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.deliveryOption = deliveryOption;
+}
