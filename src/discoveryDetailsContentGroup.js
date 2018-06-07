@@ -7,19 +7,26 @@
 let discoveryDetailsContentGroup = () => {
     let $metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
         $metaDataContent = $metaTag.getAttribute('content'),
-        $metaDataName = $metaTag.getAttribute('name'),
+        //$metaDataName = $metaTag.getAttribute('name'),
         $discovery = 'Discovery';
 
-    if ($metaDataName === 'WT.cg_n' ) {
-        return  {
-            'event'         : $discovery,
-            'eventCategory' : $discovery,
-            'eventAction'   : $metaDataName,
-            'eventLabel'    : $metaDataContent,
-            'contentGroup' :  $metaDataContent
-        };
-    }
+    return  {
+        'event'         : $discovery,
+        'contentGroup' :  $metaDataContent
+        //'eventCategory' : $discovery,
+        //'eventAction'   : $metaDataName,
+        //'eventLabel'    : $metaDataContent,
+    };
 };
+
+/*(() => {
+    let $metaTag = document.querySelector('meta[name=WT\\.cg_n]'),
+        $metaDataName = $metaTag.getAttribute('name');
+    if ($metaDataName === 'WT.cg_n') {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(discoveryDetailsContentGroup());
+    }
+})();*/
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.discoveryDetailsContentGroup = discoveryDetailsContentGroup;

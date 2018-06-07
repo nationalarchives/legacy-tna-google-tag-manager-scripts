@@ -6,45 +6,33 @@
  * Developer: Punal Chotrani
  **/
 
-var deliveryOption = function deliveryOption() {
-    var deliveryOptionButton = document.querySelector('.order-option-wrapper a');
-    if (deliveryOptionButton.addEventListener) {
-        deliveryOptionButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            var $discovery = 'Discovery',
-                $eventAction = 'Delivery option chosen',
-                $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
-                $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
+var deliveryOptionChosen = function deliveryOptionChosen() {
+    var $deliveryButton = document.querySelector('.order-option-wrapper a'),
+        $discovery = 'Discovery',
+        $eventAction = 'Delivery option chosen',
+        $eventLabel = $deliveryButton.getAttribute('data-webtrends-call'),
+        $obj = {
+        'event': $discovery,
+        'eventCategory': $discovery,
+        'eventAction': $eventAction,
+        'eventLabel': $eventLabel
+    };
 
-            return function () {
-                window.dataLayer.push({
-                    'event': $discovery,
-                    'eventCategory': $discovery,
-                    'eventAction': $eventAction,
-                    'eventLabel': $eventLabel
-                });
-            };
-        }, false);
-    } else {
-        // only for IE8 option
-        deliveryOptionButton.attachEvent('onclick', function (e) {
-            e.preventDefault();
-            var $discovery = 'Discovery',
-                $eventAction = 'Delivery option chosen',
-                $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
-                $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
-
-            return function () {
-                window.dataLayer.push({
-                    'event': $discovery,
-                    'eventCategory': $discovery,
-                    'eventAction': $eventAction,
-                    'eventLabel': $eventLabel
-                });
-            };
-        });
-    }
+    return $obj;
 };
 
-deliveryOption();
+(function () {
+    var $deliveryButton = document.querySelector('.order-option-wrapper a');
+    if ($deliveryButton) {
+        $deliveryButton.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.dataLayer = window.dataLayer || [];
+            window.dataLayer.push(deliveryOptionChosen());
+        }, true);
+    }
+})();
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.deliveryOptionChosen = deliveryOptionChosen;
+}
 //# sourceMappingURL=deliveryOptionChosen.js.map

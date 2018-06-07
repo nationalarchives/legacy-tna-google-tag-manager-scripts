@@ -32,26 +32,11 @@ describe('Expected object property values', () => {
     it('Should contain the string Discovery as the Event', () => {
        expect(discoveryDetailsContentGroup().event).toBe('Discovery');
     });
-    it('Should contain the string Discovery as the Event Category', () => {
-        expect(discoveryDetailsContentGroup().eventCategory).toBe('Discovery');
-    });
-    it('Should contain the string WT.cg_n as the Metadata Name', () => {
-        expect(discoveryDetailsContentGroup().eventAction).toBe('WT.cg_n');
-    });
 });
 
 describe('Property value types', () => {
     it('Should return event as a string', () => {
        expect(typeof discoveryDetailsContentGroup().event).toBe('string');
-    });
-    it('Should return eventCategory as a string', () => {
-        expect(typeof discoveryDetailsContentGroup().eventCategory).toBe('string');
-    });
-    it('Should return eventAction as a string', () => {
-        expect(typeof discoveryDetailsContentGroup().eventAction).toBe('string');
-    });
-    it('Should return eventLabel as a string', () => {
-        expect(typeof discoveryDetailsContentGroup().eventLabel).toBe('string');
     });
     it('Should return contentGroup as a string', () => {
         expect(typeof discoveryDetailsContentGroup().contentGroup).toBe('string');
