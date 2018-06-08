@@ -7,15 +7,10 @@ document.body.innerHTML =
 
 describe('Expect an object to be returned', () => {
     it('Should return an object', () => {
-
-        let $deliveryButton = document.querySelector('.order-option-wrapper a');
-
-        $deliveryButton.addEventListener('click', deliveryOptionChosen, true);
-
+        let deliveryButton = document.querySelector('.order-option-wrapper a');
+        deliveryButton.addEventListener('click', deliveryOptionChosen, true);
         let cl = new Event('click');
-
-        $deliveryButton.dispatchEvent(cl);
-
+        deliveryButton.dispatchEvent(cl);
         expect(window.dataLayer[0]).toEqual(deliveryOptionChosen());
     });
 });
