@@ -6,6 +6,7 @@
 
 
 const deliveryOptionChosen = () => {
+
     let $deliveryButton = document.querySelector('.order-option-wrapper a'),
         $discovery = 'Discovery',
         $eventAction = 'Delivery option chosen',
@@ -17,19 +18,12 @@ const deliveryOptionChosen = () => {
             'eventLabel': $eventLabel
         };
 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push($obj);
+
     return $obj;
 };
 
-(() => {
-    let $deliveryButton = document.querySelector('.order-option-wrapper a');
-    if ($deliveryButton) {
-        $deliveryButton.addEventListener('click', (e) => {
-            e.preventDefault();
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(deliveryOptionChosen());
-        }, true);
-    }
-})();
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.deliveryOptionChosen = deliveryOptionChosen;

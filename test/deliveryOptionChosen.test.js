@@ -1,4 +1,4 @@
-import {deliveryOptionChosen} from '../src/deliveryOptionChosen';
+import { deliveryOptionChosen } from '../src/deliveryOptionChosen';
 
 document.body.innerHTML =
     '<div class="order-option-wrapper">' +
@@ -7,6 +7,15 @@ document.body.innerHTML =
 
 describe('Expect an object to be returned', () => {
     it('Should return an object', () => {
-        expect(typeof deliveryOptionChosen()).toBe('object');
+
+        let $deliveryButton = document.querySelector('.order-option-wrapper a');
+
+        $deliveryButton.addEventListener('click', deliveryOptionChosen, true);
+
+        let cl = new Event('click');
+
+        $deliveryButton.dispatchEvent(cl);
+
+        expect(window.dataLayer[0]).toEqual(deliveryOptionChosen());
     });
 });

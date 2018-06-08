@@ -7,6 +7,7 @@
  **/
 
 var deliveryOptionChosen = function deliveryOptionChosen() {
+
     var $deliveryButton = document.querySelector('.order-option-wrapper a'),
         $discovery = 'Discovery',
         $eventAction = 'Delivery option chosen',
@@ -18,19 +19,11 @@ var deliveryOptionChosen = function deliveryOptionChosen() {
         'eventLabel': $eventLabel
     };
 
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push($obj);
+
     return $obj;
 };
-
-(function () {
-    var $deliveryButton = document.querySelector('.order-option-wrapper a');
-    if ($deliveryButton) {
-        $deliveryButton.addEventListener('click', function (e) {
-            e.preventDefault();
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push(deliveryOptionChosen());
-        }, true);
-    }
-})();
 
 if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
     module.exports.deliveryOptionChosen = deliveryOptionChosen;
