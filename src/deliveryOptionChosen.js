@@ -4,43 +4,31 @@
  * Developer: Punal Chotrani
  **/
 
-let deliveryOption = () => {
-    let deliveryOptionButton = document.querySelector('.order-option-wrapper a');
-    if (deliveryOptionButton.addEventListener) {
-        deliveryOptionButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            let $discovery = 'Discovery',
-                $eventAction = 'Delivery option chosen',
-                $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
-                $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
 
-            return () => {
-                window.dataLayer.push({
-                    'event'         : $discovery,
-                    'eventCategory' : $discovery,
-                    'eventAction'   : $eventAction,
-                    'eventLabel'    : $eventLabel
-                });
-            };
-        }, false);
-    } else { // only for IE8 option
-        deliveryOptionButton.attachEvent('onclick', function (e) {
-            e.preventDefault();
-            let $discovery = 'Discovery',
-                $eventAction = 'Delivery option chosen',
-                $orderOptionWrapper = document.querySelector('.order-option-wrapper a'),
-                $eventLabel = $orderOptionWrapper.getAttribute('data-webtrends-call');
+const deliveryOptionChosen = () => {
 
-            return () => {
-                window.dataLayer.push({
-                    'event'         : $discovery,
-                    'eventCategory' : $discovery,
-                    'eventAction'   : $eventAction,
-                    'eventLabel'    : $eventLabel
-                });
-            };
-        });
-    }
+    let deliveryButton = document.querySelector('.order-option-wrapper a'),
+        discovery = 'Discovery',
+        eventAction = 'Delivery option chosen',
+        eventLabel = deliveryButton.getAttribute('data-webtrends-call'),
+        obj = {
+            'event': discovery,
+            'eventCategory': discovery,
+            'eventAction': eventAction,
+            'eventLabel': eventLabel
+        };
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push(obj);
+
+    return obj;
 };
 
-deliveryOption();
+let deliveryButton = document.querySelector('.order-option-wrapper a');
+if (deliveryButton) {
+    deliveryButton.addEventListener('click', deliveryOptionChosen, true);
+}
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.deliveryOptionChosen = deliveryOptionChosen;
+}

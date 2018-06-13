@@ -2,14 +2,18 @@ language:
   - node_js
 
 node_js:
-  - 4.4.5
+  - "stable"
+
+cache:
+  directories:
+    - node_modules
 
 install:
   - npm install -g grunt-cli
   - npm install
 
 script:
-
+  - npm test
 
 notifications:
   slack:
