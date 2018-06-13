@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "This will compile all scripts, run tests for all scripts added in google tag manager.",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
