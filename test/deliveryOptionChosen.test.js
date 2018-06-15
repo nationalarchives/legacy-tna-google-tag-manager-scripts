@@ -6,7 +6,7 @@ document.body.innerHTML =
     '</div>';
 
 describe('Expect an object to be returned', () => {
-    it('Should return an object', () => {
+    it('Should return an object when clicked', () => {
         let deliveryButton = document.querySelector('.order-option-wrapper a');
         deliveryButton.addEventListener('click', deliveryOptionChosen, true);
         let cl = new Event('click');
