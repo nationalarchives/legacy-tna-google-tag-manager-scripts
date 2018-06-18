@@ -1,4 +1,5 @@
 import { bannerClickEvent } from '../src/bannerClickEvent';
+import {deliveryOptionChosen} from "../src/deliveryOptionChosen";
 
 document.body.innerHTML =
     '<div id="imageviewerOverlay">\n' +
@@ -17,8 +18,12 @@ describe('Expect an object to be returned', () => {
         let expected = Object.getOwnPropertyNames(bannerClickEvent());
         expect(["event", "ecommerce", "eventAction", "eventLabel", "contentGroup", "DummyProperty1"]).toEqual(expect.arrayContaining(expected));
     });
-    it('does not match if received does not contain expected elements', () => {
+    it('Does not match if received does not contain expected elements', () => {
         let expected = Object.getOwnPropertyNames(bannerClickEvent());
         expect(['DummyProperty1', 'DummyProperty2']).not.toEqual(expect.arrayContaining(expected));
+    });
+    it('Should contain the specified objects', () => {
+       let expected = bannerClickEvent().ecommerce.promoClick.promotions[0].id;
+        expect('bts').toEqual(expected);
     });
 });
