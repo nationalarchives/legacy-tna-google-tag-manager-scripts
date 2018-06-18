@@ -5,7 +5,7 @@ document.body.innerHTML =
         '<p>To download this record without a watermark, please add it to your basket.</p>\n' +
     '</div>';
 
-describe('Expect an object to be returned', () => {
+describe('Should return the specified output', () => {
     it('Should return an object when clicked', () => {
         let imageViewerbanner = document.getElementById('imageviewerOverlay');
         imageViewerbanner.addEventListener('click', bannerClickEvent, true);
