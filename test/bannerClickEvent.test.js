@@ -1,5 +1,4 @@
 import { bannerClickEvent } from '../src/bannerClickEvent';
-import {deliveryOptionChosen} from "../src/deliveryOptionChosen";
 
 document.body.innerHTML =
     '<div id="imageviewerOverlay">\n' +
@@ -22,8 +21,22 @@ describe('Expect an object to be returned', () => {
         let expected = Object.getOwnPropertyNames(bannerClickEvent());
         expect(['DummyProperty1', 'DummyProperty2']).not.toEqual(expect.arrayContaining(expected));
     });
-    it('Should contain the specified objects', () => {
-       let expected = bannerClickEvent().ecommerce.promoClick.promotions[0].id;
-        expect('bts').toEqual(expected);
+    it('Should contain the specified strings', () => {
+        let bts = bannerClickEvent().ecommerce.promoClick.promotions[0].id,
+            name = bannerClickEvent().ecommerce.promoClick.promotions[0].name,
+            creative = bannerClickEvent().ecommerce.promoClick.promotions[0].creative,
+            position = bannerClickEvent().ecommerce.promoClick.promotions[0].position,
+            event = bannerClickEvent().event,
+            expected = Object.getOwnPropertyNames(bannerClickEvent().ecommerce.promoClick.promotions[0]);
+        expect('bts').toEqual(bts);
+        expect('Image viewer banner').toEqual(name);
+        expect('Banner').toEqual(creative);
+        expect('On watermarked image').toEqual(position);
+        expect('promotionClick').toEqual(event);
+        expect(['id', 'name', 'creative', 'position']).toEqual(expect.arrayContaining(expected));
+        expect(typeof expected[0]).toBe('string');
+        expect(typeof expected[1]).toBe('string');
+        expect(typeof expected[2]).toBe('string');
+        expect(typeof expected[3]).toBe('string');
     });
 });
