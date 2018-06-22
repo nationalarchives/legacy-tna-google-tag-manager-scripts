@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar logger = {\n  log: function log(arg) {\n    console.log(arg);\n  }\n};\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/logger.js?");
+eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg);\n        return arg;\n    }\n};\n\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/logger.js?");
 
 /***/ }),
 
