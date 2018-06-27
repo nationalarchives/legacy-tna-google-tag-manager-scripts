@@ -2,7 +2,8 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        bannerClick   : './src/bannerClick.js'
+        bannerClick   : './src/bannerClick.js',
+        formAbandonment: './src/formAbandonment.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -13,5 +14,6 @@ module.exports = {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }
         ]
-    }
+    },
+    watch:true
 };
