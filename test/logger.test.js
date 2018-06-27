@@ -1,4 +1,4 @@
-import {logger} from '../src/logger';
+import {logger} from '../src/modules/logger';
 
 describe('Checking the string', () =>{
     it('', ()=>{

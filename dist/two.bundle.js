@@ -86,15 +86,15 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/logger.js":
-/*!***********************!*\
-  !*** ./src/logger.js ***!
-  \***********************/
+/***/ "./src/modules/logger.js":
+/*!*******************************!*\
+  !*** ./src/modules/logger.js ***!
+  \*******************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg);\n        return arg;\n    }\n};\n\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/logger.js?");
+eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg);\n        return arg;\n    }\n};\n\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/modules/logger.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg)
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _logger = __webpack_require__(/*! ./logger */ \"./src/logger.js\");\n\n_logger.logger.log('Hello from two.js');\n\n//# sourceURL=webpack:///./src/two.js?");
+eval("\n\nvar _logger = __webpack_require__(/*! ./modules/logger */ \"./src/modules/logger.js\");\n\n_logger.logger.log('Hello from two.js');\n\n//# sourceURL=webpack:///./src/two.js?");
 
 /***/ })
 

@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/one.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/formAbandonment.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/modules/logger.js":
-/*!*******************************!*\
-  !*** ./src/modules/logger.js ***!
-  \*******************************/
+/***/ "./src/formAbandonment.js":
+/*!********************************!*\
+  !*** ./src/formAbandonment.js ***!
+  \********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg);\n        return arg;\n    }\n};\n\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/modules/logger.js?");
+eval("\n\nvar _getFormIDByClassName = __webpack_require__(/*! ./modules/getFormIDByClassName */ \"./src/modules/getFormIDByClassName.js\");\n\nconsole.log((0, _getFormIDByClassName.getFormIDByClassName)('form-abandonment'));\n\n//# sourceURL=webpack:///./src/formAbandonment.js?");
 
 /***/ }),
 
-/***/ "./src/one.js":
-/*!********************!*\
-  !*** ./src/one.js ***!
-  \********************/
+/***/ "./src/modules/getFormIDByClassName.js":
+/*!*********************************************!*\
+  !*** ./src/modules/getFormIDByClassName.js ***!
+  \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _logger = __webpack_require__(/*! ./modules/logger */ \"./src/modules/logger.js\");\n\n_logger.logger.log('Hello from one.js');\n\n//# sourceURL=webpack:///./src/one.js?");
+eval("\n\nvar getFormIDByClassName = function getFormIDByClassName(cls) {\n    var form = document.getElementsByClassName(cls);\n\n    return form[0].getAttribute('id');\n};\n\nmodule.exports.getFormIDByClassName = getFormIDByClassName;\n\n//# sourceURL=webpack:///./src/modules/getFormIDByClassName.js?");
 
 /***/ })
 
