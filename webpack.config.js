@@ -2,8 +2,9 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        one: './src/one.js',
-        two: './src/two.js',
+        one     : './src/one.js',
+        two     : './src/two.js',
+        three   : './src/bannerClick.js'
     },
     output: {
         filename: '[name].bundle.js',
