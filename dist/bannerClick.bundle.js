@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\n//console.log(promoObjFunc('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image'));\nconsole.log((0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image').ecommerce.promoClick.promotions[0].id);\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
+eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\nvar banner = document.getElementById('imageviewerOverlay');\nif (banner) {\n    banner.addEventListener('click', (0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image'), true);\n}\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
 
 /***/ }),
 
