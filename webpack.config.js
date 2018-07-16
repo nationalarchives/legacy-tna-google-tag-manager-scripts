@@ -4,7 +4,7 @@ module.exports = {
     entry: {
         one     : './src/one.js',
         two     : './src/two.js',
-        three   : './src/bannerClick.js'
+        bannerClick   : './src/bannerClick.js'
     },
     output: {
         filename: '[name].bundle.js',
