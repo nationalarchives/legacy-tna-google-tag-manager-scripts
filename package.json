@@ -4,7 +4,7 @@
   "description": "## Development setup",
   "private": true,
   "scripts": {
-    "test": "jest",
+    "test": "jest --coverage",
     "start": "webpack --config webpack.config.js"
   },
   "jest": {

@@ -94,19 +94,19 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _clickEvent = __webpack_require__(/*! ./modules/clickEvent */ \"./src/modules/clickEvent.js\");\n\nconsole.log((0, _clickEvent.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image'));\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
+eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\nconsole.log((0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image'));\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
 
 /***/ }),
 
-/***/ "./src/modules/clickEvent.js":
-/*!***********************************!*\
-  !*** ./src/modules/clickEvent.js ***!
-  \***********************************/
+/***/ "./src/modules/promoObj.js":
+/*!*********************************!*\
+  !*** ./src/modules/promoObj.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar promoObjFunc = function promoObjFunc(e, id, name, creative, position) {\n    return {\n        'event': e,\n        'ecommerce': {\n            'promoClick': {\n                'promotions': [{\n                    'id': id,\n                    'name': name,\n                    'creative': creative,\n                    'position': position\n                }]\n            }\n        }\n    };\n};\n\nmodule.exports.promoObjFunc = promoObjFunc;\n\n//# sourceURL=webpack:///./src/modules/clickEvent.js?");
+eval("\n\nvar promoObjFunc = function promoObjFunc(e, id, name, creative, position) {\n\n    var obj = {\n        'event': e,\n        'ecommerce': {\n            'promoClick': {\n                'promotions': [{\n                    'id': id,\n                    'name': name,\n                    'creative': creative,\n                    'position': position\n                }]\n            }\n        }\n    };\n\n    window.dataLayer = window.dataLayer || [];\n    window.dataLayer.push(obj);\n\n    return obj;\n};\n\nmodule.exports.promoObjFunc = promoObjFunc;\n\n//# sourceURL=webpack:///./src/modules/promoObj.js?");
 
 /***/ })
 
