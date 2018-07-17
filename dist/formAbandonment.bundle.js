@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _getFormIDByClassName = __webpack_require__(/*! ./modules/getFormIDByClassName */ \"./src/modules/getFormIDByClassName.js\");\n\nconsole.log((0, _getFormIDByClassName.getFormIDByClassName)('form-abandonment'));\n\n//# sourceURL=webpack:///./src/formAbandonment.js?");
+eval("\n\nvar _getFormIDByClassName = __webpack_require__(/*! ./modules/getFormIDByClassName */ \"./src/modules/getFormIDByClassName.js\");\n\n// This grabs the ID of the form\nconsole.log('' + (0, _getFormIDByClassName.getFormIDByClassName)('form-abandonment')); /**\n                                                                                        * ------------  THE NATIONAL ARCHIVES  -----------------\n                                                                                        * JS - Form abandonment on contact forms\n                                                                                        * Developer: Mihai Diaconita\n                                                                                        **/\n\n//# sourceURL=webpack:///./src/formAbandonment.js?");
 
 /***/ }),
 
