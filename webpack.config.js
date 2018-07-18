@@ -8,7 +8,7 @@ module.exports = {
         filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist')
     },
-    mode: 'development',
+    mode: 'production',
     module: {
         rules: [
             { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" }

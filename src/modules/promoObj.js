@@ -14,9 +14,6 @@ let promoObjFunc = (e, id, name, creative, position) => {
         }
     };
 
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(obj);
-
     return obj;
 
 };
