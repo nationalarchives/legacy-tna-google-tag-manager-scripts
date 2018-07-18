@@ -81,32 +81,32 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/two.js");
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/bannerClick.js");
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ "./src/logger.js":
-/*!***********************!*\
-  !*** ./src/logger.js ***!
-  \***********************/
+/***/ "./src/bannerClick.js":
+/*!****************************!*\
+  !*** ./src/bannerClick.js ***!
+  \****************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar logger = {\n    log: function log(arg) {\n        console.log(arg);\n        return arg;\n    }\n};\n\nmodule.exports.logger = logger;\n\n//# sourceURL=webpack:///./src/logger.js?");
+eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\nvar banner = document.getElementById('imageviewerOverlay');\nif (banner) {\n    banner.addEventListener('click', function () {\n        var promoBanner = (0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image');\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push(promoBanner);\n    }, true);\n}\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
 
 /***/ }),
 
-/***/ "./src/two.js":
-/*!********************!*\
-  !*** ./src/two.js ***!
-  \********************/
+/***/ "./src/modules/promoObj.js":
+/*!*********************************!*\
+  !*** ./src/modules/promoObj.js ***!
+  \*********************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _logger = __webpack_require__(/*! ./logger */ \"./src/logger.js\");\n\n_logger.logger.log('Hello from two.js');\n\n//# sourceURL=webpack:///./src/two.js?");
+eval("\n\nvar promoObjFunc = function promoObjFunc(e, id, name, creative, position) {\n\n    var obj = {\n        'event': e,\n        'ecommerce': {\n            'promoClick': {\n                'promotions': [{\n                    'id': id,\n                    'name': name,\n                    'creative': creative,\n                    'position': position\n                }]\n            }\n        }\n    };\n\n    return obj;\n};\n\nmodule.exports.promoObjFunc = promoObjFunc;\n\n//# sourceURL=webpack:///./src/modules/promoObj.js?");
 
 /***/ })
 
