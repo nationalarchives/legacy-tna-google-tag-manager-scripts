@@ -94,7 +94,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\nvar banner = document.getElementById('imageviewerOverlay');\nif (banner) {\n    banner.addEventListener('click', (0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image'), true);\n}\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
+eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/modules/promoObj.js\");\n\nvar banner = document.getElementById('imageviewerOverlay');\nif (banner) {\n    banner.addEventListener('click', function () {\n        var promoBanner = (0, _promoObj.promoObjFunc)('promotionClick', 'bts', 'Image viewer banner', 'Banner', 'On watermarked image');\n        window.dataLayer = window.dataLayer || [];\n        window.dataLayer.push(promoBanner);\n    }, true);\n}\n\n//# sourceURL=webpack:///./src/bannerClick.js?");
 
 /***/ }),
 
@@ -106,7 +106,7 @@ eval("\n\nvar _promoObj = __webpack_require__(/*! ./modules/promoObj */ \"./src/
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar promoObjFunc = function promoObjFunc(e, id, name, creative, position) {\n\n    var obj = {\n        'event': e,\n        'ecommerce': {\n            'promoClick': {\n                'promotions': [{\n                    'id': id,\n                    'name': name,\n                    'creative': creative,\n                    'position': position\n                }]\n            }\n        }\n    };\n\n    window.dataLayer = window.dataLayer || [];\n    window.dataLayer.push(obj);\n\n    return obj;\n};\n\nmodule.exports.promoObjFunc = promoObjFunc;\n\n//# sourceURL=webpack:///./src/modules/promoObj.js?");
+eval("\n\nvar promoObjFunc = function promoObjFunc(e, id, name, creative, position) {\n\n    var obj = {\n        'event': e,\n        'ecommerce': {\n            'promoClick': {\n                'promotions': [{\n                    'id': id,\n                    'name': name,\n                    'creative': creative,\n                    'position': position\n                }]\n            }\n        }\n    };\n\n    return obj;\n};\n\nmodule.exports.promoObjFunc = promoObjFunc;\n\n//# sourceURL=webpack:///./src/modules/promoObj.js?");
 
 /***/ })
 
