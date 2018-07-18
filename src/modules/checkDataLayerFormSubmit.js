@@ -13,6 +13,6 @@ let checkDataLayerFormSubmit = (dataLayer) => {
         return true;
     }
     return false;
-}
+};
 
 module.exports.checkDataLayerFormSubmit = checkDataLayerFormSubmit;
