@@ -4,7 +4,19 @@ import{
 
 import{
     BuildObjectModule
-} from '../src/buildGtmObject';
+} from '../src/modules/buildObject.js';
+
+import{
+    RemoveNullValuesModule
+} from '../src/modules/removeNullValues.js';
+
+import{
+    EcommerceObjectModule
+} from '../src/modules/ecommerceObj.js';
+
+import{
+    DefaultObjectModule
+} from '../src/modules/defaultObj.js';
 
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
@@ -26,7 +38,7 @@ document.body.innerHTML =
 
 describe('Tests custom message data type', () =>{
     it('Should be of string data type', () =>{
-        expect(typeof extractMetaTagContent(null, 'Custom message...')).toBe('string');
+        expect(typeof ExtractTagsModule.extractMetaTagContent(null, 'Custom message...')).toBe('string');
     })
 });
 
@@ -45,14 +57,14 @@ describe('Gets the meta tag content value', () => {
 
 describe('Checks that the object is built correctly', () => {
     it('Should return type "object"', () => {
-        expect(typeof BuildObjectModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe('object');
-        expect(typeof BuildObjectModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe('object');
+        expect(typeof RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe('object');
+        expect(typeof RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe('object');
     })
 });
 
 describe('Checks that the correct elements are added/subtracted from the object', () => {
     it('Should return ecommerce if the watermark exists, else excludes it', () =>{
-        expect(BuildObjectModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe(Object.assign(BuildObjectModule.ecommerceObj, BuildObjectModule.defaultObj));
-        expect(BuildObjectModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe(BuildObjectModule.defaultObj);
+        expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe(Object.assign(EcommerceObjectModule.ecommerceObj, DefaultObjectModule.defaultObj));
+        expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe(DefaultObjectModule.defaultObj);
     })
 });
