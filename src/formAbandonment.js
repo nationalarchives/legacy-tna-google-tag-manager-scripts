@@ -3,19 +3,36 @@
  * JS - Form abandonment on contact forms
  * Developer: Mihai Diaconita
  **/
-
-import { getFormIDByClassName } from './modules/getFormIDByClassName';
-import { getElemIDOnBlur } from './modules/getElemIDOnBlur';
+import { serializeData } from './modules/serializeData';
 import { getElemErrorID } from './modules/getElemErrorID';
+import { getElemIDOnBlur } from './modules/getElemIDOnBlur';
 
-let _array = [],
+const _array = [],
     _errorArray = [],
-    form = document.getElementsByClassName('form-abandonment'),
+    className = 'form-abandonment',
+    form = document.getElementsByClassName(className),
     errorMsg = document.getElementsByClassName('form-error');
+let formID = [];
 
-getElemIDOnBlur(form, _array);
-getElemErrorID(_errorArray, errorMsg);
+if (form[0]) {
+    // Get the ID of the form
+    formID = form[0].getAttribute('id');
 
-console.log(_array);
-console.log(_errorArray);
+    // Get the ID of the elements on blur
+    getElemIDOnBlur(form, _array);
+
+    window.onbeforeunload = () => {
+        // Check for error message
+        getElemErrorID(_errorArray, errorMsg);
+
+        // If the form exists push all the data into dataLayer
+        if (formID !== undefined) {
+            window.dataLayer.push({
+                'event': 'formAbandonment',
+                'eventCategory': 'Form Abandonment',
+                'eventAction': serializeData(formID, _array, _errorArray)
+            });
+        }
+    };
+}
 
