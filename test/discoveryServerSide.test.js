@@ -18,6 +18,10 @@ import{
     DefaultObjectModule
 } from '../src/modules/defaultObj.js';
 
+import{
+    GtmDLModule
+} from '../src/buildGtmObject.js';
+
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
     //<meta name="WT.cg_n" content="View records of other archives">
@@ -66,5 +70,11 @@ describe('Checks that the correct elements are added/subtracted from the object'
     it('Should return ecommerce if the watermark exists, else excludes it', () =>{
         expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe(Object.assign(EcommerceObjectModule.ecommerceObj, DefaultObjectModule.defaultObj));
         expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe(DefaultObjectModule.defaultObj);
+    })
+});
+
+describe('Check GtmDL data type', () => {
+    it('Should be of data type object', () =>{
+        expect(typeof GtmDLModule.gtmDL()).toBe('object');
     })
 });

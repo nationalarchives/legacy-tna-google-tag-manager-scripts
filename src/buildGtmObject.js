@@ -10,10 +10,19 @@ import{
     RemoveNullValuesModule
 } from './modules/removeNullValues.js';
 
-let gtmDL = function(){
-    return RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(ExtractTagsModule.watermarkCheck()));
-};
+
+let GtmDLModule = (function(){
+    return{
+        gtmDL : function () {
+            return RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(ExtractTagsModule.watermarkCheck()));
+        }
+    }
+})();
 
 window.dataLayer = window.dataLayer || [];
 
-window.dataLayer.push(gtmDL());
+window.dataLayer.push(GtmDLModule.gtmDL());
+
+if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
+    module.exports.GtmDLModule = GtmDLModule;
+}
