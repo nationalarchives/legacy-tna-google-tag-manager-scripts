@@ -1,31 +1,3 @@
 {
-    "presets": [
-        [
-            "env", {
-            "targets": {
-                "browsers": ["last 2 versions", "ie >= 8"]
-            },
-            "exclude": [
-                "es6.typed.array-buffer",
-                "es6.typed.data-view",
-                "es6.typed.int8-array",
-                "es6.typed.uint8-array",
-                "es6.typed.uint8-clamped-array"
-            ],
-            "modules": false,
-            "useBuiltIns": true,
-            "debug": false
-        }
-        ]
-    ],
-    "env": {
-      "test": {
-          "presets": ["env"]
-      }
-    },
-    "plugins": [
-        "transform-es2015-modules-commonjs",
-        "transform-es3-property-literals",
-        "transform-es3-member-expression-literals"
-    ]
+  "presets": ["env"]
 }

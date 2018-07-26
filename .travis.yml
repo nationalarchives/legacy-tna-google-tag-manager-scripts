@@ -9,10 +9,10 @@ cache:
   - node_modules
 
 install:
-  - npm install -g grunt-cli
   - npm install
 
 script:
+  - npm run build
   - npm test
 
 notifications:
