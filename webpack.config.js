@@ -19,6 +19,5 @@ module.exports = {
                 use: ['eslint-loader']
             }
         ]
-    },
-    watch:false
+    }
 };
