@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
     entry: {
         bannerClick   : './src/bannerClick.js',
-        formAbandonment: './src/formAbandonment.js'
+        formAbandonment: './src/formAbandonment.js',
+        homePage : './src/homePage.js'
     },
     output: {
         filename: '[name].bundle.js',
