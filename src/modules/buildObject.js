@@ -1,27 +1,15 @@
-import{
-    EcommerceObjectModule
-} from './ecommerceObj.js';
+import{ecommerceObject} from './ecommerceObj';
 
-import{
-    DefaultObjectModule
-} from './defaultObj.js';
+import{defaultObject} from './defaultObj';
 
 let gtmDL;
 
-let BuildObjectModule = (function(){
-    return {
-        buildObject : function (watermarkPresent) {
-            if (watermarkPresent === true) {
-                gtmDL = Object.assign(EcommerceObjectModule.ecommerceObj, DefaultObjectModule.defaultObj);
-            }
-            else {
-                gtmDL = DefaultObjectModule.defaultObj;
-            }
-            return gtmDL;
-        }
+export let buildObject = (watermarkPresent) => {
+    if (watermarkPresent) {
+        gtmDL = Object.assign(ecommerceObject, defaultObject);
     }
-})();
-
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports.BuildObjectModule = BuildObjectModule;
-}
+    else {
+        gtmDL = defaultObject;
+    }
+    return gtmDL;
+};

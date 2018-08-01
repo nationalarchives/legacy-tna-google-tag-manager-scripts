@@ -1,28 +1,11 @@
-import{
-    ExtractTagsModule
-} from './discoveryServerSide.js';
+import {watermarkCheck} from './modules/watermarkCheck';
 
-import{
-    BuildObjectModule
-} from './modules/buildObject.js';
+import{buildObject} from './modules/buildObject';
 
-import{
-    RemoveNullValuesModule
-} from './modules/removeNullValues.js';
+import{removeNullValues} from './modules/removeNullValues';
 
-
-let GtmDLModule = (function(){
-    return{
-        gtmDL : function () {
-            return RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(ExtractTagsModule.watermarkCheck()));
-        }
-    }
-})();
+let gtmDL = removeNullValues(buildObject(watermarkCheck()));
 
 window.dataLayer = window.dataLayer || [];
 
-window.dataLayer.push(GtmDLModule.gtmDL());
-
-if (typeof module !== 'undefined' && typeof module.exports !== 'undefined') {
-    module.exports.GtmDLModule = GtmDLModule;
-}
+window.dataLayer.push(gtmDL);

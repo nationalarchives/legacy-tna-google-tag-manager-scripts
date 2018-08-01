@@ -1,26 +1,14 @@
-import{
-    ExtractTagsModule
-} from '../src/discoveryServerSide';
+import{buildObject} from '../src/modules/buildObject';
 
-import{
-    BuildObjectModule
-} from '../src/modules/buildObject.js';
+import{removeNullValues} from '../src/modules/removeNullValues';
 
-import{
-    RemoveNullValuesModule
-} from '../src/modules/removeNullValues.js';
+import{ecommerceObject} from '../src/modules/ecommerceObj';
 
-import{
-    EcommerceObjectModule
-} from '../src/modules/ecommerceObj.js';
+import{defaultObject} from '../src/modules/defaultObj';
 
-import{
-    DefaultObjectModule
-} from '../src/modules/defaultObj.js';
+import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 
-import{
-    GtmDLModule
-} from '../src/buildGtmObject.js';
+import{gtmDL} from '../src/buildGtmObject';
 
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
@@ -40,41 +28,58 @@ document.body.innerHTML =
     '<meta name="DCSext.subscription" content="not subscribed">' +
     '<meta name="DCSext.imgviewer" content="Image Viewer Watermarked">';
 
-describe('Tests custom message data type', () =>{
-    it('Should be of string data type', () =>{
-        expect(typeof ExtractTagsModule.extractMetaTagContent(null, 'Custom message...')).toBe('string');
-    })
+describe('signed in meta tag content', () =>{
+    it('should return value of content attribute', () => {
+        expect(extractMetaTagContent('DCSext\\.signedin', 'msg')).toBe('Not signed-in');
+    });
 });
 
-describe('Gets the meta tag content value', () => {
-    it('Should return content if meta tag exists, else return custom message', () => {
-        expect(ExtractTagsModule.extractMetaTagContent(null, null)).toBe(null);
-        expect(ExtractTagsModule.extractMetaTagContent(null, 'This is the msg...')).toBe('This is the msg...');
-        expect(ExtractTagsModule.extractMetaTagContent(null, 'Meta tag does not exist')).toBe('Meta tag does not exist');
-        expect(ExtractTagsModule.extractMetaTagContent('meta[name=WT\\.cg_n]', 'Content group not available')).toBe('View TNA record description');
-        expect(ExtractTagsModule.extractMetaTagContent('meta[name=DCSext\\.docref]', null)).toBe('Division within WO');
-        expect(ExtractTagsModule.extractMetaTagContent('meta[name=DCSext\\.signedin]', 'Registered info not available')).toBe('Not signed-in');
-        expect(ExtractTagsModule.extractMetaTagContent('meta[name=DCSext\\.subscription]', 'Subscriber info not available')).toBe('not subscribed');
-        expect(ExtractTagsModule.extractMetaTagContent('meta[name=DCSext\\.imgviewer]', null)).toBe('Image Viewer Watermarked');
-    })
+describe('subscription meta tag content', () =>{
+    it('should return value of content attribute', () => {
+        expect(extractMetaTagContent('DCSext\\.subscription', 'msg')).toBe('not subscribed');
+    });
+});
+
+describe('imgviewer meta tag content', () =>{
+    it('should return value of content attribute', () => {
+        expect(extractMetaTagContent('DCSext\\.imgviewer', 'msg')).toBe('Image Viewer Watermarked');
+    });
+});
+
+describe('docref meta tag content', () =>{
+    it('should return value of content attribute', () => {
+        expect(extractMetaTagContent('DCSext\\.docref', 'msg')).toBe('Division within WO');
+    });
+});
+
+describe('content group meta tag content', () =>{
+    it('should return value of content attribute', () => {
+        expect(extractMetaTagContent('WT\\.cg_n', 'msg')).toBe('View TNA record description');
+    });
+});
+
+describe('if meta tag does not exist, return custom message', () =>{
+    it('should return custom message', () => {
+        expect(extractMetaTagContent('nonExistentMetaTag', 'This meta tag does not exist')).toBe('This meta tag does not exist');
+    });
+});
+
+describe('Tests custom message data type', () =>{
+    it('Should be of string data type', () =>{
+        expect(typeof extractMetaTagContent(null, 'Custom message...')).toBe('string');
+    });
 });
 
 describe('Checks that the object is built correctly', () => {
     it('Should return type "object"', () => {
-        expect(typeof RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe('object');
-        expect(typeof RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe('object');
-    })
+        expect(typeof removeNullValues(buildObject(true))).toBe('object');
+        expect(typeof removeNullValues(buildObject(false))).toBe('object');
+    });
 });
 
 describe('Checks that the correct elements are added/subtracted from the object', () => {
     it('Should return ecommerce if the watermark exists, else excludes it', () =>{
-        expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(true))).toBe(Object.assign(EcommerceObjectModule.ecommerceObj, DefaultObjectModule.defaultObj));
-        expect(RemoveNullValuesModule.removeNullValues(BuildObjectModule.buildObject(false))).toBe(DefaultObjectModule.defaultObj);
-    })
-});
-
-describe('Check GtmDL data type', () => {
-    it('Should be of data type object', () =>{
-        expect(typeof GtmDLModule.gtmDL()).toBe('object');
-    })
+        expect(removeNullValues(buildObject(true))).toBe(Object.assign(ecommerceObject, defaultObject));
+        expect(removeNullValues(buildObject(false))).toBe(defaultObject);
+    });
 });

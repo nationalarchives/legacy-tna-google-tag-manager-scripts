@@ -9,6 +9,8 @@
     "build": "webpack --config webpack.config.js"
   },
   "jest": {
+    "verbose": true,
+    "testURL": "http://localhost",
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }
