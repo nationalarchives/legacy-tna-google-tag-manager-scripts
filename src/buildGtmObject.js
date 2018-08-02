@@ -1,11 +1,6 @@
 import {watermarkCheck} from './modules/watermarkCheck';
-
-import{buildObject} from './modules/buildObject';
-
-import{removeNullValues} from './modules/removeNullValues';
-
-let gtmDL = removeNullValues(buildObject(watermarkCheck()));
+import {buildObject} from './modules/buildObject';
+import {removeNullValues} from './modules/removeNullValues';
 
 window.dataLayer = window.dataLayer || [];
-
-window.dataLayer.push(gtmDL);
+window.dataLayer.push(removeNullValues(buildObject(watermarkCheck())));

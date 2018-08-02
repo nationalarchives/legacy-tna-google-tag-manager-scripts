@@ -1,11 +1,7 @@
 import{buildObject} from '../src/modules/buildObject';
-
 import{removeNullValues} from '../src/modules/removeNullValues';
-
 import{ecommerceObject} from '../src/modules/ecommerceObj';
-
 import{defaultObject} from '../src/modules/defaultObj';
-
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 
 document.body.innerHTML =
