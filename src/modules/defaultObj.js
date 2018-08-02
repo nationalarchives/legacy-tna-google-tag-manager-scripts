@@ -1,8 +1,8 @@
-import{ extractMetaTagContent} from './extractMetaTagContent';
-
-export let defaultObject = {
-    'ContentGroup': extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-    'customDimension1': extractMetaTagContent('DCSext\\.docref', null),
-    'customDimension2': extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
-    'customDimension3': extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')
+export let defaultObject = (contentGroup, customDimension1, customDimension2, customDimension3) => {
+    return {
+        'ContentGroup': contentGroup,
+        'customDimension1': customDimension1,
+        'customDimension2': customDimension2,
+        'customDimension3': customDimension3
+    };
 };
