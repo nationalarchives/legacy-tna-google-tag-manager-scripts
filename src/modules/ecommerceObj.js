@@ -3,8 +3,8 @@ export let ecommerceObject = (id, name, creative, position) => {
         'ecommerce': {
             'promoView': {
                 'promotions': [{
-                    'id': id,
-                    'name': name,
+                    'id'      : id,
+                    'name'    : name,
                     'creative': creative,
                     'position': position
                 }]

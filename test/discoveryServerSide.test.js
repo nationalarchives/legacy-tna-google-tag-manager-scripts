@@ -3,6 +3,7 @@ import{removeNullValues} from '../src/modules/removeNullValues';
 import{ecommerceObject} from '../src/modules/ecommerceObj';
 import{defaultObject} from '../src/modules/defaultObj';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
+import{watermarkCheck} from '../src/modules/watermarkCheck';
 
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
@@ -54,14 +55,21 @@ describe('Checking the object is built correctly', () => {
     });
 });
 
+describe('Checking the data type of the parameter passed to removeNullValues', () => {
+    it('Should be an object', () => {
+        expect(typeof removeNullValues({})).toBe('object');
+        expect(typeof removeNullValues({'someProperty' : 'someValue'})).toBe('object');
+    });
+});
+
 describe('Checking that null values are removed', () => {
     it('Should remove any null values/properties from the object', () => {
         expect(removeNullValues(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-            extractMetaTagContent('tagDoesNotExist', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
+            extractMetaTagContent('metaTagDoesNotExist', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
             extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')))).toEqual({
-            'ContentGroup': 'View TNA record description',
-            'customDimension2': 'not subscribed',
-            'customDimension3': 'Not signed-in'
+            'ContentGroup'      : 'View TNA record description',
+            'customDimension2'  : 'not subscribed',
+            'customDimension3'  : 'Not signed-in'
         });
     });
 });
@@ -75,18 +83,74 @@ describe('Checking the correct elements are added/subtracted from the object', (
     });
 });
 
-describe('Checking the object property', () => {
+describe('Checking the default object has correct properties and values', () => {
     it('Should have the defined property', () => {
         expect(defaultObject()).toHaveProperty('ContentGroup');
         expect(defaultObject()).toHaveProperty('customDimension1');
         expect(defaultObject()).toHaveProperty('customDimension2');
         expect(defaultObject()).toHaveProperty('customDimension3');
     });
-});
-
-describe('Checking the data type of the parameter passed to removeNullValues', () => {
-    it('Should be an object', () => {
-        expect(typeof removeNullValues({})).toBe('object');
-        expect(typeof removeNullValues({'someProperty' : 'someValue'})).toBe('object');
+    it('Should have the defined values', () => {
+        expect(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'), extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'), extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))).toEqual({
+            'ContentGroup'      : 'View TNA record description',
+            'customDimension1'  : 'Division within WO',
+            'customDimension2'  : 'not subscribed',
+            'customDimension3'  : 'Not signed-in'
+        });
+        expect(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
+            extractMetaTagContent('tagDoesNotExist', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
+            extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))).toEqual({
+            'ContentGroup'      : 'View TNA record description',
+            'customDimension1'  :  null,
+            'customDimension2'  : 'not subscribed',
+            'customDimension3'  : 'Not signed-in'
+        });
     });
 });
+
+describe('Checking the ecommerce object has correct properties and values', () => {
+    it('Should have the defined properties', () => {
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description')).toHaveProperty('ecommerce');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce).toHaveProperty('promoView');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView).toHaveProperty('promotions');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView.promotions[0]).toHaveProperty('id');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView.promotions[0]).toHaveProperty('name');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView.promotions[0]).toHaveProperty('creative');
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView.promotions[0]).toHaveProperty('position');
+
+    });
+    it('Should have the defined values', () => {
+        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer', 'Meta tag does not exist'), 'Image viewer', 'Below record description')).toEqual({
+            'ecommerce': {
+                'promoView': {
+                    'promotions': [{
+                        'id': 'ivp',
+                        'name': 'Image Viewer Watermarked',
+                        'creative': 'Image viewer',
+                        'position': 'Below record description'
+                    }]
+                }
+            }
+        });
+        expect(ecommerceObject('ivp', extractMetaTagContent('metaTagDoesNotExist', 'Meta tag does not exist'), 'Image viewer', 'Below record description')).toEqual({
+            'ecommerce': {
+                'promoView': {
+                    'promotions': [{
+                        'id': 'ivp',
+                        'name': 'Meta tag does not exist',
+                        'creative': 'Image viewer',
+                        'position': 'Below record description'
+                    }]
+                }
+            }
+        });
+    });
+});
+
+describe('Checking the response depending on whether a watermark exists or not', () => {
+    it('Should return true if watermark exists, else return false', () => {
+        expect(watermarkCheck('DCSext\\.imgviewer')).toBeTruthy();
+        expect(watermarkCheck('metaTagDoesNotExist')).toBeFalsy();
+    });
+});
+

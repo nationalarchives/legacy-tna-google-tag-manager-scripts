@@ -1,5 +1,5 @@
-export let watermarkCheck = () => {
+export let watermarkCheck = (metaTagName) => {
     let watermark;
-    watermark = !!(document.querySelector('meta[name=DCSext\\.imgviewer]') !== null || undefined);
+    watermark = !!(document.querySelector(`meta[name = ${metaTagName} ]`) !== null || undefined);
     return watermark;
 };
