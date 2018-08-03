@@ -1,10 +1,14 @@
-const serializeData = (formID, _arr, _errArr) => {
+/**
+ * ------------  THE NATIONAL ARCHIVES  -----------------
+ * JS - Serialise Data component
+ * Developer: Mihai Diaconita
+ **/
 
-    const form = (formID !== '') ? `ID: ${formID}  > ` : '',
+export const serializeData = (elemID, _arr, _errArr) => {
+
+    const form = (elemID !== '') ? `ID: ${elemID}  > ` : '',
         elem = (_arr.length !== 0) ? `Field: ${_arr.join(' > ')}` : '',
         error = (_errArr.length !== 0) ? `Error: ${_errArr.join(' > ')}` : '';
 
     return `${form}${elem}${error}`;
 };
-
-module.exports.serializeData = serializeData;
