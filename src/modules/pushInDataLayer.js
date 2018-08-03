@@ -1,8 +1,13 @@
-const pushInDataLayer = (obj) => {
-    let wd = window.dataLayer || [];
-    wd.push(obj);
-    console.log(wd);
-    return wd;
-};
+/**
+ * ------------  THE NATIONAL ARCHIVES  -----------------
+ * JS - Push In DataLayer component
+ * Developer: Mihai Diaconita
+ **/
 
-module.exports.pushInDataLayer = pushInDataLayer;
+export const pushInDataLayer = (obj) => {
+    let wd = window.dataLayer || [];
+
+    (!!obj || typeof obj === 'object') ? wd.push(obj) : '';
+
+    return obj;
+};
