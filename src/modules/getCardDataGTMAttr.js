@@ -12,7 +12,7 @@
 export const getCardDataGTMAttr = (arr, ...elem) => {
     const el = document.querySelectorAll(...elem);
     // Guard against wrong data type in the function parameter
-    if (!!arr || typeof arr === 'object' && !!elem || typeof elem === 'string') {
+    if (!!arr || typeof arr === 'object') {
         return (...args) => {
             for (let element of el) {
                 element.addEventListener('click', () => {
@@ -26,5 +26,7 @@ export const getCardDataGTMAttr = (arr, ...elem) => {
             }
             return arr;
         }; // Output format example ["homepage_card_News", "card_position_1", "card_1", "Prime Minister’s papers from 1993 released"]
+    } else {
+        return false;
     }
 };

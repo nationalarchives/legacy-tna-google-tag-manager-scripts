@@ -1,6 +1,6 @@
-import { pushInDataLayer } from './modules/pushInDataLayer';
 import { getCardDataGTMAttr } from './modules/getCardDataGTMAttr';
 
+// Build the object
 const _arrayData = [], obj = {
     'event': 'Promotions',
     'eventCategory': 'Cat',
