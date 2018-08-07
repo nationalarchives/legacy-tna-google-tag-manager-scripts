@@ -1,19 +1,43 @@
-import  { getCardDataGTMAttr } from '../src/modules/getCardDataGTMAttr';
+import {getCardDataGTMAttr} from '../src/modules/getCardDataGTMAttr';
 
 const _arrayData = [];
 let getCardAttrData;
 
-describe('Test getCardDataGTMAttr module', () => {
-    it('if the data type is a function', () => {
-        expect(typeof getCardDataGTMAttr(_arrayData,'.homepage-card, .homepage-hero')).toBe('function');
+document.body.innerHTML = '<main id="primary" role="main" class="content-area"> <div class="masthead"> <div class="masthead-image" style="background-image: url(https://nationalarchives.gov.uk/wp-content/uploads/sites/24/2016/06/tna-homepage-visitor-viewing-document-02.jpg)"></div><div class="container"> <div class="row"> <div class="col-md-12"> </div></div></div></div><div class="container"> <div class="flex-row"> <div class="col-card-12"> <div class="card hero-banner clearfix"> <a id="hero-banner" href="https://www.eventbrite.co.uk/e/the-time-travel-club-treasure-in-the-archives-4-6-tickets-47220449636" data-gtm-name="The Time Travel Club - Treasure in the archives (4-6)" data-gtm-id="hero_1" data-gtm-position="hero_position_banner" data-gtm-creative="homepage_hero_Event" class="homepage-hero" aria-label="The Time Travel Club - Treasure in the archives (4-6)" target="_blank" rel="noopener noreferrer"> <div class="entry-image" style="background-image: url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F46278755%2F225810853155%2F1%2Foriginal.jpg?w=1000&amp;auto=compress&amp;rect=0%2C0%2C1250%2C625&amp;s=ad1928c3bd1a269c7a2f7d0782f145f0)"></div><div class="hero-banner-entry"> <div class="entry-content event"> <div class="content-type">Event</div><h3>The Time Travel Club - Treasure in the archives (4-6)</h3> <p>What do we look after at The&nbsp;National Archives? Find out about&nbsp;some of the special ‘treasures’ that we&nbsp;keep, including documents that are&nbsp;more than 1,000 years old!</p></div><div class="entry-date"> <div class="date">Tuesday 28 August 2018, 10:30</div></div></div></a> </div></div></div></div><div class="container"> <div class="flex-row equal-heights"> <div class="col-card-4"> <div class="card"><a id="card-1" href="http://www.nationalarchives.gov.uk/about/news/prime-ministers-papers-1993/" data-gtm-name="Prime Minister’s papers from 1993 released" data-gtm-id="card_1" data-gtm-position="card_position_1" data-gtm-creative="homepage_card_News" class="homepage-card"> <div class="entry-image" style="background-image: url(http://www.nationalarchives.gov.uk/wp-content/uploads/2018/07/PREM-19_4170-Reconstruction-planning-after-Windsor-Castle-fire-in-1992.png)"></div><div class="entry-content news"> <div class="content-type">News</div><h3>Prime Minister’s papers from 1993 released</h3> <p>We have released files from the Prime Minister’s Office and Cabinet Office predominantly covering...</p></div></a></div></div><div class="col-card-4"> <div class="card"><a id="card-2" href="https://blog.nationalarchives.gov.uk/blog/cataloguing-middle-east-mandates-1920s/" data-gtm-name="Cataloguing the Middle East mandates in the 1920s" data-gtm-id="card_2" data-gtm-position="card_position_2" data-gtm-creative="homepage_card_Blog" class="homepage-card"> <div class="entry-image" style="background-image: url(https://blog.nationalarchives.gov.uk/wp-content/uploads/2018/07/Tigris-crop.jpg)"></div><div class="entry-content blog"> <div class="content-type">Blog</div><h3>Cataloguing the Middle East mandates in the 1920s</h3> <p>Volunteers are helping us improve catalogue descriptions for Colonial Office records on the Middle...</p></div></a></div></div><div class="col-card-4"> <div class="card"><a id="card-3" href="https://www.eventbrite.co.uk/e/queen-charlotte-and-her-legacy-tickets-47257699050" target="_blank" data-gtm-name="Queen Charlotte and her legacy" data-gtm-id="card_3" data-gtm-position="card_position_3" data-gtm-creative="homepage_card_Event" class="homepage-card" rel="noopener noreferrer"> <div class="entry-image" style="background-image: url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F46319454%2F225810853155%2F1%2Foriginal.jpg?w=1000&amp;auto=compress&amp;rect=0%2C571%2C3254%2C1627&amp;s=4a709f7b9428b90b1a1a071fa65c4fb1)"></div><div class="entry-content event"> <div class="content-type">Event</div><h3>Queen Charlotte and her legacy</h3> <p>SPECIAL EVENT Discover the fascinating life of Queen Charlotte (1744-1818), wife of George III, in...</p></div><div class="entry-date"> <div class="date">Friday 14 September 2018, 10:00</div></div></a></div></div><div class="col-card-4"> <div class="card"><a id="card-4" href="http://www.nationalarchives.gov.uk/about/news/disruption-website-5-august-0800-1200/" data-gtm-name="Maintenance work on our website, Sunday 5 August 08:00-12:00" data-gtm-id="card_4" data-gtm-position="card_position_4" data-gtm-creative="homepage_card_News" class="homepage-card"> <div class="entry-image" style="background-image: url(http://www.nationalarchives.gov.uk/wp-content/uploads/2015/01/coal-80-1132-1965-1965-e1420472114816.jpg)"></div><div class="entry-content news"> <div class="content-type">News</div><h3>Maintenance work on our website, Sunday 5 August 08:00-12:00</h3> <p>We will be carrying out essential maintenance work from 08:00 to 12:00 on Sunday...</p></div></a></div></div><div class="col-card-4"> <div class="card"><a id="card-5" href="https://www.eventbrite.co.uk/e/preserving-the-evidence-the-trials-of-an-early-modern-map-tickets-45713942633" target="_blank" data-gtm-name="Preserving the evidence: the trials of an early modern map" data-gtm-id="card_5" data-gtm-position="card_position_5" data-gtm-creative="homepage_card_Event" class="homepage-card" rel="noopener noreferrer"> <div class="entry-image" style="background-image: url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F44703972%2F225810853155%2F1%2Foriginal.jpg?w=1000&amp;auto=compress&amp;rect=0%2C0%2C2500%2C1250&amp;s=fae33d6f8ef127992608b2a797ba2339)"></div><div class="entry-content event"> <div class="content-type">Event</div><h3>Preserving the evidence: the trials of an early modern map</h3> <p>When a map was first opened by the conservation team at The National Archives,...</p></div><div class="entry-date"> <div class="date">Thursday 16 August 2018, 18:30</div></div></a></div></div><div class="col-card-4"> <div class="card"><a id="card-6" href="https://blog.nationalarchives.gov.uk/blog/materialities-digitisation/" data-gtm-name="The materialities of digitisation" data-gtm-id="card_6" data-gtm-position="card_position_6" data-gtm-creative="homepage_card_Blog" class="homepage-card"> <div class="entry-image" style="background-image: url(https://blog.nationalarchives.gov.uk/wp-content/uploads/2018/07/IMAGE-01crop.jpg)"></div><div class="entry-content blog"> <div class="content-type">Blog</div><h3>The materialities of digitisation</h3> <p>How a two-day workshop with the University of Glasgow tried to tackle questions around...</p></div></a></div></div></div></div><div class="container"> <div class="flex-row equal-heights"> <div class="col-card-3"> <div class="card"> <a href="/about/our-research-and-academic-collaboration/"> <div class="entry-header"> <h3>Our research &amp; academic collaboration</h3> </div><div class="entry-content"> <p>Learn about our work as an Independent Research Organisation.</p></div></a> </div></div><div class="col-card-3"> <div class="card"> <a href="/archives-sector"> <div class="entry-header"> <h3>Archives sector</h3> </div><div class="entry-content"> <p>Get help to develop your collections and archives services.</p></div></a> </div></div><div class="col-card-3"> <div class="card"> <a href="/education/"> <div class="entry-header"> <h3>Education</h3> </div><div class="entry-content"> <p>View award-winning resources for students and teachers.</p></div></a> </div></div><div class="col-card-3"> <div class="card"> <a href="/information-management/"> <div class="entry-header"> <h3>Information management</h3> </div><div class="entry-content"> <p>Access best practice in records management and transfer, and information re-use.</p></div></a> </div></div></div></div></main>';
+
+describe('Test getCardAttrData function expression inside the module getCardDataGTMAttr', () => {
+    getCardAttrData = getCardDataGTMAttr(_arrayData, '.homepage-card, .homepage-hero');
+    getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name');
+
+    it('if the data returned is an array object', () => {
+        expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name')).toBe('object');
     });
 });
 
-describe('Test getCardAttrData function expression inside the module getCardDataGTMAttr', () => {
-    getCardAttrData = getCardDataGTMAttr(_arrayData,'.homepage-card, .homepage-hero');
-    getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id','data-gtm-name');
+describe('Test getCardDataGTMAttr module', () => {
+    it('if the data type is a function', () => {
+        expect(typeof getCardDataGTMAttr(_arrayData, '.homepage-card, .homepage-hero')).toBe('function');
+    });
 
-    it('if the data returned is an array object', () => {
-        expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id','data-gtm-name')).toBe('object');
+    it('on click ', () => {
+        let _arrayData, event, elem;
+
+        _arrayData = [];
+        event = new Event('click');
+        elem = document.querySelectorAll('.homepage-card', '.homepage-hero');
+
+        // Dispatch the event on the DOM selectors
+        for (let element of elem) {
+            element.dispatchEvent(event);
+        }
+
+        // Call the function getCardDataGTMAttr
+        expect(getCardDataGTMAttr(_arrayData, '.homepage-card, .homepage-hero')).toBeTruthy();
+        expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name')).toBe('object');
+
+        // Change the data type
+        _arrayData = '';
+        expect(getCardDataGTMAttr(_arrayData, 'hello-there')).toBeFalsy();
+
     });
 });
