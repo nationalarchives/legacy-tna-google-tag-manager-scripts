@@ -11,7 +11,8 @@
   "jest": {
     "transform": {
       "^.+\\.js?$": "babel-jest"
-    }
+    },
+    "testURL": "http://localhost/"
   },
   "env": {
     "jest": true
