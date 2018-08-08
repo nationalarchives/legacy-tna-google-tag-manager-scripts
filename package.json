@@ -5,10 +5,13 @@
   "private": true,
   "scripts": {
     "test": "jest --coverage",
+    "testwatch" : "jest --coverage --watchAll",
     "start": "webpack --watch --config webpack.config.js",
     "build": "webpack --config webpack.config.js"
   },
   "jest": {
+    "verbose": true,
+    "testURL": "http://localhost",
     "transform": {
       "^.+\\.js?$": "babel-jest"
     }

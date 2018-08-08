@@ -2,8 +2,9 @@ const path = require('path');
 
 module.exports = {
     entry: {
-        bannerClick   : './src/bannerClick.js',
-        formAbandonment: './src/formAbandonment.js'
+        bannerClick         : './src/bannerClick.js',
+        formAbandonment     : './src/formAbandonment.js',
+        buildGtmObject      : './src/buildGtmObject.js'
     },
     output: {
         filename: '[name].bundle.js',
