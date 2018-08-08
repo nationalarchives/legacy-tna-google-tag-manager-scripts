@@ -1,4 +1,4 @@
-# Google Tag Manager JavaScripts for all tna applications
+# Ecommerce tracking
 
 ## Development setup
 
@@ -13,3 +13,8 @@ Having installed the Grunt CLI you should be able to install all dependencies by
 Once dependencies are installed run the `grunt` command in the terminal and it will run ESLint, Babel, Uglify and Watch in response to any changes to either a the test or source JavaScript file.
 
 This also provides a test page `index.html` which is used for debugging.
+
+## Ecommerce user journey:
+
+https://github.com/nationalarchives/tna-google-tag-manager-scripts/tree/feature/ecommerce_tracking/img/Discovery_payment_user_journey.png
+
