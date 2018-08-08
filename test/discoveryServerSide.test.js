@@ -36,12 +36,8 @@ describe('Gets meta tag content', () => {
 describe('Checking that a custom message is returned if meta tag does not exist', () => {
     it('Should return custom message', () => {
         expect(extractMetaTagContent('nonExistentMetaTag', 'This meta tag does not exist')).toBe('This meta tag does not exist');
-    });
-});
-
-describe('Checking the custom message data type', () => {
-    it('Should be a string', () =>{
-        expect(typeof extractMetaTagContent(null, 'Custom message...')).toBe('string');
+        expect(extractMetaTagContent('nonExistentMetaTag', 'Custom message...')).toBe('Custom message...');
+        expect(extractMetaTagContent('nonExistentMetaTag', null)).toBe(null);
     });
 });
 
@@ -49,9 +45,6 @@ describe('Checking the object is built correctly', () => {
     it('Should return type object', () => {
         expect(typeof buildObject(true)).toBe('object');
         expect(typeof buildObject(false)).toBe('object');
-        expect(buildObject(true)).toEqual(Object.assign(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer', null), 'Image viewer', 'Below record description'), defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-            extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
-            extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))));
     });
 });
 
@@ -76,39 +69,30 @@ describe('Checking that null values are removed', () => {
 
 describe('Checking the correct elements are added/subtracted from the object', () => {
     it('Should return ecommerce if the watermark exists, else excludes it', () => {
-        expect(removeNullValues(buildObject(true))).toEqual(Object.assign(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer', null), 'Image viewer', 'Below record description'), defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
+        expect(buildObject(true)).toEqual(Object.assign(ecommerceObject('ivp', extractMetaTagContent(
+            'DCSext\\.imgviewer', null), 'Image viewer', 'Below record description'), defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
             extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
             extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))));
-        expect(removeNullValues(buildObject(false))).toEqual(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'), extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'), extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')));
+        expect(buildObject(false)).toEqual(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'), extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'), extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')));
     });
 });
 
-describe('Checking the default object has correct properties and values', () => {
+describe('Checking the default object has correct properties and value types', () => {
     it('Should have the defined property', () => {
-        expect(defaultObject()).toHaveProperty('ContentGroup');
-        expect(defaultObject()).toHaveProperty('customDimension1');
-        expect(defaultObject()).toHaveProperty('customDimension2');
-        expect(defaultObject()).toHaveProperty('customDimension3');
+        expect(defaultObject('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('ContentGroup');
+        expect(defaultObject('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension1');
+        expect(defaultObject('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension2');
+        expect(defaultObject('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension3');
     });
-    it('Should have the defined values', () => {
-        expect(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'), extractMetaTagContent('DCSext\\.docref', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'), extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))).toEqual({
-            'ContentGroup'      : 'View TNA record description',
-            'customDimension1'  : 'Division within WO',
-            'customDimension2'  : 'not subscribed',
-            'customDimension3'  : 'Not signed-in'
-        });
-        expect(defaultObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-            extractMetaTagContent('tagDoesNotExist', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
-            extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))).toEqual({
-            'ContentGroup'      : 'View TNA record description',
-            'customDimension1'  :  null,
-            'customDimension2'  : 'not subscribed',
-            'customDimension3'  : 'Not signed-in'
-        });
+    it('Should have the defined value types', () => {
+        expect(typeof defaultObject('arg1', 'arg2', 'arg3', 'arg4').ContentGroup).toBe('string');
+        expect(typeof defaultObject('arg1', 'arg2', 'arg3', 'arg4').customDimension1).toBe('string');
+        expect(typeof defaultObject('arg1', 'arg2', 'arg3', 'arg4').customDimension2).toBe('string');
+        expect(typeof defaultObject('arg1', 'arg2', 'arg3', 'arg4').customDimension3).toBe('string');
     });
 });
 
-describe('Checking the ecommerce object has correct properties and values', () => {
+describe('Checking the ecommerce object has correct properties and value types', () => {
     it('Should have the defined properties', () => {
         expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description')).toHaveProperty('ecommerce');
         expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce).toHaveProperty('promoView');
@@ -119,31 +103,15 @@ describe('Checking the ecommerce object has correct properties and values', () =
         expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer'), 'Image viewer', 'Below record description').ecommerce.promoView.promotions[0]).toHaveProperty('position');
 
     });
-    it('Should have the defined values', () => {
-        expect(ecommerceObject('ivp', extractMetaTagContent('DCSext\\.imgviewer', 'Meta tag does not exist'), 'Image viewer', 'Below record description')).toEqual({
-            'ecommerce': {
-                'promoView': {
-                    'promotions': [{
-                        'id': 'ivp',
-                        'name': 'Image Viewer Watermarked',
-                        'creative': 'Image viewer',
-                        'position': 'Below record description'
-                    }]
-                }
-            }
-        });
-        expect(ecommerceObject('ivp', extractMetaTagContent('metaTagDoesNotExist', 'Meta tag does not exist'), 'Image viewer', 'Below record description')).toEqual({
-            'ecommerce': {
-                'promoView': {
-                    'promotions': [{
-                        'id': 'ivp',
-                        'name': 'Meta tag does not exist',
-                        'creative': 'Image viewer',
-                        'position': 'Below record description'
-                    }]
-                }
-            }
-        });
+    it('Should have the defined value types', () => {
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4')).toBe('object');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce).toBe('object');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView).toBe('object');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView.promotions).toBe('object');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView.promotions[0].id).toBe('string');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView.promotions[0].name).toBe('string');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView.promotions[0].creative).toBe('string');
+        expect(typeof ecommerceObject('arg1', 'arg2', 'arg3', 'arg4').ecommerce.promoView.promotions[0].position).toBe('string');
     });
 });
 
@@ -153,4 +121,3 @@ describe('Checking the response depending on whether a watermark exists or not',
         expect(watermarkCheck('metaTagDoesNotExist')).toBeFalsy();
     });
 });
-

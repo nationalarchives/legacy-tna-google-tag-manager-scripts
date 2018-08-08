@@ -7,7 +7,7 @@ export let ecommerceObject = (id, name, creative, position) => {
                     'name'    : name,
                     'creative': creative,
                     'position': position
-                }]
+                }],
             }
         }
     };
