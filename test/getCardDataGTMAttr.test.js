@@ -31,9 +31,9 @@ describe('Test getCardDataGTMAttr module', () => {
             element.dispatchEvent(event);
         }
 
-        // Call the function getCardDataGTMAttr
         expect(getCardDataGTMAttr(_arrayData, '.homepage-card, .homepage-hero')).toBeTruthy();
         expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name')).toBe('object');
+
 
         // Change the data type
         _arrayData = '';
