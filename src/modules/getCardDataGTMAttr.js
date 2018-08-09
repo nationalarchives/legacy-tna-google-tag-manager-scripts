@@ -9,6 +9,8 @@
 * @return: Array
 * */
 
+import {pushInDataLayer} from './pushInDataLayer';
+
 export const getCardDataGTMAttr = (arr, ...elem) => {
     const el = document.querySelectorAll(...elem);
     // Guard against wrong data type in the function parameter
@@ -22,6 +24,13 @@ export const getCardDataGTMAttr = (arr, ...elem) => {
                     args.forEach((arg) => {
                         arr.push(element.getAttribute(arg));
                     });
+                    const obj = {
+                        'event': 'Promotions',
+                        'eventCategory': arr[0],
+                        'eventAction': arr[3],
+                        'eventLabel': arr[2],
+                    };
+                    pushInDataLayer(obj);
                 });
             }
             return arr;
