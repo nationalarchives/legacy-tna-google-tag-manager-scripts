@@ -13,9 +13,16 @@ describe('Test serializeData module', () => {
             errorMsg = document.getElementsByClassName('form-error'),
             formID = form[0].getAttribute('id');
 
+        // Call the components and collect the data from the DOM
         getElemIDOnBlur(form, _array);
         getElemErrorID(_errorArray, errorMsg);
 
+        // ---------------------------------------------------------------------------------------------------------------------
         expect(typeof serializeData(formID,_array,_errorArray)).toBe('string');
+        expect(serializeData(formID,_array,_errorArray) === 'ID: naturalisation  > Error: certificate_name-error').toBeTruthy();
+        // ---------------------------------------------------------------------------------------------------------------------
+        formID = ''; _array = []; _errorArray = [];
+        expect(serializeData(formID,_array,_errorArray) === 'ID: naturalisation  > Error: certificate_name-error').toBeFalsy();
+
     });
 });
