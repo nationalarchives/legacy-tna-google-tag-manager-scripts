@@ -7,6 +7,7 @@ import { serializeData } from './modules/serializeData';
 import { getElemErrorID } from './modules/getElemErrorID';
 import { getElemIDOnBlur } from './modules/getElemIDOnBlur';
 
+// Define the variables
 const _array = [],
     _errorArray = [],
     className = 'form-abandonment',

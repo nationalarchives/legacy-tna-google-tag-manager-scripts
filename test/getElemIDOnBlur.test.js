@@ -5,8 +5,16 @@ document.body.innerHTML = '<form action="" id="naturalisation" class="form-aband
 
 describe('Test getElemIDOnBlur module', () => {
     it('if data type returned is a boolean', () => {
-        let _array = [];
-        let form = document.getElementsByClassName('form-abandonment');
+        const _array = [];
+        const event = new Event('blur');
+        let  form = document.getElementsByClassName('form-abandonment');
+
+        for(let element of form) {
+            element.dispatchEvent(event);
+        }
+
+        expect(getElemIDOnBlur(form,_array)).toBeTruthy();
         expect(typeof getElemIDOnBlur(form,_array)).toBe('object');
+
     });
 });
