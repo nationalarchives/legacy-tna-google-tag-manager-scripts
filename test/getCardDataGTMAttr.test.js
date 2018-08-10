@@ -10,7 +10,7 @@ describe('Test getCardAttrData function expression inside the module getCardData
     getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name');
 
     it('if the data returned is an array object', () => {
-        expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name')).toBe('object');
+        expect(Array.isArray(getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name'))).toBeTruthy();
     });
 });
 
@@ -30,14 +30,11 @@ describe('Test getCardDataGTMAttr module', () => {
         for (let element of elem) {
             element.dispatchEvent(event);
         }
-
+        // ---------------------------------------------------------------------------------------------------------------------
         expect(getCardDataGTMAttr(_arrayData, '.homepage-card, .homepage-hero')).toBeTruthy();
-        expect(typeof getCardAttrData('data-gtm-creative', 'data-gtm-position', 'data-gtm-id', 'data-gtm-name')).toBe('object');
-
-
+        // ---------------------------------------------------------------------------------------------------------------------
         // Change the data type
         _arrayData = '';
         expect(getCardDataGTMAttr(_arrayData, 'hello-there')).toBeFalsy();
-
     });
 });
