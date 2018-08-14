@@ -25,7 +25,7 @@ export let buildEcommerceObj = {
                 'tax' : '0.00',
                 'shipping' : '0.00'
             },
-            'products' : buildProductsObjArray(extractProductName(productsArray), removeDuplicates(buildProductIndex(productsArray, pricesArray, categoriesArray)), calculateQuantity(productsArray))
+            'products' : buildProductsObjArray(extractProductName(removeDuplicates(productsArray)), removeDuplicates(buildProductIndex(productsArray, pricesArray, categoriesArray)), calculateQuantity(productsArray))
         }
     }
 };
