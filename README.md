@@ -1,6 +1,6 @@
 # Ecommerce tracking
 
-Ecommerce tracking tracks users who purchase digital items such as digital records or record copies.
+Ecommerce tracking for users who purchase digital items such as digital records or record copies.
 
 ## Ecommerce user journey:
 
