@@ -1,4 +1,4 @@
-import{ecommerceTrackingObj} from './modules/ecommerceTrackingObj';
+import{buildEcommerceObj} from './modules/buildEcommerceObj';
 
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push(ecommerceTrackingObj);
+window.dataLayer.push(buildEcommerceObj);

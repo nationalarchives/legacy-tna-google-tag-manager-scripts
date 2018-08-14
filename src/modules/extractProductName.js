@@ -1,4 +1,4 @@
-import {removeDuplicates} from "./removeDuplicates";
+import {removeDuplicates} from './removeDuplicates';
 
 export let extractProductName = (productsArray) => {
     let productNameArray = removeDuplicates(productsArray);
