@@ -31,8 +31,8 @@ describe('Checking that the content attribute is returned', () => {
 
 describe('Checking that the quantity is calculated correctly', () => {
     it('Should return an array of values/quantities', () => {
-        expect(calculateQuantity(['Product 1', 'Product 1', 'Product 2', 'Product 2', 'Product 3'])).toEqual([2,2,1]);
-        expect(calculateQuantity('Some value')).toEqual([]);
+        expect(calculateQuantity(['Product 1', 'Product 1', 'Product 2', 'Product 2', 'Product 3'])).toEqual({'Product 1' : [0, 1], 'Product 2' : [2, 3], 'Product 3' : [4]});
+        expect(calculateQuantity('Some value')).toEqual({});
     });
 });
 
