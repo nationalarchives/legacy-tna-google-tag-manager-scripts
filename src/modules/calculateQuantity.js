@@ -1,8 +1,7 @@
-export let calculateQuantity = function (products) {
-    let quantitiesArray = [];
+export let calculateQuantity = function (productsArray) {
     let quantities = {};
-    if (products instanceof Array) {
-        products.forEach(function (index, item) {
+    if (productsArray instanceof Array) {
+        productsArray.forEach(function (index, item) {
             if (!quantities[index]) {
                 quantities[index] = [item];
             } else {
@@ -10,10 +9,5 @@ export let calculateQuantity = function (products) {
             }
         });
     }
-
-    for(let property in quantities){
-        quantitiesArray.push(quantities[property].length);
-    }
-
-    return quantitiesArray;
+    return quantities;
 };

@@ -1,15 +1,15 @@
 import {extractMetaTagContent} from './extractMetaTagContent';
 
-export let buildProductsObjArray = (names, products, quantities) => {
+export let buildProductsObjArray = (names, productsPricesAndVariants, quantities) => {
     let objArray = [];
-    for(let i = 0; i < products.length; i ++){
+    for(let i = 0; i < productsPricesAndVariants.length; i ++){
         objArray.push({
             'name' : names[i],
-            'price' : products[i].split(',')[1],
+            'price' : productsPricesAndVariants[i].split(',')[1],
             'brand' : extractMetaTagContent('WT\\.pn_gr', 'Meta tag not available'),
-            'category' : products[i].split(',')[2],
-            'variant' : products[i].split(',')[0],
-            'quantity': quantities[i]
+            'category' : productsPricesAndVariants[i].split(',')[2],
+            'variant' : productsPricesAndVariants[i].split(',')[0],
+            'quantity': quantities[productsPricesAndVariants[i].split(',')[0]].length
         });
     }
     return objArray;
