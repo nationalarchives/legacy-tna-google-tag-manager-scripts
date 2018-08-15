@@ -45,6 +45,6 @@ describe('Checking that the total price is calculated', () => {
 
 describe('Checking that the name is extracted correctly', () => {
     it('Should return all values before the first slash in the record ID (with duplicates removed)', () => {
-        expect(extractProductName(['AIR 50/163/32','AIR 50/163/33','AIR 50/163/32','AIR 50/163/34','AIR 50/163/32','AIR 50/163/34','AIR 50/163/35'])).toEqual(['AIR 50', 'AIR 50', 'AIR 50', 'AIR 50']);
+        expect(extractProductName(['AIR 50/163/32','AIR 50/163/33','AIR 50/163/32','AIR 50/163/34','AIR 50/163/32','AIR 50/163/34','AIR 50/163/35'])).toEqual(['AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50']);
     });
 });
