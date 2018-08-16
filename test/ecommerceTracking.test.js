@@ -1,7 +1,8 @@
 import{calculateQuantity} from '../src/modules/calculateQuantity';
+import{buildProductsObjArray} from '../src/modules/buildProductsObjArray';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
-import {calculateTotalPrice} from '../src/modules/calculateTotalPrice';
 import{extractProductName} from '../src/modules/extractProductName';
+import{buildProductIndex} from '../src/modules/buildProductIndex';
 
 document.body.innerHTML =
     '<meta name="WT.si_n" content="Discovery store">' +
@@ -36,15 +37,15 @@ describe('Checking that the quantity is calculated correctly', () => {
     });
 });
 
-describe('Checking that the total price is calculated', () => {
-    it('Should return the total of the array that is passed as a parameter', () => {
-        expect(calculateTotalPrice(['3.50', '4.50', '5.50'])).toBe(13.5);
-        expect(calculateTotalPrice(['3.39', '4.92', '5.75'])).toBe(14.06);
+describe('Checking that the name is extracted correctly', () => {
+    it('Should return all values before the first slash in the record ID (with duplicates removed)', () => {
+        expect(extractProductName(['AIR 50/163/32','CO 700/BARBADOS9A', 'WO 398/188/14', 'PROB 11/611/331'])).toEqual(['AIR 50', 'CO 700', 'WO 398', 'PROB 11']);
     });
 });
 
-describe('Checking that the name is extracted correctly', () => {
-    it('Should return all values before the first slash in the record ID (with duplicates removed)', () => {
-        expect(extractProductName(['AIR 50/163/32','AIR 50/163/33','AIR 50/163/32','AIR 50/163/34','AIR 50/163/32','AIR 50/163/34','AIR 50/163/35'])).toEqual(['AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50', 'AIR 50']);
+describe('Checking that the array amalgamating the 3 lists (products, prices, categories) is built correctly', () => {
+    it('Should return an array with 3 strings, separated by commas, per index', () => {
+        expect(buildProductIndex(['Product 1', 'Product 2', 'Product 3'], ['5.00', '10.00', '15.00'], ['Category 1', 'Category 2', 'Category 3'])).toEqual(['Product 1,5.00,Category 1', 'Product 2,10.00,Category 2', 'Product 3,15.00,Category 3']);
+        expect(Array.isArray(buildProductIndex(['Product 1', 'Product 2', 'Product 3'], ['5.00', '10.00', '15.00'], ['Category 1', 'Category 2', 'Category 3']))).toBeTruthy();
     });
 });
