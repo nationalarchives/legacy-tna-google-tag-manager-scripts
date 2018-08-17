@@ -2,12 +2,11 @@ import{calculateQuantity} from './modules/calculateQuantity';
 import{buildProductsObjArray} from './modules/buildProductsObjArray';
 import{extractMetaTagContent} from './modules/extractMetaTagContent';
 import{extractProductName} from './modules/extractProductName';
+import{buildEcommerceObj} from './modules/buildEcommerceObj';
 
 let categoriesArray = extractMetaTagContent('WT\\.pn_fa', 'Categories meta tag not available').split(';');
 let productsArray = extractMetaTagContent('WT\\.pn_sku', 'Product meta tag not available').split(';');
 let pricesArray = extractMetaTagContent('WT\\.tx_s', 'Prices meta tag not available').split(';');
-
-import{buildEcommerceObj} from './modules/buildEcommerceObj';
 
 window.dataLayer = window.dataLayer || [];
 
