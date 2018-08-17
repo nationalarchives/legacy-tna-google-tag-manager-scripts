@@ -2,7 +2,7 @@ import{calculateQuantity} from '../src/modules/calculateQuantity';
 import{buildProductsObjArray} from '../src/modules/buildProductsObjArray';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 import{extractProductName} from '../src/modules/extractProductName';
-import{buildProductIndex} from '../src/modules/buildProductIndex';
+import{buildEcommerceObj} from '../src/modules/buildEcommerceObj';
 
 document.body.innerHTML =
     '<meta name="WT.si_n" content="Discovery store">' +
@@ -43,9 +43,41 @@ describe('Checking that the name is extracted correctly', () => {
     });
 });
 
-describe('Checking that the array amalgamating the 3 lists (products, prices, categories) is built correctly', () => {
-    it('Should return an array with 3 strings, separated by commas, per index', () => {
-        expect(buildProductIndex(['Product 1', 'Product 2', 'Product 3'], ['5.00', '10.00', '15.00'], ['Category 1', 'Category 2', 'Category 3'])).toEqual(['Product 1,5.00,Category 1', 'Product 2,10.00,Category 2', 'Product 3,15.00,Category 3']);
-        expect(Array.isArray(buildProductIndex(['Product 1', 'Product 2', 'Product 3'], ['5.00', '10.00', '15.00'], ['Category 1', 'Category 2', 'Category 3']))).toBeTruthy();
+describe('Checking that the \'products\' object property is of type array', () => {
+    it('Should return true', () => {
+        expect(Array.isArray(buildProductsObjArray([],[],{}))).toBeTruthy();
+    });
+});
+
+describe('Checking the object, property and type', () => {
+    it('Should have the defined property', () => {
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}])).toHaveProperty('event');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}])).toHaveProperty('ecommerce');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce).toHaveProperty('actionField');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce).toHaveProperty('purchase');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.actionField).toHaveProperty('step');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.actionField).toHaveProperty('option');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase).toHaveProperty('actionField');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase).toHaveProperty('products');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toHaveProperty('id');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toHaveProperty('affiliation');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toHaveProperty('revenue');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toHaveProperty('tax');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toHaveProperty('shipping');
+    });
+    it('Should have the defined type', () => {
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).event).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.actionField).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.actionField.option).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.actionField.step).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.id).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.affiliation).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.revenue).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.tax).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.shipping).toBe('string');
+        expect(Array.isArray(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.products)).toBeTruthy();
     });
 });
