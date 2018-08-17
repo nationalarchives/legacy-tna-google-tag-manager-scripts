@@ -14,7 +14,7 @@ import {pushInDataLayer} from './pushInDataLayer';
 export const getCardDataGTMAttr = (arr, ...elem) => {
     const el = document.querySelectorAll(...elem);
     // Guard against wrong data type in the function parameter
-    if (!!arr || typeof arr === 'object') {
+    if (!!arr || Array.isArray(arr)) {
         return (...args) => {
             for (let element of el) {
                 element.addEventListener('click', () => {
