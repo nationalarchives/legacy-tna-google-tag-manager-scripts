@@ -1,3 +1,9 @@
+/*
+param: String, String, String, String, String
+return: Object
+*/
+
+//Uses parameters to populate certain properties of buildEcommerceObj when the function is called
 export let buildEcommerceObj = (step, id, affiliation, revenue, products) => {
     return {
         'event' : 'checkoutOption',

@@ -27,13 +27,14 @@ describe('Checking that the content attribute is returned', () => {
         expect(extractMetaTagContent('WT\\.tx_total', 'Meta tag not available')).toBe('3.50');
         expect(extractMetaTagContent('WT\\.tx_id', 'Meta tag not available')).toBe('I/657715845504212R');
         expect(extractMetaTagContent('metaTagDoesNotExist', 'Meta tag not available')).toBe('Meta tag not available');
+        expect(extractMetaTagContent(1, {})).toEqual({});
     });
 });
 
 describe('Checking that the quantity is calculated correctly', () => {
     it('Should return an array of values/quantities', () => {
         expect(calculateQuantity(['Product 1', 'Product 1', 'Product 2', 'Product 2', 'Product 3'])).toEqual({'Product 1' : [0, 1], 'Product 2' : [2, 3], 'Product 3' : [4]});
-        expect(calculateQuantity('Some value')).toEqual({});
+        expect(calculateQuantity('Some value')).toBe(undefined);
     });
 });
 
