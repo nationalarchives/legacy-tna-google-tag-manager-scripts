@@ -4,11 +4,11 @@
 
 This repository uses:
 
-Webpack for module bundling
-ESLint for linting the source JavaScript files
-Babel for transpiling of ES6 to ES5
-JS minification
-Jest for testing
+*Webpack for module bundling
+*ESLint for linting the source JavaScript files
+*Babel for transpiling of ES6 to ES5
+*JS minification
+*Jest for testing
 
 Having installed the Webpack CLI you should be able to install all dependencies by running npm nstall from the project root.
 
