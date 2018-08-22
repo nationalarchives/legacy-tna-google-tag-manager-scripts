@@ -26,11 +26,11 @@ Ecommerce user journey: https://github.com/nationalarchives/tna-google-tag-manag
 
 The data to be extracted will be drawn from 'Step 4' of the user journey.
 
-## Location
+### Location
 
 This script is located on the Discovery receipts page.
 
-## How to test/testing guidelines
+### How to test/testing guidelines
 
 Once on the Discovery receipts page, the following meta tags should be available:
 
