@@ -18,4 +18,7 @@ export let calculateQuantity = function (productsArray) {
         });
         return quantities;
     }
+    else{
+        return 'The parameter is of the incorrect data type.';
+    }
 };

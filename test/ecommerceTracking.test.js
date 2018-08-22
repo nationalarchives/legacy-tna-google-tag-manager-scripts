@@ -28,13 +28,21 @@ describe('Checking that the content attribute is returned', () => {
         expect(extractMetaTagContent('WT\\.tx_id', 'Meta tag not available')).toBe('I/657715845504212R');
         expect(extractMetaTagContent('metaTagDoesNotExist', 'Meta tag not available')).toBe('Meta tag not available');
         expect(extractMetaTagContent(1, {})).toEqual({});
+        expect(extractMetaTagContent(1, 2345)).toEqual(2345);
     });
 });
 
 describe('Checking that the quantity is calculated correctly', () => {
     it('Should return an array of values/quantities', () => {
-        expect(calculateQuantity(['Product 1', 'Product 1', 'Product 2', 'Product 2', 'Product 3'])).toEqual({'Product 1' : [0, 1], 'Product 2' : [2, 3], 'Product 3' : [4]});
-        expect(calculateQuantity('Some value')).toBe(undefined);
+        expect(calculateQuantity(['Product 1', 'Product 1', 'Product 2', 'Product 2', 'Product 3'])).toEqual({
+            'Product 1': [0, 1],
+            'Product 2': [2, 3],
+            'Product 3': [4]
+        });
+    });
+    it('Should return undefined if parameter is not an array', () => {
+        expect(calculateQuantity('Some value')).toBe('The parameter is of the incorrect data type.');
+        expect(calculateQuantity({})).toBe('The parameter is of the incorrect data type.');
     });
 });
 
@@ -42,15 +50,23 @@ describe('Checking that the name is extracted correctly', () => {
     it('Should return all values before the first slash in the record ID (with duplicates removed)', () => {
         expect(extractProductName(['AIR 50/163/32','CO 700/BARBADOS9A', 'WO 398/188/14', 'PROB 11/611/331'])).toEqual(['AIR 50', 'CO 700', 'WO 398', 'PROB 11']);
     });
-});
-
-describe('Checking that the \'products\' object property is of type array', () => {
-    it('Should return true', () => {
-        expect(Array.isArray(buildProductsObjArray([],[],{}))).toBeTruthy();
+    it('Should return undefined if parameter is not an array', () => {
+        expect(extractProductName('someString')).toEqual('The parameter is of the incorrect data type.');
+        expect(extractProductName(1)).toEqual('The parameter is of the incorrect data type.');
     });
 });
 
-describe('Checking the object, property and type', () => {
+describe('Checking that the \'products\' object property is of type array', () => {
+    it('Should return true if the parameters are of the correct data type', () => {
+        expect(Array.isArray(buildProductsObjArray([], [], [], [], {}))).toBeTruthy();
+    });
+    it('Should return false if the parameters are the incorrect data type', () => {
+        expect(Array.isArray(buildProductsObjArray('someString',2,true,[],{}))).toBeFalsy();
+        expect(buildProductsObjArray('someString',2,true,[],{})).toBe('The parameters are of the incorrect data type.');
+    });
+});
+
+describe('Checking the ecommerce is built correctly', () => {
     it('Should have the defined property', () => {
         expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}])).toHaveProperty('event');
         expect(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}])).toHaveProperty('ecommerce');
@@ -80,5 +96,8 @@ describe('Checking the object, property and type', () => {
         expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.tax).toBe('string');
         expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.actionField.shipping).toBe('string');
         expect(Array.isArray(buildEcommerceObj('arg1','arg2','arg3','arg4',[{'arg1' : 'someValue'}]).ecommerce.purchase.products)).toBeTruthy();
+    });
+    it('Should return undefined if the parameters are of the wrong data type', () => {
+        expect(buildEcommerceObj(true,false,[],{},123)).toBe('The parameters are of the incorrect data type.');
     });
 });

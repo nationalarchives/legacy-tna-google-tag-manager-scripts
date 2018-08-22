@@ -10,9 +10,11 @@ This repository uses:
 - JS minification
 - Jest for testing
 
-Having installed the Webpack CLI you should be able to install all dependencies by running npm nstall from the project root.
+Firstly, run *npm install* from the directory root in the terminal to install the required packages.
 
-Once dependencies are installed run the 'npm start' command in the terminal and it will run ESLint, Babel, Uglify and Watch in response to any changes in the test or source JavaScript files.
+Having installed the Webpack CLI, run *npm start* to run ESLint, Babel, Uglify, and Watch in response to any changes in the test or source Javascript files.
+
+To run unit tests, run *npm test* in the terminal. This will run all test suites.
 
 This repository also provides a test page (index.html) which is used for debugging.
 
@@ -26,7 +28,7 @@ The data to be extracted will be drawn from 'Step 4' of the user journey.
 
 ## Location
 
-This script is located on the receipts page: *insert URL here*
+This script is located on the Discovery receipts page.
 
 ## How to test/testing guidelines
 
