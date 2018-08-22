@@ -22,7 +22,7 @@ This repository also provides a test page (index.html) which is used for debuggi
 
 This script will be rendered on the server side and will push an object to the data layer containing the products that a user has purchased e.g. digital records or record copies.
 
-Ecommerce user journey: ![image](https://github.com/nationalarchives/tna-google-tag-manager-scripts/tree/feature/ecommerce_tracking/img/Discovery_payment_user_journey.png)
+Ecommerce user journey: [image](https://github.com/nationalarchives/tna-google-tag-manager-scripts/tree/feature/ecommerce_tracking/img/Discovery_payment_user_journey.png)
 
 The data to be extracted will be drawn from 'Step 4' of the user journey.
 
