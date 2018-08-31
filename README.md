@@ -67,25 +67,44 @@ Provided that the above tags are available, the following object will be built a
                     }]
                }
           }
-	`<div class="card hero-banner clearfix">
-                    <a id="hero-banner"
-                       href="https://www.eventbrite.co.uk/e/the-time-travel-club-treasure-in-the-archives-4-6-tickets-47220449636"
-                       data-gtm-name="The Time Travel Club - Treasure in the archives (4-6)" data-gtm-id="hero_1"
-                       data-gtm-position="hero_position_banner" data-gtm-creative="homepage_hero_Event"
-                       class="homepage-hero" aria-label="The Time Travel Club - Treasure in the archives (4-6)"
-                       target="_blank" rel="noopener noreferrer">
-                        <div class="entry-image"
-                             style="background-image: url(https://img.evbuc.com/https%3A%2F%2Fcdn.evbuc.com%2Fimages%2F46278755%2F225810853155%2F1%2Foriginal.jpg?w=1000&amp;auto=compress&amp;rect=0%2C0%2C1250%2C625&amp;s=ad1928c3bd1a269c7a2f7d0782f145f0)"></div>
-                        <div class="hero-banner-entry">
-                            <div class="entry-content event">
-                                <div class="content-type">Event</div>
-                                <h3>The Time Travel Club - Treasure in the archives (4-6)</h3>
-                                <p>What do we look after at The&nbsp;National Archives? Find out about&nbsp;some of the
-                                    special ‘treasures’ that we&nbsp;keep, including documents that are&nbsp;more than
-                                    1,000 years old!</p></div>
-                            <div class="entry-date">
-                                <div class="date">Tuesday 28 August 2018, 10:30</div>
-                            </div>
-                        </div>
-                    </a>
-                </div>`
+  
+## Home page
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer containing the custom data attribute like e.g. `data-gtm-banner`, `data-gtm-id`, `data-gtm-position`, `data-gtm-creative`. It will run every time a user clicks on any cards on the home page.
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on the Home page, the following dom elements should be available:
+
+	<div class="card hero-banner clearfix">
+	    <a id="hero-banner" href="https://example.co.uk"
+	       data-gtm-name="Title" 
+	       data-gtm-id="ID"
+	       data-gtm-position="Hero banner" 
+	       data-gtm-creative="Content type">
+		<div class="entry-image"
+		     style="background-image: url(https://img.evbuc.com/)">
+		</div>
+		<div class="hero-banner-entry">
+		    <div class="entry-content event">
+			<div class="content-type"> Content type </div>
+			<h3> Title </h3>
+			<p> Content </p>
+		    </div>
+		</div>
+	    </a>
+	</div>
+		
+If the above Document Object Model (DOM) elements are available, the following object is built and pushed to the data layer.
+
+
+	{
+	  event: "Promotions"
+	  eventAction: "Title"
+	  eventCategory: "Content type"
+	  eventLabel: "Banner 1"
+	  gtm.uniqueEventId:ID
+	}
+
+
