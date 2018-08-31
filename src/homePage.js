@@ -1,4 +1,4 @@
-import {getCardDataGTMAttr} from './modules/getCardDataGTMAttr';
+import { getCardDataGTMAttr } from './modules/getCardDataGTMAttr';
 
 (() => {
     // Array Data
