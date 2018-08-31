@@ -75,7 +75,7 @@ This script is rendered inside Google Tag Manager ( GTM ) and is pushing an obje
 Inside Google Tag Manager ( GTM )
 
 ### How to test/testing guidelines
-Once on the Home page, the following dom elements should be available:
+Once on the Home page, the following DOM elements should be available:
 
 	<div class="card hero-banner clearfix">
 	    <a id="hero-banner" href="https://example.co.uk"
