@@ -34,39 +34,43 @@ This script is located on the Discovery receipts page.
 
 Once on the Discovery receipts page, the following meta tags should be available:
 
-`<meta name="WT.si_n" content="Discovery store">`\
-`<meta name="WT.si_n" content="Step 4">`\
-`<meta name="WT.si_n" content="Digital Record">`\
-`<meta name="WT.si_n" content="The National Archives">`\
-`<meta name="WT.si_n" content="AIR 50/163/32">`\
-`<meta name="WT.si_n" content="1">`\
-`<meta name="WT.si_n" content="3.50">`\
-`<meta name="WT.si_n" content="3.50">`\
-`<meta name="WT.si_n" content="I/657715845504212R">`
+```html
+<meta name="WT.si_n" content="Discovery store">
+<meta name="WT.si_n" content="Step 4">
+<meta name="WT.si_n" content="Digital Record">
+<meta name="WT.si_n" content="The National Archives">
+<meta name="WT.si_n" content="AIR 50/163/32">
+<meta name="WT.si_n" content="1">
+<meta name="WT.si_n" content="3.50">
+<meta name="WT.si_n" content="3.50">
+<meta name="WT.si_n" content="I/657715845504212R">
+```
 
 Provided that the above tags are available, the following object will be built and pushed to the data layer where it can be used by Google Tag Manager:
-	  
-    ‘event’ : ‘checkoutOption’
-          ‘ecommerce’ : {
-               ‘actionField’ : {‘step: step 4, ‘option’ : Receipt}
-               ‘purchase’ : {
-                    ‘actionField’ : {
-                         ‘id’ : ‘I/657715845504212R’,
-                         ‘affiliation’ : ‘Discovery Store’,
-                         ‘revenue’ : ‘3.50’,
-                         ‘tax’ : ‘0.00’,
-                         ‘shipping’ : ‘0.00’
-                    },
-                    ‘products’ : [{
-                         ‘name’ : ‘AIR 50’,
-                         ‘price’ : ‘3.50’,
-                         ‘brand’ : ‘The National Archives’,
-                         ‘category’ : ‘Digital Record’,
-                         ‘variant’ : ‘AIR 50/163/32’,
-                         ‘quantity’ : 1
-                    }]
-               }
-          }
+
+```javascript
+‘event’ : ‘checkoutOption’
+  ‘ecommerce’ : {
+       ‘actionField’ : {‘step: step 4, ‘option’ : Receipt}
+       ‘purchase’ : {
+	    ‘actionField’ : {
+		 ‘id’ : ‘I/657715845504212R’,
+		 ‘affiliation’ : ‘Discovery Store’,
+		 ‘revenue’ : ‘3.50’,
+		 ‘tax’ : ‘0.00’,
+		 ‘shipping’ : ‘0.00’
+	    },
+	    ‘products’ : [{
+		 ‘name’ : ‘AIR 50’,
+		 ‘price’ : ‘3.50’,
+		 ‘brand’ : ‘The National Archives’,
+		 ‘category’ : ‘Digital Record’,
+		 ‘variant’ : ‘AIR 50/163/32’,
+		 ‘quantity’ : 1
+	    }]
+       }
+  }
+```
   
 ## Home page
 This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer containing the custom data attribute like e.g. `data-gtm-banner`, `data-gtm-id`, `data-gtm-position`, `data-gtm-creative`. It will run every time a user clicks on any cards on the home page.
@@ -77,34 +81,37 @@ Inside Google Tag Manager ( GTM )
 ### How to test/testing guidelines
 Once on the Home page, the following DOM elements should be available:
 
-	<div class="card hero-banner clearfix">
-	    <a id="hero-banner" href="https://example.co.uk"
-	       data-gtm-name="Title" 
-	       data-gtm-id="ID"
-	       data-gtm-position="Hero banner" 
-	       data-gtm-creative="Content type">
-		<div class="entry-image"
-		     style="background-image: url(https://img.evbuc.com/)">
-		</div>
-		<div class="hero-banner-entry">
-		    <div class="entry-content event">
-			<div class="content-type"> Content type </div>
-			<h3> Title </h3>
-			<p> Content </p>
-		    </div>
-		</div>
-	    </a>
+```html
+<div class="card hero-banner clearfix">
+    <a id="hero-banner" href="https://example.co.uk"
+       data-gtm-name="Title" 
+       data-gtm-id="ID"
+       data-gtm-position="Hero banner" 
+       data-gtm-creative="Content type">
+	<div class="entry-image"
+	     style="background-image: url(https://img.evbuc.com/)">
 	</div>
+	<div class="hero-banner-entry">
+	    <div class="entry-content event">
+		<div class="content-type"> Content type </div>
+		<h3> Title </h3>
+		<p> Content </p>
+	    </div>
+	</div>
+    </a>
+</div>
+```
 		
 If the above Document Object Model (DOM) elements are available, the following object is built and pushed to the data layer.
 
-
-	{
-	  event: "Promotions"
-	  eventAction: "Title"
-	  eventCategory: "Content type"
-	  eventLabel: "Banner 1"
-	  gtm.uniqueEventId:ID
-	}
+```javascript
+{
+  event: "Promotions",
+  eventAction: "Title",
+  eventCategory: "Content type",
+  eventLabel: "Banner 1",
+  gtm.uniqueEventId:"ID"
+}
+```
 
 
