@@ -114,7 +114,7 @@ Provided that the above tags are available, the following object will be built a
 
 
 ## Form Abandonment
-This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user close the page with a form element inside which has a class attribute of "form-abandonment".
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user close the page with a form element inside which has a class attribute of `form-abandonment`.
 
 ### Location
 Inside Google Tag Manager ( GTM )
