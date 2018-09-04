@@ -112,3 +112,35 @@ Provided that the above tags are available, the following object will be built a
                }
           }
 
+
+## Form Abandonment
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user close the page with a form element inside which has a class attribute of "form-abandonment".
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on the contact form page, the following DOM elements structure should be available:
+
+```html
+<form action="" id="some_form_ID" class="form-abandonment" method="POST" novalidate="novalidate">
+   <fieldset class="form-step-1">
+        <legend>Legend</legend>
+            <div class="form-row">
+	 	<label for="certificate_name">Field name</label> 
+	 	<input type="text" id="certificate_name" name="certificate-name" value="Mihai Diaconita" aria-required="true" required="" class="form-warning" aria-describedby="certificate_name-error">
+		<span id="certificate_name-error" class="form-error form-hint">Please enter the certificate holder’s name(s)</span>
+            </div> 
+   </fieldset>
+</form>
+```
+		
+If the above Document Object Model (DOM) elements are available, the following object is built and pushed to the data layer.
+
+```javascript
+{
+ 'event': 'formAbandonment',
+ 'eventCategory': 'Form Abandonment',
+ 'eventAction': 'ID: certificate_name > Error: certificate_name-error'
+}
+```
