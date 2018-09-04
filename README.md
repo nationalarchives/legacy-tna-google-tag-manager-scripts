@@ -18,6 +18,50 @@ To run unit tests, run '**npm test**' in the terminal. This will run all test su
 
 This repository also provides a test page (index.html) which is used for debugging.
 
+## Reader screens GTM container setup
+*This the code only refers to reader screens website as the GTM id is different to the TNA one*
+#### Set up within GTM
+1. Create a new constant variable variable called Reader-gaProperty. 
+* Variable type: constant, the value is the GA account number. //This will be given to you
+
+2. Create a new variable where the variable type is Google Analytics Settings.
+*	Variable name: ReadersGlobalSetting
+*	The tracking ID is {{Reader-gaProperty}} //Name of your constant variable
+*	Cookie Domain is auto
+*	Expand More settings > Fields to Set
+*	Add Field where field Name is anonymizeIp and value is true (lowercase). //This anonymizes the IP address.
+
+3. Create new Tag:
+*	Tag type: Universal Analytics
+*	Track type: Page view
+*	Google Analytics Settings: {{ReadersGlobalSetting}} //Name of your Google Analtyics settings variable
+*	Trigger: All Pages
+
+#### Install GTM into website
+
+*Paste this code as high in the <head> of the page as possible:*
+
+<!-- Google Tag Manager -->
+```javascript
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6W6SVS');</script>
+```
+<!-- End Google Tag Manager -->
+
+*Additionally, paste this code immediately after the opening <body> tag:*
+```HTML
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6W6SVS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+ ```
+ 
+ #### Preview the tag and check pages are firing and collecting relevant info.
+ #### In GA check in realtime that the data is coming through
+
 ## Ecommerce tracking
 
 This script will be rendered on the server side and will push an object to the data layer containing the products that a user has purchased e.g. digital records or record copies.
