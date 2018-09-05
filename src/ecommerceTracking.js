@@ -19,3 +19,5 @@ window.dataLayer.push(buildEcommerceObj(
     extractMetaTagContent('WT\\.tx_total', 'Meta tag not available'),
     buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray))
 ));
+
+//Hello
