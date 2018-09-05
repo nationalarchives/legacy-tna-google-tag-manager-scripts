@@ -5,7 +5,7 @@ module.exports = {
         bannerClick   : './src/bannerClick.js',
         formAbandonment: './src/formAbandonment.js',
         ecommerceTracking : './src/ecommerceTracking.js',
-        buildGtmObject      : './src/buildGtmObject.js'
+        discoveryServerSide      : './src/discoveryServerSide.js'
     },
     output: {
         filename: '[name].bundle.js',
