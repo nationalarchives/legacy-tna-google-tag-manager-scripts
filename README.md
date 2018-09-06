@@ -107,8 +107,8 @@ If the above Document Object Model (DOM) elements are available, the following o
 ```javascript
 {
   event: "Promotions",
-  eventAction: "Title",
-  eventCategory: "Content type",
+  eventAction:"Title",
+  eventCategory:"Content type",
   eventLabel: "Banner 1",
   gtm.uniqueEventId:"ID"
 }
