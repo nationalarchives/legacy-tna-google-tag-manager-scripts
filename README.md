@@ -72,7 +72,7 @@ This script is located on every page in Discovery.
 
 ### How to test/testing guidelines
 
-This test page contains all the meta tags that are needed to build the object to be sent to the data layer: https://github.com/nationalarchives/tna-google-tag-manager-scripts/blob/feature/resolving_conflicts/views/discoveryServerSide.html
+This test page contains all the meta tags that are needed to build the object to be sent to the data layer: From the HTML [here](https://github.com/nationalarchives/tna-google-tag-manager-scripts/blob/develop/views/discoveryServerSide.html)
 
 There are several scenarios which may cause the content attribute of the meta tags to change. For example, if a user is not signed in and is not a subscriber, the relevant meta tag content attributes will be set to 'Not signed-in' and 'Not subscribed' respectively. In this case, the following object will be built:
 	
