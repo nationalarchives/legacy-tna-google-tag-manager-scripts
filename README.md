@@ -18,6 +18,50 @@ To run unit tests, run '**npm test**' in the terminal. This will run all test su
 
 This repository also provides a test page (index.html) which is used for debugging.
 
+## Reader screens GTM container setup
+*This the code only refers to reader screens website as the GTM id is different to the TNA one*
+#### Set up within GTM
+1. Create a new constant variable variable called Reader-gaProperty. 
+* Variable type: constant, the value is the GA account number. //This will be given to you
+
+2. Create a new variable where the variable type is Google Analytics Settings.
+*	Variable name: ReadersGlobalSetting
+*	The tracking ID is {{Reader-gaProperty}} //Name of your constant variable
+*	Cookie Domain is auto
+*	Expand More settings > Fields to Set
+*	Add Field where field Name is anonymizeIp and value is true (lowercase). //This anonymizes the IP address.
+
+3. Create new Tag:
+*	Tag type: Universal Analytics
+*	Track type: Page view
+*	Google Analytics Settings: {{ReadersGlobalSetting}} //Name of your Google Analtyics settings variable
+*	Trigger: All Pages
+
+#### Install GTM into website
+
+*Paste this code as high in the <head> of the page as possible:*
+
+<!-- Google Tag Manager -->
+```javascript
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6W6SVS');</script>
+```
+<!-- End Google Tag Manager -->
+
+*Additionally, paste this code immediately after the opening <body> tag:*
+```HTML
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6W6SVS"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+ ```
+ 
+ #### Preview the tag and check pages are firing and collecting relevant info.
+ #### In GA check in realtime that the data is coming through
+
 ## Ecommerce tracking
 
 This script will be rendered on the server side and will push an object to the data layer containing the products that a user has purchased e.g. digital records or record copies.
@@ -34,42 +78,71 @@ This script is located on the Discovery receipts page.
 
 Once on the Discovery receipts page, the following meta tags should be available:
 
-```html
-<meta name="WT.si_n" content="Discovery store">
-<meta name="WT.si_n" content="Step 4">
-<meta name="WT.si_n" content="Digital Record">
-<meta name="WT.si_n" content="The National Archives">
-<meta name="WT.si_n" content="AIR 50/163/32">
-<meta name="WT.si_n" content="1">
-<meta name="WT.si_n" content="3.50">
-<meta name="WT.si_n" content="3.50">
-<meta name="WT.si_n" content="I/657715845504212R">
-```
+`<meta name="WT.si_n" content="Discovery store">`\
+`<meta name="WT.si_n" content="Step 4">`\
+`<meta name="WT.si_n" content="Digital Record">`\
+`<meta name="WT.si_n" content="The National Archives">`\
+`<meta name="WT.si_n" content="AIR 50/163/32">`\
+`<meta name="WT.si_n" content="1">`\
+`<meta name="WT.si_n" content="3.50">`\
+`<meta name="WT.si_n" content="3.50">`\
+`<meta name="WT.si_n" content="I/657715845504212R">`
 
 Provided that the above tags are available, the following object will be built and pushed to the data layer where it can be used by Google Tag Manager:
+	  
+    ‘event’ : ‘checkoutOption’
+          ‘ecommerce’ : {
+               ‘actionField’ : {‘step: step 4, ‘option’ : Receipt}
+               ‘purchase’ : {
+                    ‘actionField’ : {
+                         ‘id’ : ‘I/657715845504212R’,
+                         ‘affiliation’ : ‘Discovery Store’,
+                         ‘revenue’ : ‘3.50’,
+                         ‘tax’ : ‘0.00’,
+                         ‘shipping’ : ‘0.00’
+                    },
+                    ‘products’ : [{
+                         ‘name’ : ‘AIR 50’,
+                         ‘price’ : ‘3.50’,
+                         ‘brand’ : ‘The National Archives’,
+                         ‘category’ : ‘Digital Record’,
+                         ‘variant’ : ‘AIR 50/163/32’,
+                         ‘quantity’ : 1
+                    }]
+               }
+          }
+
+
+## Form Abandonment
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user close the page with a form element inside which has a class attribute of `form-abandonment`.
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on the contact form page, the following DOM elements structure should be available:
+
+```html
+<form action="" id="some_form_ID" class="form-abandonment" method="POST" novalidate="novalidate">
+   <fieldset class="form-step-1">
+        <legend>Legend</legend>
+            <div class="form-row">
+	 	<label for="certificate_name">Field name</label> 
+	 	<input type="text" id="certificate_name" name="certificate-name" value="Mihai Diaconita" aria-required="true" required="" class="form-warning" aria-describedby="certificate_name-error">
+		<span id="certificate_name-error" class="form-error form-hint">Please enter the certificate holder’s name(s)</span>
+            </div> 
+   </fieldset>
+</form>
+```
+		
+If the above Document Object Model (DOM) elements are available, the following object is built and pushed to the data layer.
 
 ```javascript
-‘event’ : ‘checkoutOption’
-  ‘ecommerce’ : {
-       ‘actionField’ : {‘step: step 4, ‘option’ : Receipt}
-       ‘purchase’ : {
-	    ‘actionField’ : {
-		 ‘id’ : ‘I/657715845504212R’,
-		 ‘affiliation’ : ‘Discovery Store’,
-		 ‘revenue’ : ‘3.50’,
-		 ‘tax’ : ‘0.00’,
-		 ‘shipping’ : ‘0.00’
-	    },
-	    ‘products’ : [{
-		 ‘name’ : ‘AIR 50’,
-		 ‘price’ : ‘3.50’,
-		 ‘brand’ : ‘The National Archives’,
-		 ‘category’ : ‘Digital Record’,
-		 ‘variant’ : ‘AIR 50/163/32’,
-		 ‘quantity’ : 1
-	    }]
-       }
-  }
+{
+ 'event': 'formAbandonment',
+ 'eventCategory': 'Form Abandonment',
+ 'eventAction': 'ID: certificate_name > Error: certificate_name-error'
+}
 ```
   
 ## Home page
@@ -113,5 +186,3 @@ If the above Document Object Model (DOM) elements are available, the following o
   gtm.uniqueEventId:"ID"
 }
 ```
-
-
