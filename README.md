@@ -62,6 +62,45 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
  #### Preview the tag and check pages are firing and collecting relevant info.
  #### In GA check in realtime that the data is coming through
 
+## Discovery server side
+
+This script will be rendered on the server side and will push an object to the data layer, detailing whether a user is registered and/or subscribed.
+
+### Location
+
+This script is located on every page in Discovery.
+
+### How to test/testing guidelines
+
+This test page contains all the meta tags that are needed to build the object to be sent to the data layer: https://github.com/nationalarchives/tna-google-tag-manager-scripts/blob/feature/resolving_conflicts/views/discoveryServerSide.html
+
+There are several scenarios which may cause the content attribute of the meta tags to change. For example, if a user is not signed in and is not a subscriber, the relevant meta tag content attributes will be set to 'Not signed-in' and 'Not subscribed' respectively. In this case, the following object will be built:
+	
+	‘ContentGroup’ : ‘View records of other archives’,
+	‘customDimension1’ : ‘Division within WO’,
+	‘customDimension2’ : ‘Not subscribed’,
+	‘customDimension3’ : ‘Not signed-in’,
+        ‘ecommerce’ : {
+               ‘promoView’ : {
+                    ‘promotions’ : [{
+                         ‘id’ : ‘ivp’,
+                         ‘name’ : ‘Image Viewer Watermarked’,
+                         ‘creative’ : ‘Image Viewer’,
+                         ‘position’ : ‘Below record description’
+                    }],
+               }
+          }
+	  
+For the different scenarios, please refer to the 'Stages' located in discoveryServerSide.html. To test different stages, uncomment the stage that you want active and comment out the previously active stage (only 1 stage can be active at any given time).	  
+	  
+If an image is **not** watermarked, the ecommerce object is ommitted from the overall object and the following object will be sent to the data layer (this example assumes that Stage 1 is active):
+
+	‘ContentGroup’ : ‘View records of other archives’,
+	‘customDimension1’ : ‘Division within WO’,
+	‘customDimension2’ : ‘Not subscribed’,
+	‘customDimension3’ : ‘Not signed-in’
+
+
 ## Ecommerce tracking
 
 This script will be rendered on the server side and will push an object to the data layer containing the products that a user has purchased e.g. digital records or record copies.

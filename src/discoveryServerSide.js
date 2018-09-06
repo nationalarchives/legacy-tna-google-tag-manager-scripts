@@ -1,5 +1,5 @@
 import {watermarkCheck} from './modules/watermarkCheck';
-import {buildObject} from './modules/buildObject';
+import {buildObject} from './modules/buildDiscoveryServerSideObj';
 import {removeNullValues} from './modules/removeNullValues';
 
 window.dataLayer = window.dataLayer || [];

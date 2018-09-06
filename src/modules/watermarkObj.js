@@ -1,4 +1,4 @@
-export let ecommerceObject = (id, name, creative, position) => {
+export let watermarkObject = (id, name, creative, position) => {
     return {
         'ecommerce': {
             'promoView': {
