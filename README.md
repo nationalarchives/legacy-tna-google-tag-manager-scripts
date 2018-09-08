@@ -225,3 +225,38 @@ If the above Document Object Model (DOM) elements are available, the following o
   gtm.uniqueEventId:"ID"
 }
 ```
+
+##Discovery imageviewer banner click 
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user clicks on a banner going across the imageviewer.
+
+<br />*Example*
+
+![Imageviewer banner](img/Discovery_banner.png)
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on a details page in discovery outside the TNA network, the banner should appear over the image from the example above. Once banner appears click on the banner and verify the click from the GTM console.
+
+```html
+<div id="imageviewerOverlay">
+    <p>To download this record without a watermark, please add it to your basket.</p>
+</div>
+```
+		
+If the above Document Object Model (DOM) elements are available, the following object is built only when clicked and pushed to the data layer.
+
+```javascript
+'event': 'promotionClick',
+  'ecommerce': {
+    'promoClick': {
+        'promotions': [{
+          'id': 'bts',
+          'name': 'Image viewer banner',
+          'creative': 'Banner',
+          'position': 'On watermarked image'
+        }]
+    }
+}
+```
