@@ -226,6 +226,7 @@ If the above Document Object Model (DOM) elements are available, the following o
 }
 ```
 
+
 ##Discovery imageviewer banner click 
 This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer. It will run every time a user clicks on a banner going across the imageviewer.
 
