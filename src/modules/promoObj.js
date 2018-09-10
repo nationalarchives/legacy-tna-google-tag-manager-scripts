@@ -1,6 +1,5 @@
-let promoObjFunc = (e, id, name, creative, position) => {
-
-    let obj = {
+export let promoObjFunc = (e, id, name, creative, position) => {
+    return {
         'event': e,
         'ecommerce': {
             'promoClick': {
@@ -13,9 +12,4 @@ let promoObjFunc = (e, id, name, creative, position) => {
             }
         }
     };
-
-    return obj;
-
 };
-
-module.exports.promoObjFunc = promoObjFunc;
