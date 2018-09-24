@@ -7,6 +7,7 @@ module.exports = {
         ecommerceTracking : './src/ecommerceTracking.js',
         discoveryServerSide      : './src/discoveryServerSide.js',
         homePage : './src/homePage.js',
+        imageViewer : './src/imageViewer.js'
     },
     output: {
         filename: '[name].bundle.js',
