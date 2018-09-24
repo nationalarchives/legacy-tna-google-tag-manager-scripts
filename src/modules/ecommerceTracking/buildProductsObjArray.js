@@ -3,7 +3,7 @@ param: Array, Array, Array, Array, Array
 return: Array of Objects
 */
 
-import {extractMetaTagContent} from './extractMetaTagContent';
+import {extractMetaTagContent} from '../extractMetaTagContent';
 
 export let buildProductsObjArray = (names, productsArray, pricesArray, categoriesArray, quantities) => {
 

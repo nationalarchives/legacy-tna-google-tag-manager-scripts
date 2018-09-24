@@ -1,8 +1,11 @@
-import{calculateQuantity} from './modules/calculateQuantity';
-import{buildProductsObjArray} from './modules/buildProductsObjArray';
+import{calculateQuantity} from './modules/ecommerceTracking/calculateQuantity';
+import{buildProductsObjArray} from './modules/ecommerceTracking/buildProductsObjArray';
 import{extractMetaTagContent} from './modules/extractMetaTagContent';
-import{extractProductName} from './modules/extractProductName';
-import{buildEcommerceObj} from './modules/buildEcommerceObj';
+import{extractProductName} from './modules/ecommerceTracking/extractProductName';
+import{buildEcommerceObj} from './modules/ecommerceTracking/buildEcommerceObj';
+import{buttonsExist} from './modules/ecommerceTracking/buttonsExist';
+import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
+import{submitOrder} from './modules/ecommerceTracking/submitOrder';
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
@@ -25,3 +28,6 @@ if(step === 'Step 4') {
         buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray))
     ));
 }
+
+buttonsExist('.removeLink', removeBasketItem());
+buttonsExist('.text_sketch.call-to-action-link', submitOrder());

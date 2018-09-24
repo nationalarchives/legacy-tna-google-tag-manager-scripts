@@ -1,8 +1,8 @@
-import{calculateQuantity} from '../src/modules/calculateQuantity';
-import{buildProductsObjArray} from '../src/modules/buildProductsObjArray';
+import{calculateQuantity} from '../src/modules/ecommerceTracking/calculateQuantity';
+import{buildProductsObjArray} from '../src/modules/ecommerceTracking/buildProductsObjArray';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
-import{extractProductName} from '../src/modules/extractProductName';
-import{buildEcommerceObj} from '../src/modules/buildEcommerceObj';
+import{extractProductName} from '../src/modules/ecommerceTracking/extractProductName';
+import{buildEcommerceObj} from '../src/modules/ecommerceTracking/buildEcommerceObj';
 
 document.body.innerHTML =
     '<meta name="WT.si_n" content="Discovery store">' +
