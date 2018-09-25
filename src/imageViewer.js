@@ -1,3 +1,6 @@
-import {firstImage} from './modules/imageViewer/imageViewerControllers';
+import {imageViewer} from './modules/imageViewer/imageViewerControllers';
+import {controlObj} from './modules/imageViewer/imageControlSchema';
 
-console.log(firstImage);
+imageViewer.addEventListener('click', function () {
+    console.log(controlObj);
+}, false);

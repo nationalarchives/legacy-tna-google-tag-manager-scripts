@@ -1,1 +1,1 @@
-export const firstImage = document.querySelector('#thumbPanel img.selected');
+export const imageViewer = document.getElementById('imageViewer');
