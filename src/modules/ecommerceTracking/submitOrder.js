@@ -12,7 +12,7 @@ export let submitOrder = () => {
     let ecommerceEvent = 'transaction';
     let productObjArray = buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray));
     let gtmObj = buildEcommerceObj(ecommerceEvent, 'Step 3', 'id', 'TNA', 'revenue', productObjArray);
-    console.log(gtmObj);
+    alert(gtmObj);
     /*window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(gtmObj);*/
 };

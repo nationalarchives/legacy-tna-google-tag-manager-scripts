@@ -4,10 +4,10 @@ return: Object
 */
 
 //Uses parameters to populate certain properties of buildEcommerceObj when the function is called
-export let buildEcommerceObj = (step, id, affiliation, revenue, products) => {
-    if(typeof step === 'string' && typeof id === 'string' && typeof affiliation === 'string' && typeof revenue === 'string' && Array.isArray(products)) {
+export let buildEcommerceObj = (ecommerceEvent, step, id, affiliation, revenue, products) => {
+    if(typeof ecommerceEvent === 'string' && typeof step === 'string' && typeof id === 'string' && typeof affiliation === 'string' && typeof revenue === 'string' && Array.isArray(products)) {
         return {
-            'event': 'checkoutOption',
+            'event': ecommerceEvent,
             'ecommerce': {
                 'actionField': {
                     'step': step,
