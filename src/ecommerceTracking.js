@@ -7,8 +7,8 @@ import{buttonsExist} from './modules/ecommerceTracking/buttonsExist';
 import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
 import{submitOrder} from './modules/ecommerceTracking/submitOrder';
 
-buttonsExist('.removeLink', removeBasketItem());
-buttonsExist('.text_sketch.call-to-action-link', submitOrder());
+buttonsExist('.removeLink', removeBasketItem);
+buttonsExist('.text_sketch.call-to-action-link', submitOrder);
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
