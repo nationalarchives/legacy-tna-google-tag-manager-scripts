@@ -5,7 +5,7 @@ module.exports = {
         bannerClick   : './src/bannerClick.js',
         formAbandonment: './src/formAbandonment.js',
         ecommerceTracking : './src/ecommerceTracking.js',
-        discoveryServerSide      : './src/discoveryServerSide.js',
+        discoveryServerSide: './src/discoveryServerSide.js',
         homePage : './src/homePage.js',
     },
     output: {

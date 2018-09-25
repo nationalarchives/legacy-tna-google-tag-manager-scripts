@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "test": "jest --coverage",
-    "start": "webpack --watch --config webpack.config.js",
+    "start": "webpack --watch --config webpack.config.js & node app.js",
     "build": "webpack --config webpack.config.js"
   },
   "jest": {
