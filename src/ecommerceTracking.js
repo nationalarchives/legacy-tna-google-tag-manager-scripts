@@ -7,6 +7,7 @@ import{buttonsExist} from './modules/ecommerceTracking/buttonsExist';
 import{alternateButtonsExist} from './modules/ecommerceTracking/alternateButtonsExist';
 import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
 import{submitOrder} from './modules/ecommerceTracking/submitOrder';
+import{verifyEvent} from './modules/ecommerceTracking/verifyEvent';
 
 let buttonsAndFunctions = {
     '.removeLink': removeBasketItem,
@@ -21,7 +22,6 @@ alternateButtonsExist(buttonsAndFunctions);
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
-console.log(step);
 
 //Creates an array from the 'content' attribute, using the semi-colon as a delimiter
 let categoriesArray = extractMetaTagContent('WT\\.pn_fa', 'Categories meta tag not available').split(';');
@@ -32,31 +32,10 @@ let pricesArray = extractMetaTagContent('WT\\.tx_s', 'Prices meta tag not availa
 window.dataLayer = window.dataLayer || [];
 
 //Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
-if(step === 'Step 1') {
+//Step 3 handled differently as it is an onclick only event
+if(step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     window.dataLayer.push(buildEcommerceObj(
-        'checkout',
-        extractMetaTagContent('WT\\.si_p', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.tx_id', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.si_n', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.tx_total', 'Meta tag not available'),
-        buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray))
-    ));
-}
-
-else if(step === 'Step 2'){
-    window.dataLayer.push(buildEcommerceObj(
-        'checkout',
-        extractMetaTagContent('WT\\.si_p', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.tx_id', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.si_n', 'Meta tag not available'),
-        extractMetaTagContent('WT\\.tx_total', 'Meta tag not available'),
-        buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray))
-    ));
-}
-
-else if(step === 'Step 4') {
-    window.dataLayer.push(buildEcommerceObj(
-        'checkoutOption',
+        verifyEvent(),
         extractMetaTagContent('WT\\.si_p', 'Meta tag not available'),
         extractMetaTagContent('WT\\.tx_id', 'Meta tag not available'),
         extractMetaTagContent('WT\\.si_n', 'Meta tag not available'),
