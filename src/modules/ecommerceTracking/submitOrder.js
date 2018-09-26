@@ -3,6 +3,7 @@ import{extractProductName} from './extractProductName';
 import{calculateQuantity} from './calculateQuantity';
 import{buildProductsObjArray} from './buildProductsObjArray';
 import{buildEcommerceObj} from './buildEcommerceObj';
+import {removeNullValues} from '../removeNullValues';
 
 let categoriesArray = extractMetaTagContent('WT\\.pn_fa', 'Categories meta tag not available').split(';');
 let productsArray = extractMetaTagContent('WT\\.pn_sku', 'Product meta tag not available').split(';');
@@ -10,8 +11,9 @@ let pricesArray = extractMetaTagContent('WT\\.tx_s', 'Prices meta tag not availa
 
 export let submitOrder = () => {
     let ecommerceEvent = 'transaction';
+    let ecommerceOption = null;
     let productObjArray = buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray));
-    let gtmObj = buildEcommerceObj(ecommerceEvent, 'Step 3', 'id', 'TNA', 'revenue', productObjArray);
+    let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, 'Step 3', 'id', 'TNA', 'revenue', productObjArray));
     console.log(gtmObj);
     event.preventDefault();
     /*window.dataLayer = window.dataLayer || [];

@@ -8,6 +8,8 @@ import{alternateButtonsExist} from './modules/ecommerceTracking/alternateButtons
 import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
 import{submitOrder} from './modules/ecommerceTracking/submitOrder';
 import{verifyEvent} from './modules/ecommerceTracking/verifyEvent';
+import{verifyOption} from './modules/ecommerceTracking/verifyOption';
+import{removeNullValues} from './modules/removeNullValues';
 
 let buttonsAndFunctions = {
     '.removeLink': removeBasketItem,
@@ -18,7 +20,6 @@ let buttonsAndFunctions = {
 buttonsExist('.text_sketch.call-to-action-link', submitOrder);*/
 
 alternateButtonsExist(buttonsAndFunctions);
-
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
@@ -36,6 +37,7 @@ window.dataLayer = window.dataLayer || [];
 if(step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     window.dataLayer.push(buildEcommerceObj(
         verifyEvent(),
+        verifyOption(),
         extractMetaTagContent('WT\\.si_p', 'Meta tag not available'),
         extractMetaTagContent('WT\\.tx_id', 'Meta tag not available'),
         extractMetaTagContent('WT\\.si_n', 'Meta tag not available'),
