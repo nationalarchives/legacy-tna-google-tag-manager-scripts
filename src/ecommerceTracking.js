@@ -4,11 +4,20 @@ import{extractMetaTagContent} from './modules/extractMetaTagContent';
 import{extractProductName} from './modules/ecommerceTracking/extractProductName';
 import{buildEcommerceObj} from './modules/ecommerceTracking/buildEcommerceObj';
 import{buttonsExist} from './modules/ecommerceTracking/buttonsExist';
+import{alternateButtonsExist} from './modules/ecommerceTracking/alternateButtonsExist';
 import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
 import{submitOrder} from './modules/ecommerceTracking/submitOrder';
 
-buttonsExist('.removeLink', removeBasketItem);
-buttonsExist('.text_sketch.call-to-action-link', submitOrder);
+let buttonsAndFunctions = {
+    '.removeLink': removeBasketItem,
+    '.text_sketch.call-to-action-link': submitOrder
+};
+
+/*buttonsExist('.removeLink', removeBasketItem);
+buttonsExist('.text_sketch.call-to-action-link', submitOrder);*/
+
+alternateButtonsExist(buttonsAndFunctions);
+
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;

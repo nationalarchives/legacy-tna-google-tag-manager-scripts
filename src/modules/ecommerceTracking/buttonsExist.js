@@ -5,7 +5,4 @@ export let buttonsExist = (buttonCheck, func) => {
             button.addEventListener('click', func);
         }
     }
-    else{
-        console.log('Button does not exist.');
-    }
 };

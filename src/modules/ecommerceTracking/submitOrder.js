@@ -12,7 +12,8 @@ export let submitOrder = () => {
     let ecommerceEvent = 'transaction';
     let productObjArray = buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray));
     let gtmObj = buildEcommerceObj(ecommerceEvent, 'Step 3', 'id', 'TNA', 'revenue', productObjArray);
-    alert(gtmObj);
+    console.log(gtmObj);
+    event.preventDefault();
     /*window.dataLayer = window.dataLayer || [];
     window.dataLayer.push(gtmObj);*/
 };
