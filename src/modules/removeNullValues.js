@@ -1,10 +1,10 @@
-export let removeNullValues = (object_to_traverse) => {
-    Object.keys(object_to_traverse).forEach((i) => {
-        if (object_to_traverse[i] === Object(object_to_traverse[i])) {
-            removeNullValues(object_to_traverse[i]);
+export let removeNullValues = (obj) => {
+    if(typeof obj === 'object') {
+        for (let property in obj) {
+            if (obj[property] === null || obj[property] === undefined) {
+                delete obj[property];
+            }
         }
-        else if(object_to_traverse[i] === null){
-            delete object_to_traverse[i];
-        }
-    });
+        return obj;
+    }
 };
