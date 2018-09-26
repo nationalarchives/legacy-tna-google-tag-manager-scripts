@@ -1,6 +1,9 @@
-import {imageViewer} from './modules/imageViewer/imageViewerControllers';
 import {controlObj} from './modules/imageViewer/imageControlSchema';
 
-imageViewer.addEventListener('click', function () {
-    console.log(controlObj);
+export const imageViewer = document.getElementById('imageViewer');
+imageViewer.addEventListener('click', function (e) {
+    if ( e.target.tagName === 'SPAN' || e.target.tagName === 'A' ) {
+        console.log(controlObj());
+        e.preventDefault();
+    }
 }, false);
