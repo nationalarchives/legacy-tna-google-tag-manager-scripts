@@ -13,7 +13,7 @@ export let submitOrder = () => {
     let ecommerceEvent = 'transaction';
     let ecommerceOption = null;
     let productObjArray = buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray));
-    let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, 'Step 3', 'id', 'TNA', 'revenue', productObjArray));
+    let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, 'Step 3', null, 'id', 'TNA', 'revenue', productObjArray));
     console.log(gtmObj);
     event.preventDefault();
     /*window.dataLayer = window.dataLayer || [];

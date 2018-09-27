@@ -4,22 +4,19 @@ import{extractMetaTagContent} from './modules/extractMetaTagContent';
 import{extractProductName} from './modules/ecommerceTracking/extractProductName';
 import{buildEcommerceObj} from './modules/ecommerceTracking/buildEcommerceObj';
 import{buttonsExist} from './modules/ecommerceTracking/buttonsExist';
-import{alternateButtonsExist} from './modules/ecommerceTracking/alternateButtonsExist';
 import{removeBasketItem} from './modules/ecommerceTracking/removeBasketItem';
 import{submitOrder} from './modules/ecommerceTracking/submitOrder';
 import{verifyEvent} from './modules/ecommerceTracking/verifyEvent';
 import{verifyOption} from './modules/ecommerceTracking/verifyOption';
 import{removeNullValues} from './modules/removeNullValues';
 
+//Object listing all button classes which require listeners, along with their corresponding functions
 let buttonsAndFunctions = {
     '.removeLink': removeBasketItem,
     '.text_sketch.call-to-action-link': submitOrder
 };
 
-/*buttonsExist('.removeLink', removeBasketItem);
-buttonsExist('.text_sketch.call-to-action-link', submitOrder);*/
-
-alternateButtonsExist(buttonsAndFunctions);
+buttonsExist(buttonsAndFunctions);
 
 //Extracts the step of the process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
@@ -35,13 +32,14 @@ window.dataLayer = window.dataLayer || [];
 //Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
 //Step 3 handled differently as it is an onclick only event
 if(step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
-    window.dataLayer.push(buildEcommerceObj(
+    window.dataLayer.push(removeNullValues(buildEcommerceObj(
         verifyEvent(),
         verifyOption(),
         extractMetaTagContent('WT\\.si_p', 'Meta tag not available'),
+        null,
         extractMetaTagContent('WT\\.tx_id', 'Meta tag not available'),
         extractMetaTagContent('WT\\.si_n', 'Meta tag not available'),
         extractMetaTagContent('WT\\.tx_total', 'Meta tag not available'),
         buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray))
-    ));
+    )));
 }

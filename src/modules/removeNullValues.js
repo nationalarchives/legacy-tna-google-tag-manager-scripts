@@ -1,10 +1,11 @@
 export let removeNullValues = (obj) => {
-    if(typeof obj === 'object') {
-        for (let property in obj) {
-            if (obj[property] === null || obj[property] === undefined) {
-                delete obj[property];
-            }
+    Object.keys(obj).forEach((key) => {
+        if (obj[key] === Object(obj[key])) {
+            removeNullValues(obj[key]);
         }
-        return obj;
-    }
+        else if(obj[key] === null || obj[key] === undefined){
+            delete obj[key];
+        }
+    });
+    return obj;
 };
