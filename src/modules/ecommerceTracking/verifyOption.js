@@ -1,7 +1,4 @@
-import{extractMetaTagContent} from '../extractMetaTagContent';
-
-export let verifyOption = () => {
-    let step = extractMetaTagContent('WT\\.si_p', 'Meta tag not available');
+export let verifyOption = (step) => {
     let ecommerceOption;
 
     if(step === 'Step 4'){
