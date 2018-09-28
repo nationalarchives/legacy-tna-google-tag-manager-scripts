@@ -1,10 +1,8 @@
 export let buttonsExist = (obj) => {
-    for (let property in obj) {
+    Object.keys(obj).forEach((property) => {
         let buttons = document.querySelectorAll(property);
-        if (buttons.length > 0) {
-            for (let button of buttons) {
-                button.addEventListener('click', obj[property]);
-            }
-        }
-    }
+        buttons.forEach((button) => {
+            button.addEventListener('click', obj[property]);
+        });
+    });
 };

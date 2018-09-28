@@ -10,7 +10,7 @@ import{verifyEvent} from './modules/ecommerceTracking/verifyEvent';
 import{verifyOption} from './modules/ecommerceTracking/verifyOption';
 import{removeNullValues} from './modules/removeNullValues';
 
-//Extracts the step of the process
+//Extracts the current step of the payment process
 let step = document.querySelector('meta[name = WT\\.si_p ]').content;
 
 //Creates an array from the 'content' attribute, using the semi-colon as a delimiter
@@ -18,7 +18,7 @@ let categoriesArray = extractMetaTagContent('WT\\.pn_fa', 'Categories meta tag n
 let productsArray = extractMetaTagContent('WT\\.pn_sku', 'Product meta tag not available').split(';');
 let pricesArray = extractMetaTagContent('WT\\.tx_s', 'Prices meta tag not available').split(';');
 
-//Each product is then made into an object which is then placed into an array
+//Each product is then made into an object which are then placed into an array
 let productsObjArray = buildProductsObjArray(extractProductName(productsArray), productsArray, pricesArray, categoriesArray, calculateQuantity(productsArray));
 
 //Object listing all button classes which require listeners, along with their corresponding functions
