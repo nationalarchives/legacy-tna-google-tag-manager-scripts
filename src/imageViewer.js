@@ -1,7 +1,7 @@
 import {controlObj} from './modules/imageViewer/imageControlSchema';
 export const imageViewer = document.getElementById('imageViewer');
 
-imageViewer.addEventListener('click', (e) => {
+imageViewer && imageViewer.addEventListener('click', (e) => {
     if (!imageViewer) {
         return;
     }
