@@ -35,8 +35,6 @@ describe('Gets meta tag content', () => {
 
 describe('Checking that a custom message is returned if meta tag does not exist', () => {
     it('Should return custom message', () => {
-        expect(extractMetaTagContent('nonExistentMetaTag', 'This meta tag does not exist')).toBe('This meta tag does not exist');
-        expect(extractMetaTagContent('nonExistentMetaTag', 'Custom message...')).toBe('Custom message...');
         expect(extractMetaTagContent('nonExistentMetaTag', null)).toBe(null);
     });
 });
@@ -57,9 +55,9 @@ describe('Checking the data type of the parameter passed to removeNullValues', (
 
 describe('Checking that null values are removed', () => {
     it('Should remove any null values/properties from the object', () => {
-        expect(removeNullValues(defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-            extractMetaTagContent('metaTagDoesNotExist', null), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
-            extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')))).toEqual({
+        expect(removeNullValues(defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'),
+            extractMetaTagContent('metaTagDoesNotExist'), extractMetaTagContent('DCSext\\.subscription'),
+            extractMetaTagContent('DCSext\\.signedin')))).toEqual({
             'ContentGroup'      : 'View TNA record description',
             'customDimension2'  : 'not subscribed',
             'customDimension3'  : 'Not signed-in'
@@ -70,10 +68,10 @@ describe('Checking that null values are removed', () => {
 describe('Checking the correct elements are added/subtracted from the object', () => {
     it('Should return ecommerce if the watermark exists, else excludes it', () => {
         expect(buildObject(true)).toEqual(Object.assign(watermarkObject('ivp', extractMetaTagContent(
-            'DCSext\\.imgviewer', 'Meta tag not available'), 'Image viewer', 'Below record description'), defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'),
-            extractMetaTagContent('DCSext\\.docref', 'Meta tag not available'), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'),
-            extractMetaTagContent('DCSext\\.signedin', 'Registered info not available'))));
-        expect(buildObject(false)).toEqual(defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n', 'Content Group not available'), extractMetaTagContent('DCSext\\.docref', 'Meta tag not available'), extractMetaTagContent('DCSext\\.subscription', 'Subscriber info not available'), extractMetaTagContent('DCSext\\.signedin', 'Registered info not available')));
+            'DCSext\\.imgviewer'), 'Image viewer', 'Below record description'), defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'),
+            extractMetaTagContent('DCSext\\.docref'), extractMetaTagContent('DCSext\\.subscription'),
+            extractMetaTagContent('DCSext\\.signedin'))));
+        expect(buildObject(false)).toEqual(defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'), extractMetaTagContent('DCSext\\.docref'), extractMetaTagContent('DCSext\\.subscription'), extractMetaTagContent('DCSext\\.signedin')));
     });
 });
 

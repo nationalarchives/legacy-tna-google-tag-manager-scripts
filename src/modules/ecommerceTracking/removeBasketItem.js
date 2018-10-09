@@ -12,6 +12,11 @@ export let removeBasketItem = (productsObjArray) => {
         let ecommerceOption = null;
         let currencyCode = 'GBP';
         let step = null;
+        let id = null;
+        let affiliation = null;
+        let revenue = null;
+        let tax = null;
+        let shipping = null;
 
         //Traverse to the H2 from the event target and extract the item number from the H2
         let targetElement = event.target;
@@ -22,7 +27,7 @@ export let removeBasketItem = (productsObjArray) => {
         let removedItemArray = productsObjArray.slice(removedItem, removedItem + 1);
 
         //Build object and push object to data layer
-        let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, step, currencyCode, 'id', 'TNA', 'revenue', removedItemArray));
+        let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, step, currencyCode, id, affiliation, revenue, tax, shipping, removedItemArray));
         //window.dataLayer.push(gtmObj);
         console.log(gtmObj);
     };

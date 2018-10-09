@@ -17,7 +17,7 @@ export let buildProductsObjArray = (names, productsArray, pricesArray, categorie
             productsObjArray.push({
                 'name': names[i],
                 'price': pricesArray[i],
-                'brand': extractMetaTagContent('WT\\.pn_gr', 'Meta tag not available'),
+                'brand': extractMetaTagContent('WT\\.pn_gr'),
                 'category': categoriesArray[i],
                 'variant': productsArray[i],
                 'quantity': quantities[productsArray[i].split(',')[0]].length

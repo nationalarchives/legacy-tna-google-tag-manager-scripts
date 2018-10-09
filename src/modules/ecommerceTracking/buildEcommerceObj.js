@@ -1,11 +1,13 @@
+import{stringOrNull} from '../stringOrNull';
+
 /*
 param: String, String, String, String, String
 return: Object
 */
 
 //Uses parameters to populate certain properties of buildEcommerceObj when the function is called
-export let buildEcommerceObj = (ecommerceEvent, option, step, currencyCode, id, affiliation, revenue, products) => {
-    if(typeof ecommerceEvent === 'string' && typeof id === 'string' && typeof affiliation === 'string' && typeof revenue === 'string' && Array.isArray(products)) {
+export let buildEcommerceObj = (ecommerceEvent, option, step, currencyCode, id, affiliation, revenue, tax, shipping, products) => {
+    if(stringOrNull(ecommerceEvent) && stringOrNull(id) && stringOrNull(affiliation) && stringOrNull(revenue) && stringOrNull(tax) && stringOrNull(shipping) && Array.isArray(products)) {
         return {
             'event': ecommerceEvent,
             'ecommerce': {
@@ -19,8 +21,8 @@ export let buildEcommerceObj = (ecommerceEvent, option, step, currencyCode, id, 
                         'id': id,
                         'affiliation': affiliation,
                         'revenue': revenue,
-                        'tax': '0.00',
-                        'shipping': '0.00'
+                        'tax': tax,
+                        'shipping': shipping
                     },
                     'products': products,
                 }
