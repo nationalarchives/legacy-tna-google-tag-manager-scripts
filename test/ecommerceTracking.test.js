@@ -3,6 +3,7 @@ import{buildProductsObjArray} from '../src/modules/ecommerceTracking/buildProduc
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 import{extractProductName} from '../src/modules/ecommerceTracking/extractProductName';
 import{buildEcommerceObj} from '../src/modules/ecommerceTracking/buildEcommerceObj';
+import{stringOrNull} from '../src/modules/stringOrNull';
 
 document.body.innerHTML =
     '<meta name="WT.si_n" content="Discovery store">' +
@@ -98,5 +99,15 @@ describe('Checking the ecommerce is built correctly', () => {
     });
     it('Should return undefined if the parameters are of the wrong data type', () => {
         expect(buildEcommerceObj(true,false,[],{},123)).toBe('The parameters are of the incorrect data type.');
+    });
+});
+
+describe('Checking that the correct data types are passed to buildEcommerceObj.js', () => {
+    it('Should return true if all values are of type string or null. The stringOrNull function skips over arrays if these are passed.', () => {
+        expect(stringOrNull(['String 1','String 2','String 3','String 4',[]])).toBeTruthy();
+    });
+    it('Should return false if an incorrect data type e.g. integer is passed to buildEcommerceObj.js', () => {
+        expect(stringOrNull([1, 1.5])).toBeFalsy();
+        expect(stringOrNull(['string', [], {}])).toBeFalsy();
     });
 });

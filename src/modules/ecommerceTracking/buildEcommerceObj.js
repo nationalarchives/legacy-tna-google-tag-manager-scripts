@@ -6,8 +6,12 @@ return: Object
 */
 
 //Uses parameters to populate certain properties of buildEcommerceObj when the function is called
-export let buildEcommerceObj = (ecommerceEvent, option, step, currencyCode, id, affiliation, revenue, tax, shipping, products) => {
-    if(stringOrNull(ecommerceEvent) && stringOrNull(id) && stringOrNull(affiliation) && stringOrNull(revenue) && stringOrNull(tax) && stringOrNull(shipping) && Array.isArray(products)) {
+export let buildEcommerceObj = (...args) => {
+
+    //Destructure args
+    const[ecommerceEvent, step, option, currencyCode, id, affiliation, revenue, tax, shipping, products] = args;
+
+    if(stringOrNull(args) && Array.isArray(products)) {
         return {
             'event': ecommerceEvent,
             'ecommerce': {
