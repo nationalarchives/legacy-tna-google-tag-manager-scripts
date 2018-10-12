@@ -104,7 +104,7 @@ describe('Checking the ecommerce is built correctly', () => {
 
 describe('Checking that the correct data types are passed to buildEcommerceObj.js', () => {
     it('Should return true if all values are of type string or null. The stringOrNull function skips over arrays if these are passed.', () => {
-        expect(stringOrNull(['String 1','String 2','String 3','String 4',[]])).toBeTruthy();
+        expect(stringOrNull(['String 1','String 2','String 3','String 4',[], 'String 5'])).toBeTruthy();
     });
     it('Should return false if an incorrect data type e.g. integer is passed to buildEcommerceObj.js', () => {
         expect(stringOrNull([1, 1.5])).toBeFalsy();

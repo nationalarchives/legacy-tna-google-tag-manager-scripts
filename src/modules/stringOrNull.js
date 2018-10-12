@@ -3,20 +3,12 @@ param: Array
 return: Boolean
 */
 
-//Loops through the args array and verifies that each parameter is of the correct data type
-export let stringOrNull = args => {
-    let argsValid = true;
-    if(Array.isArray(args)){
-        args.forEach(index => {
-            if(!Array.isArray(index)){
-                if(typeof index !== 'string' && index !== null){
-                    argsValid = false;
-                }
-            }
-        });
-    }
-    else{
-        argsValid = false;
-    }
+//Checks if an array of arguments is received and loops over each index to validate the data types, else returns false
+export let stringOrNull = (args, argsValid = true) => {
+    Array.isArray(args) ? args.forEach(index => {
+        if(!Array.isArray(index)){
+            argsValid = !(typeof index !== 'string' && index !== null);
+        }
+    }) : argsValid = false;
     return argsValid;
 };
