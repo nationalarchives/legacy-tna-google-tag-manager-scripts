@@ -1,4 +1,5 @@
-export let watermarkObject = (id, name, creative, position) => {
+export let watermarkObject = (...args) => {
+    const[id, name, creative, position] = args;
     return {
         'ecommerce': {
             'promoView': {
