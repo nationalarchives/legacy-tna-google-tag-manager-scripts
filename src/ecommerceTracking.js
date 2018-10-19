@@ -30,9 +30,10 @@ let buttonsAndFunctions = {
 //dataLayer is equal to the pre-existing GTM data layer, else is initialised to an empty array
 window.dataLayer = window.dataLayer || [];
 
-let observer = new MutationObserver(buttonsExist(buttonsAndFunctions));
-
-observer.observe(window);
+//Waits for the DOM to load before applying click event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    buttonsExist(buttonsAndFunctions);
+});
 
 /*
 Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
