@@ -41,6 +41,7 @@ Step 3 handled differently as it is an onclick only event
 */
 if(step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     window.dataLayer.push(removeNullValues(buildEcommerceObj(
+        'purchase',
         verifyEvent(step),
         verifyOption(step),
         extractMetaTagContent('WT\\.si_p'),
