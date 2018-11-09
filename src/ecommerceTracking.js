@@ -36,7 +36,7 @@ buttonsExist(buttonsAndFunctions);
 Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
 Step 3 handled differently as it is an onclick only event
 */
-if(step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
+if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     window.dataLayer.push(removeNullValues(buildEcommerceObj(
         verifyEvent(step),
         verifyOption(step),
