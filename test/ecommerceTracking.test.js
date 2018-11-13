@@ -28,7 +28,6 @@ describe('Checking that the content attribute is returned', () => {
         expect(extractMetaTagContent('WT\\.tx_total')).toBe('3.50');
         expect(extractMetaTagContent('WT\\.tx_id')).toBe('I/657715845504212R');
         expect(extractMetaTagContent('metaTagDoesNotExist')).toBe(null);
-        expect(extractMetaTagContent(1)).toEqual(null);
     });
 });
 
