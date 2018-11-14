@@ -8,6 +8,7 @@ return: function
 
 export let removeBasketItem = (productsObjArray) => {
     return () => {
+        let purchaseProperty = 'remove';
         let ecommerceEvent = 'removeFromCart';
         let ecommerceOption = null;
         let currencyCode = 'GBP';
@@ -27,7 +28,7 @@ export let removeBasketItem = (productsObjArray) => {
         let removedItem = productsObjArray.slice(removeItemIndex, removeItemIndex + 1);
 
         //Build object and push object to data layer
-        let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, step, currencyCode, id, affiliation, revenue, tax, shipping, removedItem));
+        let gtmObj = removeNullValues(buildEcommerceObj(purchaseProperty, ecommerceEvent, ecommerceOption, step, currencyCode, id, affiliation, revenue, tax, shipping, removedItem));
         window.dataLayer.push(gtmObj);
     };
 };

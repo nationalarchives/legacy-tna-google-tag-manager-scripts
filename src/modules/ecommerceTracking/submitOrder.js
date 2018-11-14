@@ -8,6 +8,7 @@ return: function
 
 export let submitOrder = (productsObjArray, totalPrice) => {
     return () => {
+        let purchaseProperty = 'purchase';
         let ecommerceEvent = 'transaction';
         let ecommerceOption = null;
         let currencyCode = null;
@@ -18,7 +19,7 @@ export let submitOrder = (productsObjArray, totalPrice) => {
         let shipping = '0';
 
         //Build object and push object to data layer
-        let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, 'Step 3', currencyCode, id, affiliation, revenue, tax, shipping, productsObjArray));
+        let gtmObj = removeNullValues(buildEcommerceObj(purchaseProperty, ecommerceEvent, ecommerceOption, 'Step 3', currencyCode, id, affiliation, revenue, tax, shipping, productsObjArray));
         window.dataLayer.push(gtmObj);
     };
 };
