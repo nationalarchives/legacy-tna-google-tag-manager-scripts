@@ -7,6 +7,7 @@ import{watermarkCheck} from '../src/modules/watermarkCheck';
 
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
+    '<meta name="DCSext.filtertype" content="Date">' +
     //<meta name="WT.cg_n" content="View records of other archives">
     '<meta name="DCSext.filtertype" content="Date">' +
     '<meta name="DCSext.searchtype" content="Records filtered search">' +
