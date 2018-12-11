@@ -1,3 +1,9 @@
+/*
+param: Array, Array, Array
+return: Array
+*/
+
+// Checks which refine button has been pressed and the appropriate array of filters is returned
 export let verifyFilter = (refineButtonName, dateFilters, subjectFilters) => {
     let activeFilters = null;
     switch (refineButtonName){
@@ -17,6 +23,9 @@ export let verifyFilter = (refineButtonName, dateFilters, subjectFilters) => {
         activeFilters = [];
         break;
     case 'Refine record opening date':
+        activeFilters = [];
+        break;
+    default:
         activeFilters = [];
         break;
     }

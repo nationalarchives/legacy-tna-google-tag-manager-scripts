@@ -1,4 +1,5 @@
-export let cleanLabelName = (filterName) => {
-    filterName = filterName.split(' (');
-    return filterName[0];
+// Extracts the filter label so it is readable
+export let cleanLabelName = (label) => {
+    label = label.split(' (');
+    return label[0];
 };
