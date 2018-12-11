@@ -10,6 +10,7 @@ import{verifyEvent} from './modules/ecommerceTracking/verifyEvent';
 import{verifyOption} from './modules/ecommerceTracking/verifyOption';
 import{removeNullValues} from './modules/removeNullValues';
 import{splitToArray} from './modules/ecommerceTracking/splitToArray';
+import{populateActionField} from './modules/ecommerceTracking/populateActionField';
 
 //Extracts the current step of the payment process
 let step = extractMetaTagContent('WT\\.si_p');
@@ -42,16 +43,14 @@ Step 3 handled differently as it is an onclick only event
 */
 if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     window.dataLayer.push(removeNullValues(buildEcommerceObj(
-        'purchase',
         verifyEvent(step),
         verifyOption(step),
-        extractMetaTagContent('WT\\.si_p'),
-        null,
-        extractMetaTagContent('WT\\.tx_id'),
-        extractMetaTagContent('WT\\.si_n'),
-        extractMetaTagContent('WT\\.tx_total'),
-        extractMetaTagContent('WT\\.tax'),
-        extractMetaTagContent('WT\\.shipping'),
+        step,
+        populateActionField(step).id,
+        populateActionField(step).affiliation,
+        populateActionField(step).revenue,
+        populateActionField(step).shipping,
+        populateActionField(step).tax,
         productsObjArray
     )));
 }
