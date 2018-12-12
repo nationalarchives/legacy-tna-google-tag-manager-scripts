@@ -42,15 +42,16 @@ Verifies the step and pushes the ecommerce object to the data layer if step = St
 Step 3 handled differently as it is an onclick only event
 */
 if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
+    let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
     window.dataLayer.push(removeNullValues(buildEcommerceObj(
         verifyEvent(step),
         verifyOption(step),
         step,
-        populateActionField(step).id,
-        populateActionField(step).affiliation,
-        populateActionField(step).revenue,
-        populateActionField(step).shipping,
-        populateActionField(step).tax,
+        id,
+        affiliation,
+        revenue,
+        shipping,
+        tax,
         productsObjArray
     )));
 }

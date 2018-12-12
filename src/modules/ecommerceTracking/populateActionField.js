@@ -1,7 +1,15 @@
 import{extractMetaTagContent} from '../extractMetaTagContent';
 
+let actionField = {
+    id : extractMetaTagContent('WT\\.tx_id'),
+    affiliation : extractMetaTagContent('WT\\.si_n'),
+    revenue : extractMetaTagContent('WT\\.tx_total'),
+    tax : '0',
+    shipping : '0'
+};
+
 export let populateActionField = (step) => {
-    if(step !== 'Step 4'){
+    if (step !== 'Step 4'){
         return {
             id : null,
             affiliation : null,
@@ -10,13 +18,5 @@ export let populateActionField = (step) => {
             shipping : null
         };
     }
-    else{
-        return {
-            id : extractMetaTagContent('WT\\.tx_id'),
-            affiliation : extractMetaTagContent('WT\\.si_n'),
-            revenue : extractMetaTagContent('WT\\.tx_total'),
-            tax : '0',
-            shipping : '0'
-        };
-    }
+    return actionField;
 };

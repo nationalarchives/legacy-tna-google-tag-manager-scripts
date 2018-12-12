@@ -9,8 +9,6 @@ return: Object
 export let buildEcommerceObj = (...args) => {
 
     //Destructure args
-    //const[ecommerceEvent, ecommerceOption, step, purchaseProperty, id, affiliation, revenue, products] = args;
-
     const[ecommerceEvent, ecommerceOption, step, id, affiliation, revenue, tax, shipping, products] = args;
 
     if(stringOrNull(args) && Array.isArray(products)) {
