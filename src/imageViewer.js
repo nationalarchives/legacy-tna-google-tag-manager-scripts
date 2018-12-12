@@ -1,10 +1,16 @@
 import {controlObj} from './modules/imageViewer/imageControlSchema';
+import {pushInDataLayer} from './modules/pushInDataLayer';
+
 export const imageViewer = document.getElementById('imageViewer');
 
-imageViewer && imageViewer.addEventListener('click', (e) => {
-    if ( e.target.nodeName === 'A' || e.target.matches('.control-buttons span')  ) {
-        console.log(controlObj());
-        e.preventDefault();
+const handleEvent = e => {
+    if (    e.target.nodeName === 'A' ||
+            e.target.nodeName === 'SELECT' ||
+            e.target.matches('#thumbPanel img') ||
+            e.target.matches('.control-buttons span')
+    ) {
+        pushInDataLayer(controlObj());
+        //e.preventDefault();
     }
-    // console.log(e.target);
-}, false);
+};
+imageViewer && imageViewer.addEventListener('click', handleEvent, false);
