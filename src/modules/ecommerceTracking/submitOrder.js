@@ -16,9 +16,6 @@ export let submitOrder = (productsObjArray) => {
 
         //Build object and push object to data layer
         let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, step, id, affiliation, revenue, tax, shipping, productsObjArray));
-
-        console.log(gtmObj);
-        event.preventDefault();
-        //window.dataLayer.push(gtmObj);
+        window.dataLayer.push(gtmObj);
     };
 };
