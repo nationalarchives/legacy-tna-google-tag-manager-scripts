@@ -11,6 +11,7 @@ import{verifyOption} from './modules/ecommerceTracking/verifyOption';
 import{removeNullValues} from './modules/removeNullValues';
 import{splitToArray} from './modules/ecommerceTracking/splitToArray';
 import{populateActionField} from './modules/ecommerceTracking/populateActionField';
+import{pushInDataLayer} from './modules/pushInDataLayer';
 
 //Extracts the current step of the payment process
 let step = extractMetaTagContent('WT\\.si_p');
@@ -29,9 +30,6 @@ let buttonsAndFunctions = {
     '.text_sketch.call-to-action-link': submitOrder(productsObjArray, extractMetaTagContent('WT\\.tx_total'))
 };
 
-//dataLayer is equal to the pre-existing GTM data layer, else is initialised to an empty array
-window.dataLayer = window.dataLayer || [];
-
 //Waits for the DOM to load before applying click event listeners
 document.addEventListener('DOMContentLoaded', () => {
     buttonsExist(buttonsAndFunctions);
@@ -43,7 +41,7 @@ Step 3 handled differently as it is an onclick only event
 */
 if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
-    window.dataLayer.push(removeNullValues(buildEcommerceObj(
+    pushInDataLayer(removeNullValues(buildEcommerceObj(
         verifyEvent(step),
         verifyOption(step),
         step,
