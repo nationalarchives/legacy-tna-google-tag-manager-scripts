@@ -10,7 +10,7 @@ const handleEvent = e => {
             e.target.matches('.control-buttons span')
     ) {
         pushInDataLayer(controlObj());
-        //e.preventDefault();
+        e.preventDefault();
     }
 };
 imageViewer && imageViewer.addEventListener('click', handleEvent, false);
