@@ -4,7 +4,7 @@
   "description": "## Development setup",
   "private": true,
   "scripts": {
-    "test": "jest --coverage --watchAll",
+    "test": "jest --coverage",
     "start": "webpack --watch --config webpack.config.js",
     "build": "webpack --config webpack.config.js"
   },
