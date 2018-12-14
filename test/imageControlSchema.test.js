@@ -1,10 +1,14 @@
 import {controlObj} from '../src/modules/imageViewer/imageControlSchema';
 
-describe('Should have the defined property', ()=>{
+describe('Should have the defined property & type of arguments', ()=>{
     it('Should have the defined property', () => {
-        expect(controlObj('arg1', 'arg2', 'arg3', 'arg4', 'arg5')).toHaveProperty('event');
-        expect(controlObj('arg1', 'arg2', 'arg3', 'arg4', 'arg5')).toHaveProperty('eventCategory');
-        expect(controlObj('arg1', 'arg2', 'arg3', 'arg4', 'arg5')).toHaveProperty('eventAction');
-        expect(controlObj('arg1', 'arg2', 'arg3', 'arg4', 'arg5')).toHaveProperty('eventLabel');
+        let argFunc = () => 'This is a function'
+        expect(controlObj('arg1', 'arg2', 'arg3', argFunc)).toHaveProperty('event');
+        expect(controlObj('arg1', 'arg2', 'arg3', argFunc)).toHaveProperty('eventCategory');
+        expect(controlObj('arg1', 'arg2', 'arg3', argFunc)).toHaveProperty('eventAction');
+        expect(controlObj('arg1', 'arg2', 'arg3', argFunc)).toHaveProperty('eventLabel');
+    });
+    it('Should test the argument type', ()=>{
+
     });
 });
