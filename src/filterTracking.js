@@ -1,5 +1,7 @@
 import {addListenersToFilters} from './modules/filterTracking/addListenersToFilters';
 import {verifyFilter} from './modules/filterTracking/verifyFilter';
+import {buildFilterTrackingObj} from './modules/filterTracking/buildFilterTrackingObj';
+import {pushInDataLayer} from './modules/pushInDataLayer';
 
 // Waits for the DOM to load before loading script
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Applies a click listener to all refine buttons and pushes to the data layer
     refineButtons.forEach(refineButton => refineButton.addEventListener('click', e => {
-        console.table(verifyFilter(refineButton.name, appliedDateFilters, appliedSubjectFilters));
+        pushInDataLayer(buildFilterTrackingObj(refineButton.name, verifyFilter(refineButton.name, appliedDateFilters, appliedSubjectFilters)));
         e.preventDefault();
     }));
 });

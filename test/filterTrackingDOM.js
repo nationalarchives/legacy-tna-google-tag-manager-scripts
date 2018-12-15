@@ -1,5 +1,5 @@
-document.body.innerHTML =
-`<ul class="available-filters" role="tablist" aria-multiselectable="true">
+export let filterTrackingDOM =
+    `<ul class="available-filters" role="tablist" aria-multiselectable="true">
     <li id="heldby">
     </li>
     <li id="source">
