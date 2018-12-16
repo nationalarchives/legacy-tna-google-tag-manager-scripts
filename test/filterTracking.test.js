@@ -11,6 +11,18 @@ describe('Checks that the filter tracking object is built correctly', () => {
         expect(typeof buildFilterTrackingObj('someName', ['someArray'])).toBe('object');
         expect(buildFilterTrackingObj(2, ['someArray'])).toBe('The parameters are of the incorrect data type.');
     });
+    it('Should have the defined properties', () => {
+        expect(buildFilterTrackingObj('arg1', ['arg2'])).toHaveProperty('event');
+        expect(buildFilterTrackingObj('arg1', ['arg2'])).toHaveProperty('eventCategory');
+        expect(buildFilterTrackingObj('arg1', ['arg2'])).toHaveProperty('eventLabel');
+        expect(buildFilterTrackingObj('arg1', ['arg2'])).toHaveProperty('eventAction');
+    });
+    it('Should have the defined types', () => {
+        expect(typeof buildFilterTrackingObj('arg1', ['arg2']).event).toBe('string');
+        expect(typeof buildFilterTrackingObj('arg1', ['arg2']).eventCategory).toBe('string');
+        expect(typeof buildFilterTrackingObj('arg1', ['arg2']).eventAction).toBe('string');
+        expect(typeof buildFilterTrackingObj('arg1', ['arg2']).eventLabel).toBe('string');
+    });
 });
 
 describe('Checks that the filter name is cleaned correctly', () => {
@@ -24,9 +36,15 @@ describe('Checks that the filter name is cleaned correctly', () => {
     });
 });
 
-describe('Checks that the verify filter module functions correctly', () => {
+describe('Checks that the verify filter returns the correct value', () => {
     it('Should return an array if correct parameters are received, else returns error message', () => {
         expect(Array.isArray(verifyFilter('someString', [], []))).toBeTruthy();
         expect(verifyFilter(1,2,3)).toBe('The parameters are of the incorrect data type.');
+    });
+    it('Should return dateFilters when the refine date button is passed', () => {
+        expect(verifyFilter('Refine dates', ['appliedDateFilters'], ['appliedSubjectFilters'])).toEqual(['appliedDateFilters']);
+    });
+    it('Should return subjectFilters when the refine subject button is passed', () => {
+        expect(verifyFilter('Refine subjects', ['appliedDateFilters'], ['appliedSubjectFilters'])).toEqual(['appliedSubjectFilters']);
     });
 });
