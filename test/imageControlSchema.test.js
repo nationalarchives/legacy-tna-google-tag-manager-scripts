@@ -13,7 +13,31 @@ describe('Should have the defined property & type of arguments', () => {
     it('Should test arguments if not present', () => {
         expect(controlObj()).toEqual({
             'event': 'no event',
-            'eventCategory': 'no category',
+            'eventCategory': 'no event category',
+            'eventAction': 'no event action',
+            'eventLabel': 'no event label'
+        });
+        expect(controlObj('arg1', 'arg2', 'arg3', 'arg4')).toEqual({
+            'event': 'arg1',
+            'eventCategory': 'arg2',
+            'eventAction': 'arg3',
+            'eventLabel': 'arg4'
+        });
+        expect(controlObj('arg1', 'arg2', 'arg3')).toEqual({
+            'event': 'arg1',
+            'eventCategory': 'arg2',
+            'eventAction': 'arg3',
+            'eventLabel': 'no event label'
+        });
+        expect(controlObj('arg1', 'arg2')).toEqual({
+            'event': 'arg1',
+            'eventCategory': 'arg2',
+            'eventAction': 'no event action',
+            'eventLabel': 'no event label'
+        });
+        expect(controlObj('arg1')).toEqual({
+            'event': 'arg1',
+            'eventCategory': 'no event category',
             'eventAction': 'no event action',
             'eventLabel': 'no event label'
         });
