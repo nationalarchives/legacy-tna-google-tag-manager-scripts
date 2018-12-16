@@ -1,4 +1,4 @@
-export const getEventLabel = (title) => {
+export const getEventLabel = title => {
     if (event.target.matches('#thumbPanel img')) {
         return 'View full size image';
     }
