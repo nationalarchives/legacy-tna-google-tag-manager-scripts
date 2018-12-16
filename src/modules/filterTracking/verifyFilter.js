@@ -32,5 +32,5 @@ export let verifyFilter = (refineButtonName, dateFilters, subjectFilters) => {
         }
         return activeFilters;
     }
-    return 'The parameters are off the incorrect data type.';
+    return 'The parameters are of the incorrect data type.';
 };

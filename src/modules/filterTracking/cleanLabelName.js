@@ -4,4 +4,5 @@ export let cleanLabelName = (label) => {
         label = label.split(' (');
         return label[0];
     }
+    return 'The parameters are of the incorrect data type.';
 };
