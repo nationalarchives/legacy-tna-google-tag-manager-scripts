@@ -11,18 +11,18 @@ document.addEventListener('DOMContentLoaded', () => {
     let appliedDateFiltersArray = [];
 
     // Grab all refine buttons
-    let refineButtons = document.querySelectorAll('input[value="Refine"]');
+    let refineButtons = Array.from(document.querySelectorAll('input[value="Refine"]'));
 
     // Object listing all filters that need to be tracked
     let filters = {
-        subjectFilters: document.querySelectorAll('#subjects ul li input'),
-        dateFilters: document.querySelectorAll('#dates ul li input')
+        subjectFilters: Array.from(document.querySelectorAll('#subjects ul li input')),
+        dateFilters: Array.from(document.querySelectorAll('#dates ul li input'))
     };
 
     // Object listing the corresponding filter labels
     let labels = {
-        subjectLabels: document.querySelectorAll('#subjects ul li label'),
-        dateLabels: document.querySelectorAll('#dates ul li label')
+        subjectLabels: Array.from(document.querySelectorAll('#subjects ul li label')),
+        dateLabels: Array.from(document.querySelectorAll('#dates ul li label'))
     };
 
     // Applies listeners to filters to track which filters have been checked/unchecked
