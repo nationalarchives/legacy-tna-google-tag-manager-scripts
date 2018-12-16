@@ -10,8 +10,9 @@ const handleEvent = e => {
             e.target.matches('#thumbPanel img') ||
             e.target.matches('.control-buttons span')
     ) {
-        pushInDataLayer(controlObj('Discovery image viewer', 'Discovery', 'Image viewer functions', getEventLabel('title')));
-        //e.preventDefault();
+        //pushInDataLayer(controlObj('Discovery image viewer', 'Discovery', 'Image viewer functions', getEventLabel('title')));
+        console.log(controlObj('Discovery image viewer', 'Discovery', 'Image viewer functions', getEventLabel('title')));
+        e.preventDefault();
     }
 };
 imageViewer && imageViewer.addEventListener('click', handleEvent, false);
