@@ -18,6 +18,8 @@ To run unit tests, run '**npm test**' in the terminal. This will run all test su
 
 This repository also provides a test page (index.html) which is used for debugging.
 
+To start running the `index.html` just run the command from the route folder `php -S localhost:9000`
+
 #### Set up with Discovery.
 Developers working on scripts, which would need to be loaded from the server side in discovery, should also take an extra step to add the script to the server side in the discovery application after the initial PR process is completed. The developer would then need to send another PR explaining the code has been implemented into the discovery application.
 
