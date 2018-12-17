@@ -7,7 +7,7 @@ describe('Should have the defined property & type of arguments', () => {
         expect(controlObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('eventAction');
         expect(controlObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('eventLabel');
     });
-    it('Should test Defined', ()=>{
+    it('Should test Defined', () => {
         expect(controlObj('arg1', 'arg2', 'arg3', '')).toBeDefined();
     });
     it('Should test arguments if not present', () => {
