@@ -45,6 +45,7 @@
     "webpack-cli": "^3.0.8"
   },
   "dependencies": {
-    "eslint-plugin-jest": "^21.18.0"
+    "eslint-plugin-jest": "^21.18.0",
+    "npm": "^6.5.0"
   }
 }
