@@ -4,6 +4,7 @@ import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 import{extractProductName} from '../src/modules/ecommerceTracking/extractProductName';
 import{buildEcommerceObj} from '../src/modules/ecommerceTracking/buildEcommerceObj';
 import{stringOrNull} from '../src/modules/stringOrNull';
+import{populateActionField} from '../src/modules/ecommerceTracking/populateActionField';
 
 document.body.innerHTML =
     '<meta name="WT.si_n" content="Discovery store">' +
@@ -66,38 +67,35 @@ describe('Checking that the \'products\' object property is of type array', () =
 });
 
 describe('Checking the ecommerce is built correctly', () => {
-    it('Should have the defined property', () => {
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}])).toHaveProperty('event');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}])).toHaveProperty('ecommerce');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce).toHaveProperty('actionField');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.actionField).toHaveProperty('step');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.actionField).toHaveProperty('option');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce).toHaveProperty('arg1');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1).toHaveProperty('actionField');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1).toHaveProperty('products');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toHaveProperty('id');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toHaveProperty('affiliation');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toHaveProperty('revenue');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toHaveProperty('tax');
-        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toHaveProperty('shipping');
+    it('Should have the defined properties', () => {
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}])).toHaveProperty('event');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}])).toHaveProperty('ecommerce');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2).toHaveProperty('actionField');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2).toHaveProperty('products');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('step');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('id');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('affiliation');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('revenue');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('tax');
+        expect(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toHaveProperty('shipping');
     });
-    it('Should have the defined type', () => {
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).event).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce).toBe('object');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.actionField).toBe('object');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.actionField.option).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.actionField.step).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1).toBe('object');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField).toBe('object');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField.id).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField.affiliation).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField.revenue).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField.tax).toBe('string');
-        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.actionField.shipping).toBe('string');
-        expect(Array.isArray(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8','arg9','arg10',[{'arg2' : 'someValue'}]).ecommerce.arg1.products)).toBeTruthy();
+    it('Should have the defined types', () => {
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).event).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField).toBe('object');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.step).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.id).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.affiliation).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.revenue).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.tax).toBe('string');
+        expect(typeof buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.actionField.shipping).toBe('string');
+        expect(Array.isArray(buildEcommerceObj('arg1','arg2','arg3','arg4','arg5','arg6','arg7','arg8',[{'arg2' : 'someValue'}]).ecommerce.arg2.products)).toBeTruthy();
     });
-    it('Should return undefined if the parameters are of the wrong data type', () => {
-        expect(buildEcommerceObj(true,false,[],{},123)).toBe('The parameters are of the incorrect data type.');
+    describe('Checking the ecommerce is built correctly', () => {
+        it('Should return undefined if the parameters are of the wrong data type', () => {
+            expect(buildEcommerceObj(true,false,[],{},123)).toBe('The parameters are of the incorrect data type.');
+        });
     });
 });
 
@@ -108,5 +106,43 @@ describe('Checking that the correct data types are passed to buildEcommerceObj.j
     it('Should return false if an incorrect data type e.g. integer is passed to buildEcommerceObj.js', () => {
         expect(stringOrNull([1, 1.5])).toBeFalsy();
         expect(stringOrNull(['string', [], {}])).toBeFalsy();
+    });
+});
+
+describe('Checks that the actionField object is populated with the correct properties', () => {
+    it('Should return all properties as null if step != "Step 4"', () => {
+        expect(populateActionField('Step 1')).toEqual({
+            id : null,
+            affiliation : null,
+            revenue : null,
+            tax : null,
+            shipping : null
+        });
+    });
+    it('Should use content from meta tags to populate the actionField object if step="Step 4"', () => {
+        expect(populateActionField('Step 4')).toEqual({
+            id : extractMetaTagContent('WT\\.tx_id'),
+            affiliation : extractMetaTagContent('WT\\.si_n'),
+            revenue : extractMetaTagContent('WT\\.tx_total'),
+            tax : '0',
+            shipping : '0'
+        });
+    });
+});
+
+describe('Checks that actionField object is built correctly', () => {
+    it('Should have the defined properties', () => {
+        expect(populateActionField('Step 4')).toHaveProperty('id');
+        expect(populateActionField('Step 4')).toHaveProperty('affiliation');
+        expect(populateActionField('Step 4')).toHaveProperty('revenue');
+        expect(populateActionField('Step 4')).toHaveProperty('tax');
+        expect(populateActionField('Step 4')).toHaveProperty('shipping');
+    });
+    it('Should have the defined types', () => {
+        expect(typeof populateActionField('Step 4').id).toBe('string');
+        expect(typeof populateActionField('Step 4').affiliation).toBe('string');
+        expect(typeof populateActionField('Step 4').revenue).toBe('string');
+        expect(typeof populateActionField('Step 4').tax).toBe('string');
+        expect(typeof populateActionField('Step 4').shipping).toBe('string');
     });
 });

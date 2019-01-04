@@ -9,19 +9,15 @@ return: Object
 export let buildEcommerceObj = (...args) => {
 
     //Destructure args
-    const[purchaseProperty, ecommerceEvent, step, option, currencyCode, id, affiliation, revenue, tax, shipping, products] = args;
+    const[ecommerceEvent, ecommerceOption, step, id, affiliation, revenue, tax, shipping, products] = args;
 
     if(stringOrNull(args) && Array.isArray(products)) {
         return {
             'event': ecommerceEvent,
             'ecommerce': {
-                'actionField': {
-                    'step': step,
-                    'option': option
-                },
-                'currencyCode': currencyCode,
-                [purchaseProperty]: {
+                [ecommerceOption]: {
                     'actionField': {
+                        'step': step,
                         'id': id,
                         'affiliation': affiliation,
                         'revenue': revenue,
