@@ -2,7 +2,9 @@
 export let cleanLabelName = (label) => {
     if(typeof label === 'string') {
         label = label.split('(');
-        return label[0];
+
+        // Trim to remove excess whitespace from textContent
+        return label[0].trim();
     }
     return 'The parameters are of the incorrect data type.';
 };

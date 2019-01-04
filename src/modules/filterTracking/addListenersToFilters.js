@@ -9,14 +9,11 @@ return: Array
 export let addListenersToFilters = (filters, labels, filterArray) => {
     if(Array.isArray(filters) && Array.isArray(labels) && Array.isArray(filterArray)) {
         filters.forEach((filter, index) => {
-            filter.addEventListener('change', () => {
-
-                // If a filter has been checked and has not already been stored, push it to filterArray. Otherwise, remove it i.e. when it has been unchecked
-                filter.checked && !filterArray.includes(labels[index]) ?
-                    filterArray.push(cleanLabelName(labels[index].innerText)) : filterArray.splice(filterArray.indexOf(cleanLabelName(labels[index].innerText)), 1);
-            });
+            if (filter.checked && !filterArray.includes(labels[index])) {
+                filterArray.push(cleanLabelName(labels[index].textContent));
+            }
         });
         return filterArray;
     }
-    return 'The parameters are off the incorrect data type.';
+    return 'The parameters are of the incorrect data type.';
 };

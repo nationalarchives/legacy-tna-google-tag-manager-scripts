@@ -4,7 +4,6 @@ import {verifyFilter} from '../src/modules/filterTracking/verifyFilter';
 import {addListenersToFilters} from '../src/modules/filterTracking/addListenersToFilters';
 
 document.body.innerHTML =
-    '<label for="C10092">Army<span>(6,530,838)</span></label>'+
     '<li id="subjects">'+
         '<form action="/results/r" method="get"><input name="_q" type="hidden" value="*" /><input name="_hb" type="hidden" value="tna" />'+
         '<h3><a href="#" class="filter-toggler" id="subject-filters" role="tab">Subjects</a></h3>'+
@@ -25,7 +24,7 @@ document.body.innerHTML =
                         '</label>'+
                     '</li>'+
                     '<li>'+
-                        '<input type="checkbox" name="_tsj" value="C10075" id="C10075" checked="checked" />'+
+                        '<input type="checkbox" name="_tsj" value="C10075" id="C10075"/>'+
                         '<label for="C10075">'+
                             'Operations, battles and campaigns'+
                             '<span>(6,248,824)</span>'+
@@ -34,7 +33,8 @@ document.body.innerHTML =
                 '</ul>'+
             '</div>'+
         '</form>'+
-    '</li>';
+    '</li>'+
+    '<input name="Refine subjects" value="Refine" type="submit" title="Refine subjects" />';
 
 let appliedSubjectFiltersArray = [];
 let armyFilter = document.querySelector('label[for="C10092"]');
@@ -73,19 +73,24 @@ describe('Checks that the filter name is cleaned correctly', () => {
 
 describe('Checks that the verify filter returns the correct value', () => {
     it('Should return an array if correct parameters are received, else returns error message', () => {
-        expect(Array.isArray(verifyFilter('someString', [], []))).toBeTruthy();
-        expect(verifyFilter(1,2,3)).toBe('The parameters are of the incorrect data type.');
+        expect(Array.isArray(verifyFilter('someString'))).toBeTruthy();
+        expect(verifyFilter(1)).toBe('The parameters are of the incorrect data type.');
     });
     it('Should return dateFilters when the refine date button is passed', () => {
-        expect(verifyFilter('Refine dates', ['appliedDateFilters'], ['appliedSubjectFilters'])).toEqual(['appliedDateFilters']);
+        expect(verifyFilter('Refine dates')).toEqual([]);
     });
     it('Should return subjectFilters when the refine subject button is passed', () => {
-        expect(verifyFilter('Refine subjects', ['appliedDateFilters'], ['appliedSubjectFilters'])).toEqual(['appliedSubjectFilters']);
+        expect(verifyFilter('Refine subjects')).toEqual([]);
     });
+
 });
 
 describe('Checks that selected filters are returned', () => {
     it('Should return an empty array if no filters are selected', () => {
         expect(addListenersToFilters([], [], [])).toEqual([]);
+    });
+    it('Should return an array containing only checked filters', () => {
+        subjectFilters[2].checked = true;
+        expect(addListenersToFilters(subjectFilters, subjectLabels, appliedSubjectFiltersArray)).toEqual(['Operations, battles and campaigns']);
     });
 });
