@@ -1,15 +1,19 @@
-import {verifyFilter} from './modules/filterTracking/verifyFilter';
 import {buildFilterTrackingObj} from './modules/filterTracking/buildFilterTrackingObj';
 import {pushInDataLayer} from './modules/pushInDataLayer';
+import {checkFilters} from './modules/filterTracking/checkFilters';
 
 // Waits for the DOM to load before loading script
 document.addEventListener('DOMContentLoaded', () => {
-    // Grab all refine buttons
-    let refineButtons = Array.from(document.querySelectorAll('input[value="Refine"]'));
+    // Grabs all filters
+    let filters = document.querySelectorAll('.filter-togglee');
 
-    // Applies a click listener to all refine buttons and pushes to the data layer
-    refineButtons.forEach(refineButton => refineButton.addEventListener('click', e => {
-        pushInDataLayer(buildFilterTrackingObj(refineButton.name, verifyFilter(refineButton.name)));
-        e.preventDefault();
-    }));
+    // Applies a click listener to all filters and pushes to the data layer
+    filters.forEach((filter) => {
+        filter.addEventListener('click', e => {
+            if (e.target.value === 'Refine') {
+                pushInDataLayer(buildFilterTrackingObj(e.target.name, checkFilters(e)));
+                e.preventDefault();
+            }
+        });
+    });
 });

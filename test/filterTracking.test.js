@@ -1,7 +1,7 @@
 import {buildFilterTrackingObj} from '../src/modules/filterTracking/buildFilterTrackingObj';
 import {cleanLabelName} from '../src/modules/filterTracking/cleanLabelName';
 import {verifyFilter} from '../src/modules/filterTracking/verifyFilter';
-import {addListenersToFilters} from '../src/modules/filterTracking/addListenersToFilters';
+import {addListenersToFilters} from '../src/modules/filterTracking/checkFilters';
 
 document.body.innerHTML =
     '<li id="subjects">'+
