@@ -1,7 +1,7 @@
 import {cleanLabelName} from './cleanLabelName';
 
 /*
-param: event
+param: Object
 return: Array
 */
 
@@ -10,13 +10,12 @@ export let checkFilters = event => {
     let appliedFilters = [];
 
     // Grabs all filters relevant to the specific Refine button that was clicked
-    let inputs = (event.currentTarget).querySelectorAll('input');
+    let filters = event.querySelectorAll('input');
 
-    // Checks if each filter is checked
-    inputs.forEach((input) => {
-        if (input.checked) {
-            appliedFilters.push(cleanLabelName(input.nextElementSibling.textContent));
-
+    // Checks if each filter is checked and, if so, pushes the label (nextElementSibling) to the array
+    filters.forEach((filter) => {
+        if (filter.checked) {
+            appliedFilters.push(cleanLabelName(filter.nextElementSibling.textContent));
         }
     });
     return appliedFilters;
