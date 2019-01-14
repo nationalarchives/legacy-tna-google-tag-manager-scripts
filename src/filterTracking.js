@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
         filter.addEventListener('click', e => {
             if (e.target.value === 'Refine') {
                 pushInDataLayer(buildFilterTrackingObj(e.target.name, checkFilters(e.currentTarget)));
-                e.preventDefault();
             }
         });
     });
