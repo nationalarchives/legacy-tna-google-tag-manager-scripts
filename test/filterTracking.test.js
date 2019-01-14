@@ -3,9 +3,6 @@ import {cleanLabelName} from '../src/modules/filterTracking/cleanLabelName';
 import {checkFilters} from '../src/modules/filterTracking/checkFilters';
 
 document.body.innerHTML =
-    '<li id="subjects">'+
-        '<form action="/results/r" method="get"><input name="_q" type="hidden" value="*" /><input name="_hb" type="hidden" value="tna" />'+
-            '<h3><a href="#" class="filter-toggler" id="subject-filters" role="tab">Subjects</a></h3>'+
             '<div class="filter-togglee" aria-labelledby="subject-filters" role="tabpanel">'+
                 '<ul>'+
                     '<li>'+
@@ -30,13 +27,10 @@ document.body.innerHTML =
                         '</label>'+
                     '</li>'+
                 '</ul>'+
-            '</div>'+
-        '</form>'+
-    '</li>'+
-    '<input name="Refine subjects" value="Refine" type="submit" title="Refine subjects" />';
+            '</div>';
 
 let armyFilter = document.querySelector('label[for="C10092"]');
-let subjectFilters = Array.from(document.querySelectorAll('#subjects ul li input'));
+let subjectFilters = Array.from(document.querySelectorAll('.filter-togglee ul li input'));
 let filterTogglee = document.querySelector('.filter-togglee');
 
 describe('Checks that the filter tracking object is built correctly', () => {
@@ -60,7 +54,6 @@ describe('Checks that the filter tracking object is built correctly', () => {
 
 describe('Checks that the filter name is cleaned correctly', () => {
     it('Should return only the name (i.e. excludes search results statistic)', () => {
-
         expect(cleanLabelName(armyFilter.textContent)).toBe('Army');
     });
     it('Should return a string if the correct parameters are received, else returns error message', () => {
