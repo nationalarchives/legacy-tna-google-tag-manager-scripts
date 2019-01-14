@@ -13,4 +13,9 @@ const handleEvent = (e) => {
         pushInDataLayer(controlObj('Discovery image viewer', 'Discovery', 'Image viewer functions', getEventLabel('title')));
     }
 };
-imageViewer && imageViewer.addEventListener('click', handleEvent, false);
+
+document.addEventListener('DOMContentLoaded', () => {
+    if (imageViewer) {
+        imageViewer && imageViewer.addEventListener('click', handleEvent, false);
+    }
+});
