@@ -288,3 +288,56 @@ Setting up the deveopment environment, would require to run a server in the root
      'eventLabel': "Zoom in"
 }
 ```
+
+## Filter tracking
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer containing data regarding the search filters that a user has applied. It will run every time a user clicks on the 'refine' button which applies search filters.
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on the search results page, the search filters should be available in the DOM. For example:
+
+```html
+<li id="subjects">
+	<form action="/results/r" method="get"><input name="_q" type="hidden" value="*"><input name="_hb" type="hidden" value="tna">                    <h3><a href="#" class="filter-toggler expanded" id="subject-filters" role="tab">Subjects</a></h3>
+		<div class="filter-togglee" aria-labelledby="subject-filters" role="tabpanel">
+                	<ul>
+                    		<li>
+                        		<input type="checkbox" name="_tsj" value="C10065" id="C10065" />
+                        		<label for="C10065">
+                            			Armed Forces (General Administration)
+                            			<span>(9,392,340)</span>
+                        		</label>
+                   		</li>
+                    		<li>
+                        		<input type="checkbox" name="_tsj" value="C10092" id="C10092" />
+                        		<label for="C10092">
+                            			Army
+                            			<span>(6,530,838)</span>
+                        		</label>
+                    		</li>
+                    		<li>
+                        		<input type="checkbox" name="_tsj" value="C10075" id="C10075"/>
+                        		<label for="C10075">
+                           			Operations, battles and campaigns
+                            			<span>(6,248,824)</span>
+                        		</label>
+                    		</li>
+                	</ul>
+			<input name="Refine subjects" value="Refine" type="submit" title="Refine subjects">
+            	</div>
+	</form>
+</li>
+```
+		
+If the above Document Object Model (DOM) elements are available, the following object is built and pushed to the data layer.
+
+```javascript
+{
+  event: "Discovery",
+  eventAction:"Discovery",
+  eventCategory:"Refine subjects",
+  eventLabel: "Armed Forces (General Administration),Army,Operations, battles and campaigns"
+}
+```
