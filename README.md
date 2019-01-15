@@ -274,9 +274,12 @@ This script has been developed to push analytics data to GTM, which can provide 
 
 
 ### How to test/testing guidelines
-Setting up deveopment environment, would need to run a development environment in the root folder of the project. eg `php -S localhost:9000`.
+Setting up the deveopment environment, would require to run a server in the root folder of the project `tna-google-tag-manager-script`. eg `php -S localhost:9000`.
 
-## Object data schema
+### Location
+[Link to the source file](https://github.com/nationalarchives/tna-google-tag-manager-scripts/blob/develop/src/imageViewer.js)
+
+### Object data schema
 ```javascript
 {
      'event': "Discovery image viewer"
