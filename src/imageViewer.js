@@ -2,8 +2,6 @@ import { controlObj } from './modules/imageViewer/imageControlSchema';
 import { getEventLabel } from './modules/imageViewer/eventLabel';
 import { pushInDataLayer } from './modules/pushInDataLayer';
 
-export const imageViewer = document.getElementById('imageViewer');
-
 const handleEvent = (e) => {
     if (e.target.nodeName === 'A' ||
         e.target.nodeName === 'SELECT' ||
@@ -15,6 +13,7 @@ const handleEvent = (e) => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
+    const imageViewer = document.getElementById('imageViewer');
     if (imageViewer) {
         imageViewer && imageViewer.addEventListener('click', handleEvent, false);
     }
