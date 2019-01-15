@@ -265,3 +265,23 @@ If the above Document Object Model (DOM) elements are available, the following o
     }
 }
 ```
+
+## Discovery imageviewer controller 
+This script has been developed to push analytics data to GTM, which can provide stats on the click events occuring on the controllers within the image viewer.
+
+![Imageviewer controls](img/imageViewerContollers.png)
+![Imageviewer thumbnails](img/contollersThumbnails.png)
+
+
+### How to test/testing guidelines
+Setting up deveopment environment, would need to run a development environment in the root folder of the project. eg `php -S localhost:9000`.
+
+## Object data schema
+```javascript
+{
+     'event': "Discovery image viewer"
+     'eventAction': "Image viewer functions"
+     'eventCategory': "Discovery"
+     'eventLabel': "Zoom in"
+}
+```
