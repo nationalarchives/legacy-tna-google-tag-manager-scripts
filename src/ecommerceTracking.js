@@ -33,23 +33,18 @@ let buttonsAndFunctions = {
 //Waits for the DOM to load before applying click event listeners
 document.addEventListener('DOMContentLoaded', () => {
     buttonsExist(buttonsAndFunctions);
+    if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
+        let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
+        pushInDataLayer(removeNullValues(buildEcommerceObj(
+            verifyEvent(step),
+            verifyOption(step),
+            step,
+            id,
+            affiliation,
+            revenue,
+            shipping,
+            tax,
+            productsObjArray
+        )));
+    }
 });
-
-/*
-Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
-Step 3 handled differently as it is an onclick only event
-*/
-if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
-    let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
-    pushInDataLayer(removeNullValues(buildEcommerceObj(
-        verifyEvent(step),
-        verifyOption(step),
-        step,
-        id,
-        affiliation,
-        revenue,
-        shipping,
-        tax,
-        productsObjArray
-    )));
-}

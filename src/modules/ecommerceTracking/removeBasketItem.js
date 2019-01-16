@@ -1,6 +1,7 @@
 import{buildEcommerceObj} from './buildEcommerceObj';
 import {removeNullValues} from '../removeNullValues';
 import {populateActionField} from './populateActionField';
+import{pushInDataLayer} from '../pushInDataLayer';
 
 /*
 param: Array
@@ -24,6 +25,6 @@ export let removeBasketItem = (productsObjArray) => {
 
         //Build object and push object to data layer
         let gtmObj = removeNullValues(buildEcommerceObj(ecommerceEvent, ecommerceOption, step, id, affiliation, revenue, tax, shipping, removedItem));
-        window.dataLayer.push(gtmObj);
+        pushInDataLayer(gtmObj);
     };
 };
