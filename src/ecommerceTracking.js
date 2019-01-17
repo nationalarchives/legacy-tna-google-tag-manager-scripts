@@ -33,18 +33,20 @@ let buttonsAndFunctions = {
 //Waits for the DOM to load before applying click event listeners
 document.addEventListener('DOMContentLoaded', () => {
     buttonsExist(buttonsAndFunctions);
-    if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
-        let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
-        pushInDataLayer(removeNullValues(buildEcommerceObj(
-            verifyEvent(step),
-            verifyOption(step),
-            step,
-            id,
-            affiliation,
-            revenue,
-            shipping,
-            tax,
-            productsObjArray
-        )));
-    }
 });
+
+// Checks which step of the journey the user has reached. Step 3 is handled differently as it is a click only event
+if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
+    let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
+    pushInDataLayer(removeNullValues(buildEcommerceObj(
+        verifyEvent(step),
+        verifyOption(step),
+        step,
+        id,
+        affiliation,
+        revenue,
+        shipping,
+        tax,
+        productsObjArray
+    )));
+}

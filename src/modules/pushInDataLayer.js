@@ -5,7 +5,9 @@
  **/
 
 export const pushInDataLayer = (obj) => {
-    let wd = window.dataLayer || [];
-    (!!obj || typeof obj === 'object') ? wd.push(obj) : '';
+    if(!window.dataLayer){
+        window.dataLayer = [];
+    }
+    (!!obj || typeof obj === 'object') ? window.dataLayer.push(obj) : '';
     return obj;
 };
