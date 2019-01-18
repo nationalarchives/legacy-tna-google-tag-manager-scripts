@@ -1,21 +1,27 @@
 
+import { pushInDataLayer } from './modules/pushInDataLayer';
+
+let checkValue = e => e.target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
+
+let func = e => {
+    const discovery = 'Discovery';
+    return {
+        'event': discovery,
+        'eventCategory': discovery,
+        'eventAction': 'Bookmark link',
+        'eventLabel': checkValue(e)
+    };
+};
+
+const bookMarkObj = e => {
+    e.preventDefault();
+    pushInDataLayer(func(e));
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const links = document.querySelectorAll('#bookmarks .bookmarkMain a');
-    const discovery = 'Discovery';
-    const func = e => {
-        e.preventDefault();
-        const targetElementContect = e.target.innerHTML;
-        console.log(
-            {
-                'event': discovery,
-                'eventCategory': discovery,
-                'eventAction': 'Bookmark link',
-                'eventLabel': (targetElementContect.includes('result')) ? 'search results bookmark' : 'catalogue description bookmark'
 
-            }
-        );
-    };
     links.forEach(link => {
-        link.addEventListener('click', func);
+        link.addEventListener('click', bookMarkObj);
     });
 });
