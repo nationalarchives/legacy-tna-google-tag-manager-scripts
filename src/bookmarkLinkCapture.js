@@ -1,21 +1,20 @@
-
 import { pushInDataLayer } from './modules/pushInDataLayer';
 
 const checkValue = e => e.target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
 
-const func = e => {
+export const renderObj = (eventArg, catArg, actionArg, labelArg) => {
     const discovery = 'Discovery';
     return {
-        'event': discovery,
-        'eventCategory': discovery,
-        'eventAction': 'Bookmark link',
-        'eventLabel': checkValue(e)
+        'event': eventArg,
+        'eventCategory': catArg,
+        'eventAction': actionArg,
+        'eventLabel': labelArg
     };
 };
 
 const bookMarkObj = e => {
     e.preventDefault();
-    pushInDataLayer(func(e));
+    pushInDataLayer(renderObj('Discovery', 'Discovery', 'Bookmark link', checkValue(e)));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
