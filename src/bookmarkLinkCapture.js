@@ -1,9 +1,9 @@
 
 import { pushInDataLayer } from './modules/pushInDataLayer';
 
-let checkValue = e => e.target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
+const checkValue = e => e.target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
 
-let func = e => {
+const func = e => {
     const discovery = 'Discovery';
     return {
         'event': discovery,
