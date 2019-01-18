@@ -35,10 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonsExist(buttonsAndFunctions);
 });
 
-/*
-Verifies the step and pushes the ecommerce object to the data layer if step = Step 4
-Step 3 handled differently as it is an onclick only event
-*/
+// Checks which step of the journey the user has reached. Step 3 is handled differently as it is a click only event
 if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
     let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
     pushInDataLayer(removeNullValues(buildEcommerceObj(
