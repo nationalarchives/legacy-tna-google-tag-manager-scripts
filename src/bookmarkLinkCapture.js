@@ -1,20 +1,23 @@
 import { pushInDataLayer } from './modules/pushInDataLayer';
+import { capitalizeFirstLetter } from './modules/capitalizeFirstLetter';
 
-const checkValue = e => e.target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
+const checkValue = ({ target }) => target.innerHTML.includes('result') ? 'search results bookmark' : 'catalogue description bookmark';
 
-export const renderObj = (eventArg, catArg, actionArg, labelArg) => {
-    const discovery = 'Discovery';
+export const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
+    if (typeof eventArg !== 'string' && typeof catArg !== 'string' && typeof actionArg !== 'string' && typeof labelArg !== 'string') {
+        return null;
+    }
     return {
-        'event': eventArg,
-        'eventCategory': catArg,
-        'eventAction': actionArg,
+        'event': capitalizeFirstLetter(eventArg),
+        'eventCategory': capitalizeFirstLetter(catArg),
+        'eventAction': capitalizeFirstLetter(actionArg),
         'eventLabel': labelArg
     };
 };
 
 const bookMarkObj = e => {
     e.preventDefault();
-    pushInDataLayer(renderObj('Discovery', 'Discovery', 'Bookmark link', checkValue(e)));
+    pushInDataLayer(renderObjFunc('discovery', 'Discovery', 'Bookmark link', checkValue(e)));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
