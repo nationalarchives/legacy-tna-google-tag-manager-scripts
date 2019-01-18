@@ -17,7 +17,7 @@ export const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
 
 const bookMarkObj = e => {
     e.preventDefault();
-    pushInDataLayer(renderObjFunc('discovery', 'Discovery', 'Bookmark link', checkValue(e)));
+    pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
 };
 
 document.addEventListener('DOMContentLoaded', () => {
