@@ -1,8 +1,9 @@
 {
 	"presets": [
-		"env"
+		"@babel/preset-env"
 	],
 	"plugins": [
-		"array-includes"
+		"array-includes",
+		"babel-plugin-loop-optimizer"
 	]
 }
