@@ -5,6 +5,7 @@ describe('Checking the capitalization', () => {
 		expect(capitalizeFirstLetter('hello world')).toBe('Hello world');
 		expect(capitalizeFirstLetter('foo')).toBe('Foo');
 		expect(capitalizeFirstLetter('bar')).toBe('Bar');
+		expect(capitalizeFirstLetter('b')).toBe('B');
 	});
 });
 
