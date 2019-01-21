@@ -1,4 +1,4 @@
-import { renderObjFunc } from '../src/bookmarkLinkCapture';
+import { renderObjFunc, checkValue } from '../src/bookmarkLinkCapture';
 
 describe('Checking the object, property and type', () => {
 	it('Should have the object properties', () => {
@@ -35,5 +35,21 @@ describe('Checking output values', () => {
 		expect(renderObjFunc([], 10, 5, 3, 7)).toBeNull();
 		expect(renderObjFunc(200, -2, -4.5, 4, [])).toBeNull();
 		expect(renderObjFunc(0, [], 89, 11, 1000)).toBeNull();
+	});
+});
+
+describe('Simulate click event', () => {
+	it('Test click event', () => {
+		const evt = document.createEvent('MouseEvents');
+		evt.initEvent('click', false, true);
+		document.body.dispatchEvent(evt);
+		document.body.innerHTML = `<ul><li><a id="result" href="/result">http://localhost:81/results/r?_q=felix</a></li></ul>`;
+
+		const resultButton = document.getElementById('result');
+		resultButton.addEventListener('click', e => {
+			expect(checkValue(e)).toBe('Search results bookmark');
+		});
+		
+		resultButton.dispatchEvent(evt);
 	});
 });
