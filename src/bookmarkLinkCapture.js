@@ -1,7 +1,7 @@
 import { pushInDataLayer } from './modules/pushInDataLayer';
 import { capitalizeFirstLetter } from './modules/capitalizeFirstLetter';
 
-export const checkValue = ({ target }) => target.href.includes('result') ? capitalizeFirstLetter('search results bookmark') : capitalizeFirstLetter('catalogue description bookmark');
+export const checkValue = ({ target }) => target.getAttribute('href').includes('result') ? capitalizeFirstLetter('search results bookmark') : capitalizeFirstLetter('catalogue description bookmark');
 
 export const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
     if (typeof eventArg !== 'string' && typeof catArg !== 'string' && typeof actionArg !== 'string' && typeof labelArg !== 'string') {
