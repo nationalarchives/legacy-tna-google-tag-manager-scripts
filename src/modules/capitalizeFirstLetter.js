@@ -1,0 +1,1 @@
+export const capitalizeFirstLetter = string => typeof string !== 'string' ? null : string[0].toUpperCase() + string.slice(1);

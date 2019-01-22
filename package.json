@@ -1,51 +1,54 @@
 {
-  "name": "tna-google-tag-manager-scripts",
-  "version": "1.0.0",
-  "description": "## Development setup",
-  "private": true,
-  "scripts": {
-    "test": "jest --coverage",
-    "start": "webpack --watch --config webpack.config.js",
-    "build": "webpack --config webpack.config.js"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.js?$": "babel-jest"
-    },
-    "testURL": "http://localhost/"
-  },
-  "env": {
-    "jest": true
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://punalsc@github.com/nationalarchives/tna-google-tag-manager-scripts.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/nationalarchives/tna-google-tag-manager-scripts/issues"
-  },
-  "homepage": "https://github.com/nationalarchives/tna-google-tag-manager-scripts#readme",
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.40",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.40",
-    "@babel/polyfill": "^7.0.0-beta.40",
-    "@babel/preset-env": "^7.0.0-beta.40",
-    "@babel/preset-stage-0": "^7.0.0-beta.40",
-    "babel-core": "^6.26.3",
-    "babel-jest": "^23.0.1",
-    "babel-loader": "^7.1.4",
-    "babel-preset-env": "^1.7.0",
-    "eslint": "^5.1.0",
-    "eslint-loader": "^2.0.0",
-    "jest": "^23.1.0",
-    "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.8"
-  },
-  "dependencies": {
-    "eslint-plugin-jest": "^21.18.0",
-    "npm": "^6.5.0"
-  }
+	"name": "tna-google-tag-manager-scripts",
+	"version": "1.0.0",
+	"description": "## Development setup",
+	"private": true,
+	"scripts": {
+		"test": "jest --coverage",
+		"start": "webpack --watch --config webpack.config.js",
+		"build": "webpack --config webpack.config.js"
+	},
+	"jest": {
+		"transform": {
+			"^.+\\.js?$": "babel-jest"
+		},
+		"testURL": "http://localhost/"
+	},
+	"env": {
+		"jest": true
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://punalsc@github.com/nationalarchives/tna-google-tag-manager-scripts.git"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/nationalarchives/tna-google-tag-manager-scripts/issues"
+	},
+	"homepage": "https://github.com/nationalarchives/tna-google-tag-manager-scripts#readme",
+	"devDependencies": {
+		"@babel/cli": "^7.2.3",
+		"@babel/core": "^7.0.0-beta.40",
+		"@babel/plugin-proposal-export-default-from": "^7.0.0-beta.40",
+		"@babel/polyfill": "^7.0.0-beta.40",
+		"@babel/preset-env": "^7.0.0-beta.40",
+		"@babel/preset-stage-0": "^7.0.0-beta.40",
+		"babel-core": "^7.0.0-0",
+		"babel-jest": "^23.0.1",
+		"babel-loader": "^7.1.4",
+		"babel-plugin-array-includes": "^2.0.3",
+		"babel-plugin-loop-optimizer": "^1.4.1",
+		"babel-preset-env": "^1.7.0",
+		"eslint": "^5.1.0",
+		"eslint-loader": "^2.0.0",
+		"jest": "^23.1.0",
+		"webpack": "^4.12.0",
+		"webpack-cli": "^3.0.8"
+	},
+	"dependencies": {
+		"eslint-plugin-jest": "^21.18.0",
+		"npm": "^6.5.0"
+	}
 }
