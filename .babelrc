@@ -4,6 +4,7 @@
 	],
 	"plugins": [
 		"array-includes",
-		"babel-plugin-loop-optimizer"
+		"babel-plugin-loop-optimizer",
+		"@babel/plugin-transform-object-assign"
 	]
 }
