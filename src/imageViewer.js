@@ -2,12 +2,14 @@ import { controlObj } from './modules/imageViewer/imageControlSchema';
 import { getEventLabel } from './modules/imageViewer/eventLabel';
 import { pushInDataLayer } from './modules/pushInDataLayer';
 
+//polyfill for Element.matches in ie9 - 11 
 if (Element && !Element.prototype.matches) {
 	var proto = Element.prototype;
 	proto.matches = proto.matchesSelector ||
 		proto.mozMatchesSelector || proto.msMatchesSelector ||
 		proto.oMatchesSelector || proto.webkitMatchesSelector;
 }
+//END polyfill for Element.matches in ie9 - 11
 
 const handleEvent = (event) => {
 	if (event.target.nodeName === 'A' ||
