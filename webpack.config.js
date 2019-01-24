@@ -3,13 +3,13 @@ const path = require('path');
 module.exports = {
     entry:
         {
-            bannerClick: ['@babel/polyfill', './src/bannerClick.js'],
+            bannerClick: './src/bannerClick.js',
             formAbandonment: './src/formAbandonment.js',
-            ecommerceTracking: ['@babel/polyfill', './src/ecommerceTracking.js'],
+            ecommerceTracking: './src/ecommerceTracking.js',
             discoveryServerSide: './src/discoveryServerSide.js',
             homePage: './src/homePage.js',
             imageViewer: './src/imageViewer.js',
-            filterTracking: ['@babel/polyfill', './src/filterTracking.js'],
+            filterTracking: './src/filterTracking.js',
             bookmarkClick: './src/bookmarkLinkCapture.js'
         },
     output: {
