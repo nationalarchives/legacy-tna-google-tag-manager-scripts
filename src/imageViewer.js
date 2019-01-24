@@ -4,7 +4,7 @@ import { pushInDataLayer } from './modules/pushInDataLayer';
 
 //polyfill for Element.matches in ie9 - 11 
 if (Element && !Element.prototype.matches) {
-	var proto = Element.prototype;
+	let proto = Element.prototype;
 	proto.matches = proto.matchesSelector ||
 		proto.mozMatchesSelector || proto.msMatchesSelector ||
 		proto.oMatchesSelector || proto.webkitMatchesSelector;
