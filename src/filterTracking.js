@@ -4,14 +4,15 @@ import {checkFilters} from './modules/filterTracking/checkFilters';
 
 // Waits for the DOM to load before loading script
 document.addEventListener('DOMContentLoaded', () => {
-    // Grabs all filters
-    let filters = document.querySelectorAll('.filter-togglee');
+    // Grabs all filter forms
+    let filterForms = document.querySelectorAll('#search-filters form');
 
-    // Applies a click listener to all filters and pushes to the data layer
-    filters.forEach((filter) => {
-        filter.addEventListener('click', e => {
+    filterForms.forEach(form => {
+        form.addEventListener('click', function(e) {
             if (e.target.value === 'Refine') {
+                e.preventDefault();
                 pushInDataLayer(buildFilterTrackingObj(e.target.name, checkFilters(e.currentTarget)));
+                this.submit();
             }
         });
     });
