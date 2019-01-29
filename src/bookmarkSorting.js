@@ -1,4 +1,4 @@
-import { renderObjFunc } from './bookmarkLinkCapture';
+import renderObjFunc from '../src/modules/renderObjFunc';
 import { pushInDataLayer } from './modules/pushInDataLayer';
 
 const getOptionTextById = elementId => {
@@ -7,13 +7,11 @@ const getOptionTextById = elementId => {
         return null;
     } 
     return selectElement.options[selectElement.selectedIndex].text;
-    
 };
 
 document.addEventListener('DOMContentLoaded', () => {
     const sortingOption = document.getElementById('sortOptions');
     sortingOption.addEventListener('change', () =>{
-        //getOptionTextById('sortOptions');
-        pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', getOptionTextById('sortOptions')));
+        pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark sorting', getOptionTextById('sortOptions')));
     }, false);
 });
