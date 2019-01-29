@@ -66,7 +66,7 @@
     <![endif]-->
 	<!-- Google Tag Manager -->
 
-	<script src="../dist/bookmarkClick.bundle.js"></script>
+	<script src="../dist/bookmarkSorting.bundle.js"></script>
 
 	<script>
 		(function (w, d, s, l, i) {
@@ -123,11 +123,11 @@
 						<span class="accountSorter">
 							<span class="taggingSortOptions">
 								<label for="sortOptions">Sort</label>
-								<select id="sortOptions" name="sortOptions" onchange="document.location.href = '/Bookmark/Sort?o=' + this.options[this.selectedIndex].value + '&amp;n='">
-									<option value="">Select from list</option>
+								<select id="sortOptions" name="sortOptions">
+									<option selected="selected">Select from list</option>
 									<option value="CreatedAsc">Created Oldest</option>
 									<option value="CreatedDsc">Created Latest</option>
-									<option selected="selected" value="TitleAsc">Title (A-Z)</option>
+									<option value="TitleAsc">Title (A-Z)</option>
 									<option value="TitleDsc">Title (Z-A)</option>
 								</select>
 							</span>
