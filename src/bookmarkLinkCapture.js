@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	links.forEach(link => {
 		link.addEventListener('click', e => {
-			e.preventDefault();
 			pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
 		});
 	});

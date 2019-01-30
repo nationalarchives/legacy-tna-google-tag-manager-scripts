@@ -1,13 +1,6 @@
 import renderObjFunc from '../src/modules/renderObjFunc';
 import { pushInDataLayer } from './modules/pushInDataLayer';
-
-const getOptionTextById = elementId => {
-    const selectElement = document.getElementById(elementId);
-    if(selectElement.selectedIndex === -1){
-        return null;
-    } 
-    return selectElement.options[selectElement.selectedIndex].text;
-};
+import { getOptionTextById } from './modules/getOptionTextById';
 
 document.addEventListener('DOMContentLoaded', () => {
     const sortingOption = document.getElementById('sortOptions');
