@@ -10,7 +10,8 @@ module.exports = {
             homePage: './src/homePage.js',
             imageViewer: './src/imageViewer.js',
             filterTracking: './src/filterTracking.js',
-            bookmarkClick: './src/bookmarkLinkCapture.js'
+            bookmarkClick: './src/bookmarkLinkCapture.js',
+            bookmarkSorting: './src/bookmarkSorting.js'
         },
     output: {
         filename: '[name].bundle.js',
