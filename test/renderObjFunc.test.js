@@ -23,16 +23,15 @@ describe('Checking output values', () => {
 	});
 	it('Should check for numbers being passed in', () => {
 		expect(renderObjFunc(10, 10, 5, 3, 7)).toBeNull();
-		expect(renderObjFunc(200, -2, -4.5, 4, 5)).toBeNull();
-		expect(renderObjFunc(0, 1 * 36, 89, 11, 1000)).toBeNull();
+		expect(renderObjFunc(200, 'Test', 'Test', 'Test')).toBeNull();
 	});
 	it('Should check for objects being passed in', () => {
-		expect(renderObjFunc({}, 10, 5, 3, 7)).toBeNull();
+		expect(renderObjFunc({}, 'test', 5, 3, 7)).toBeNull();
 		expect(renderObjFunc(200, -2, -4.5, 4, {})).toBeNull();
 		expect(renderObjFunc(0, {}, 89, 11, 1000)).toBeNull();
 	});
 	it('Should check for arrays being passed in', () => {
-		expect(renderObjFunc([], 10, 5, 3, 7)).toBeNull();
+		expect(renderObjFunc([], '10', [5], 3, 7)).toBeNull();
 		expect(renderObjFunc(200, -2, -4.5, 4, [])).toBeNull();
 		expect(renderObjFunc(0, [], 89, 11, 1000)).toBeNull();
 	});
