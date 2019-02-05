@@ -6,10 +6,11 @@ export const checkValue = ({ target }) => target.getAttribute('href').includes('
 
 document.addEventListener('DOMContentLoaded', () => {
 	const links = document.querySelectorAll('#bookmarks .bookmarkMain a');
-
-	links.forEach(link => {
-		link.addEventListener('click', e => {
-			pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
+	if (links) {
+		links.forEach(link => {
+			link.addEventListener('click', e => {
+				pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
+			});
 		});
-	});
+	}
 });
