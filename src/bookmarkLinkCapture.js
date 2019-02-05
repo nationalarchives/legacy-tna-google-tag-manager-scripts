@@ -6,7 +6,7 @@ export const checkValue = ({ target }) => target.getAttribute('href').includes('
 
 document.addEventListener('DOMContentLoaded', () => {
 	const links = document.querySelectorAll('#bookmarks .bookmarkMain a');
-	if (links) {
+	if (links.length > 0) {
 		links.forEach(link => {
 			link.addEventListener('click', e => {
 				pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
