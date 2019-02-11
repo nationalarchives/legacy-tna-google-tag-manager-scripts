@@ -7,7 +7,7 @@
 		"test": "jest --coverage",
 		"start": "webpack --watch --config webpack.config.js",
 		"build": "webpack --config webpack.config.js",
-		"server": "nodemon server.js"
+		"gtm": "nodemon server.js"
 	},
 	"jest": {
 		"transform": {
