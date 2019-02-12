@@ -1,54 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<!-- <link rel="stylesheet" href="https://cdn.nationalarchives.gov.uk/tna-base/1.0/css/tna-base.min.css"> -->
-	<link rel="stylesheet" href="css/tna-base.min.css">
-	<link rel="stylesheet" href="css/style.css">
-	<title>GTM Tracking</title>
-</head>
+<%- include('includes/header'); -%>
 
-<body>
-	<header role="banner">
-		<a id="skip-to-main-content" href="#breadcrumb-holder">Skip to Main Content</a>
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-2 col-sm-5">
-					<a href="http://www.nationalarchives.gov.uk" title="Go to The National Archives homepage">
-						<img src="http://www.nationalarchives.gov.uk/wp-content/themes/tna-base/img/logo-white.png" alt="The National Archives"
-						 class="img-responsive">
-					</a>
-				</div>
-			</div>
-		</div>
-	</header>
+<!-- MAIN CONTENT HERE -->
+<%- defineContent('home') %>
 
-	<!-- MAIN CONTENT HERE -->
-	<%- defineContent('home') %>
-
-	<footer id="#footer">
-		<div class="container">
-			<div class="row">
-				<div class="col-xs-12 col-sm-9">
-					<a title="External website - opens in a new window" href="http://www.nationalarchives.gov.uk/doc/open-government-licence/">
-						<div class="icon icon-logo-ogl"></div>
-					</a>
-					<p>All content is available under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/">
-							Open Government Licence v3.0</a>,
-						<br>except where otherwise stated
-					</p>
-				</div>
-				<div class="col-xs-12 col-sm-3 text-right">
-					<a title="External website - opens in a new window" href="http://gov.uk/" target="_blank" rel="noopener noreferrer">
-						<div class="icon icon-logo-gov-uk"></div>
-					</a>
-				</div>
-			</div>
-		</div>
-	</footer>
-</body>
-
-</html>
+<%- include('includes/footer'); -%>
