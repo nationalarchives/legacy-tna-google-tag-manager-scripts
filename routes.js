@@ -9,6 +9,6 @@ const router = express.Router();
 module.exports = router;
 
 // route for our homepage
-router.get('/', function (req, res) {
+router.get('/', (req, res) => {
 	res.render('pages/home');
 });
