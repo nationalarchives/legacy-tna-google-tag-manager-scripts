@@ -1,6 +1,6 @@
 import{watermarkObject} from './watermarkObj';
 import{defaultDiscoveryServerSideObject} from './defaultDiscoveryServerSideObj';
-import{extractMetaTagContent} from './extractMetaTagContent';
+import{extractMetaTagContent} from '../extractMetaTagContent';
 
 export let buildObject = (watermarkPresent) => {
     let gtmDL;

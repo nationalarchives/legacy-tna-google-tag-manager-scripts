@@ -1,9 +1,9 @@
-import{buildObject} from '../src/modules/buildDiscoveryServerSideObj';
+import{buildObject} from '../src/modules/discoveryServerSide/buildDiscoveryServerSideObj';
 import{removeNullValues} from '../src/modules/removeNullValues';
-import{watermarkObject} from '../src/modules/watermarkObj';
-import{defaultDiscoveryServerSideObject} from '../src/modules/defaultDiscoveryServerSideObj';
+import{watermarkObject} from '../src/modules/discoveryServerSide/watermarkObj';
+import{defaultDiscoveryServerSideObject} from '../src/modules/discoveryServerSide/defaultDiscoveryServerSideObj';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
-import{watermarkCheck} from '../src/modules/watermarkCheck';
+import{watermarkCheck} from '../src/modules/discoveryServerSide/watermarkCheck';
 
 document.body.innerHTML =
     '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +

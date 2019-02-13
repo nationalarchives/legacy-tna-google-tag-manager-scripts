@@ -1,5 +1,5 @@
-import {watermarkCheck} from './modules/watermarkCheck';
-import {buildObject} from './modules/buildDiscoveryServerSideObj';
+import {watermarkCheck} from './modules/discoveryServerSide/watermarkCheck';
+import {buildObject} from './modules/discoveryServerSide/buildDiscoveryServerSideObj';
 import {removeNullValues} from './modules/removeNullValues';
 import {pushInDataLayer} from './modules/pushInDataLayer';
 
