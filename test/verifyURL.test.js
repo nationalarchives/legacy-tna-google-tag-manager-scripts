@@ -1,4 +1,4 @@
-import { verifyUrl } from '../src/modules/accountTracking/verifyURL';
+import { verifyUrl } from '../src/modules/discoveryServerSide/verifyURL';
 import { extractMetaTagContent } from '../src/modules/extractMetaTagContent';
 
 document.body.innerHTML = '<meta name="DCSext.signedin" content="signed-in" />';
