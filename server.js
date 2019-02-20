@@ -21,10 +21,10 @@ const router = require('./routes');
 app.use('/', router);
 
 // Set static files ( css & images etc )
-app.use(express.static(__dirname + '/assets'));
+app.use('/', express.static('assets'));
 
 // Set dist files
-app.use(express.static(__dirname + '/dist'));
+app.use('/', express.static('dist'));
 
 // Start the server
 app.listen(port, () => {
