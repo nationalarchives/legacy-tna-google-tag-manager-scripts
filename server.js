@@ -23,6 +23,9 @@ app.use('/', router);
 // Set static files ( css & images etc )
 app.use(express.static(__dirname + '/assets'));
 
+// Set dist files
+app.use(express.static(__dirname + '/dist'));
+
 // Start the server
 app.listen(port, () => {
     console.log('HTML only server is running');

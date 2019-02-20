@@ -14,6 +14,6 @@ router.get('/', (req, res) => {
 });
 
 // route for account bookmarks page
-router.get('/account', (req, res) => {
-    res.render('pages/account');
+router.get('/account/bookmarks', (req, res) => {
+    res.render('pages/account-bookmarks');
 });
