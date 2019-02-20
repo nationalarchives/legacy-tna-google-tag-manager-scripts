@@ -13,7 +13,7 @@ describe('Checks that the correct value is returned depending on the URL and log
     it('Should return customer account if the path /account/ is passed and the user is authenticated, else returns default value', () => {
         expect(verifyUrl(url, '/account/', signedIn, 'defaultValue')).toBe('Customer account');
         expect(verifyUrl(url, '/account/', notSignedIn, 'defaultValue')).toBe('defaultValue');
-        expect(verifyUrl(url, '/somepath/', notSignedIn, 'defaultValue')).toBe('defaultValue');
+        expect(verifyUrl(url, '/somepath/', signedIn, 'defaultValue')).toBe('defaultValue');
     });
 });
 
