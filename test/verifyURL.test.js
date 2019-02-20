@@ -10,7 +10,7 @@ let signedIn = extractMetaTagContent('DCSext\\.signedin');
 let notSignedIn = extractMetaTagContent('DCSext\\.notsignedin');
 
 describe('Checks that the correct value is returned depending on the URL and login status', () => {
-    it('Should return customer account if the path /account/ is passed and the user is authenicated, else returns default value', () => {
+    it('Should return customer account if the path /account/ is passed and the user is authenticated, else returns default value', () => {
         expect(verifyUrl(url, '/account/', signedIn, 'defaultValue')).toBe('Customer account');
         expect(verifyUrl(url, '/account/', notSignedIn, 'defaultValue')).toBe('defaultValue');
         expect(verifyUrl(url, '/somepath/', notSignedIn, 'defaultValue')).toBe('defaultValue');
