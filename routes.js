@@ -10,5 +10,10 @@ module.exports = router;
 
 // route for our homepage
 router.get('/', (req, res) => {
-	res.render('pages/home');
+    res.render('pages/home');
+});
+
+// route for account bookmarks page
+router.get('/account/bookmarks', (req, res) => {
+    res.render('pages/account-bookmarks');
 });
