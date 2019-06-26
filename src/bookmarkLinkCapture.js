@@ -5,12 +5,12 @@ import renderObjFunc from '../src/modules/renderObjFunc';
 export const checkValue = ({ target }) => target.getAttribute('href').includes('result') ? capitalizeFirstLetter('search results bookmark') : capitalizeFirstLetter('catalogue description bookmark');
 
 document.addEventListener('DOMContentLoaded', () => {
-	const links = document.querySelectorAll('#bookmarks .bookmarkMain a');
-	if (links.length > 0) {
-		links.forEach(link => {
-			link.addEventListener('click', e => {
-				pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
-			});
-		});
-	}
+    const links = document.querySelectorAll('#bookmarks .bookmarkMain a');
+    if (links.length > 0) {
+        links.forEach(link => {
+            link.addEventListener('click', e => {
+                pushInDataLayer(renderObjFunc('discovery', 'discovery', 'bookmark link', checkValue(e)));
+            });
+        });
+    }
 });
