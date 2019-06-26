@@ -1,6 +1,6 @@
 import { pushInDataLayer } from './modules/pushInDataLayer';
 import { capitalizeFirstLetter } from './modules/capitalizeFirstLetter';
-import renderObjFunc from '../src/modules/renderObjFunc';
+import { renderObjFunc } from '../src/modules/renderObjFunc';
 
 export const checkValue = ({ target }) => target.getAttribute('href').includes('result') ? capitalizeFirstLetter('search results bookmark') : capitalizeFirstLetter('catalogue description bookmark');
 

@@ -1,4 +1,4 @@
-import renderObjFunc from '../src/modules/renderObjFunc';
+import { renderObjFunc } from '../src/modules/renderObjFunc';
 import { pushInDataLayer } from './modules/pushInDataLayer';
 import { getOptionTextById } from './modules/getOptionTextById';
 

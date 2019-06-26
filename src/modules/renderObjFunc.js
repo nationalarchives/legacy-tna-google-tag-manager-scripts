@@ -1,6 +1,6 @@
 import { capitalizeFirstLetter } from './capitalizeFirstLetter';
 
-const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
+export const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
     if (typeof eventArg !== 'string' || typeof catArg !== 'string' || typeof actionArg !== 'string' || typeof labelArg !== 'string') {
         return null;
     }
@@ -11,5 +11,3 @@ const renderObjFunc = (eventArg, catArg, actionArg, labelArg) => {
         'eventLabel': labelArg
     };
 };
-
-module.exports = renderObjFunc;
