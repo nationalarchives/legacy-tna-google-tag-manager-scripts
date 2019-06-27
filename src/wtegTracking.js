@@ -6,8 +6,8 @@ import{baseWTEGObjFunc} from './modules/baseWTEGPromoObj';
 
 // Wait for the DOM to load
 window.addEventListener('DOMContentLoaded', () => {
-    let wtegButton = document.querySelector('#wte-show-button');
-    let imgViewerLink = document.querySelector('#imageViewerLink');
+    let wtegButton = document.getElementById('wte-show-button');
+    let imgViewerLink = document.getElementById('imageViewerLink');
 
     // Build promotion object on page load
     let gtmObj = baseWTEGObjFunc('wteg', extractMetaTagContent('Dcsext\\.wteg'), 'Expanding button', 'Below catalogue description');
