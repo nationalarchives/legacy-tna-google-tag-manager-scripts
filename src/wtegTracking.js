@@ -2,19 +2,11 @@ import{extractMetaTagContent} from './modules/extractMetaTagContent';
 import{promoObjFunc} from './modules/promoObj';
 import{pushInDataLayer} from './modules/pushInDataLayer';
 import{watermarkCheck} from './modules/discoveryServerSide/watermarkCheck';
-import{baseWTEGObjFunc} from './modules/baseWTEGPromoObj';
 
 // Wait for the DOM to load
 window.addEventListener('DOMContentLoaded', () => {
     let wtegButton = document.getElementById('wte-show-button');
     let imgViewerLink = document.getElementById('imageViewerLink');
-    let wtegMetaTag = document.querySelector('meta[name = DCSext\\.wteg]');
-
-    if(wtegMetaTag !== null) {
-        // Build promotion object on page load
-        let gtmObj = baseWTEGObjFunc('wteg', extractMetaTagContent('DCSext\\.wteg'), 'Expanding button', 'Below catalogue description');
-        pushInDataLayer(gtmObj);
-    }
 
     if(wtegButton !== null) {
         // Add an event listener to the WTEG button to detect when it is expanded

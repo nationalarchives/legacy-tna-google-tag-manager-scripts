@@ -24,7 +24,6 @@
     <meta name="DC.description" content="The National Archives is the UK government's official archive. Our main duties are to preserve Government records and to set standards in information management and re-use." />
     <meta name="eGMS.subject.category" scheme="GCL" content="Libraries and archives" />
     <meta name="DCSext.wteg" content="What to expect guide" />
-    <meta name="DCSext.imgviewer" content="Image Viewer Watermarked">
 
     <meta name="DCSext.signedin" content="Not signed-in" />
     <meta name="DCSext.subscription" content="not subscribed" />
@@ -66,8 +65,9 @@
     <script src="https://discovery.nationalarchives.gov.uk:443/Scripts/respond.min.js"></script>
     <![endif]-->
     <!-- Google Tag Manager -->
-    <script src="https://discovery.nationalarchives.gov.uk:443/Scripts/GoogleTagManager/discoveryServerSideGTM.min.js"></script>
+    <!--<script src="https://discovery.nationalarchives.gov.uk:443/Scripts/GoogleTagManager/discoveryServerSideGTM.min.js"></script>-->
     <script src="../dist/wtegTracking.bundle.js"></script>
+    <script src="../dist/discoveryServerSide.bundle.js"></script>
     <script>
 		(function (w, d, s, l, i) {
 			w[l] = w[l] || []; w[l].push({
@@ -349,7 +349,7 @@
                     </div>
 
                     <p>With each download, you will typically see a unit diary that may cover a period of several years. This may be divided into several PDF files, which you can save to your computer. You can then scroll through the PDF files to locate the batallion and dates that you are interested in.</p>
-                    <button class="discoveryPrimaryCallToActionLink">Read more...</button><div class="supplemental" style="display: none;">
+                    <button id="wte-show-button" class="discoveryPrimaryCallToActionLink">Read more...</button><div class="supplemental" style="display: none;">
                     <h3>What do the records look like?</h3>
                     <p>Many of the war diaries were scribbled hastily in pencil and use obscure abbreviations, whilst some are the second carbon copy of the original, so they may be difficult to read.</p>
                     <h3>What information do the records contain?</h3>
