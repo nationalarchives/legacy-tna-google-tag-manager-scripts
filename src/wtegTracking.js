@@ -5,13 +5,13 @@ import{watermarkCheck} from './modules/discoveryServerSide/watermarkCheck';
 
 // Wait for the DOM to load
 window.addEventListener('DOMContentLoaded', () => {
-    let wtegButton = document.getElementById('wte-show-button');
+    let wtegReadMore = document.getElementById('expand-supplemental');
     let imgViewerLink = document.getElementById('imageViewerLink');
 
-    if(wtegButton !== null) {
+    if(wtegReadMore !== null) {
         // Add an event listener to the WTEG button to detect when it is expanded
         // Remove the event listener after the first click
-        wtegButton.addEventListener('click', function handleClick(e) {
+        wtegReadMore.addEventListener('click', function handleClick(e) {
             let gtmObj = promoObjFunc('promotionClick', 'wteg', extractMetaTagContent('DCSext\\.wteg'), 'Expanding button', 'Below catalogue description', 'promotionClick');
             pushInDataLayer(gtmObj);
             this.removeEventListener('click', handleClick, false);
