@@ -8,13 +8,13 @@ export let verifyEvent = (step) => {
 
     //Checks the step of the ecommerce user journey and sets the ecommerce event accordingly
     switch(step){
-    case 'Step 1':
+    case '1':
         ecommerceEvent = 'checkout';
         break;
-    case 'Step 2':
+    case '2':
         ecommerceEvent = 'checkout';
         break;
-    case 'Step 4':
+    case '4':
         ecommerceEvent = 'checkoutOption';
         break;
     default:

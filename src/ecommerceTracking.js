@@ -13,8 +13,8 @@ import{splitToArray} from './modules/ecommerceTracking/splitToArray';
 import{populateActionField} from './modules/ecommerceTracking/populateActionField';
 import{pushInDataLayer} from './modules/pushInDataLayer';
 
-//Extracts the current step of the payment process
-let step = extractMetaTagContent('WT\\.si_p');
+//Extracts the current step number of the payment process
+let step = extractMetaTagContent('WT\\.si_p').split(' ')[1];
 
 //Creates an array from the 'content' attribute, using the semi-colon as a delimiter
 let categoriesArray = splitToArray(extractMetaTagContent('WT\\.pn_fa'));
@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Checks which step of the journey the user has reached. Step 3 is handled differently as it is a click only event
-if (step && step === 'Step 1' || step === 'Step 2' || step === 'Step 4') {
+if (step && step === '1' || step === '2' || step === '4') {
     let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
     pushInDataLayer(removeNullValues(buildEcommerceObj(
         verifyEvent(step),

@@ -19,7 +19,7 @@ export let buildProductsObjArray = (names, productsArray, pricesArray, categorie
                 'price': pricesArray[i],
                 'brand': extractMetaTagContent('WT\\.pn_gr'),
                 'category': categoriesArray[i],
-                'variant': productsArray[i],
+                'id': productsArray[i],
                 'quantity': quantities[productsArray[i].split(',')[0]].length
             });
         }
