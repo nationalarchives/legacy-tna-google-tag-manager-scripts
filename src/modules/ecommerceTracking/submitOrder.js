@@ -12,7 +12,7 @@ export let submitOrder = (productsObjArray) => {
     return () => {
         let ecommerceEvent = 'transaction';
         let ecommerceOption = 'checkout';
-        let step = 'Step 3';
+        let step = '3';
         let{id, affiliation, revenue, tax, shipping} = populateActionField(step);
 
         //Build object and push object to data layer
