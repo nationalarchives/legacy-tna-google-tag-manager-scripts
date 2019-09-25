@@ -12,7 +12,8 @@ module.exports = {
             filterTracking: './src/filterTracking.js',
             bookmarkClick: './src/bookmarkLinkCapture.js',
             bookmarkSorting: './src/bookmarkSorting.js',
-            wtegTracking: './src/wtegTracking.js'
+            wtegTracking: './src/wtegTracking.js',
+            otherArchivesTracking: './src/otherArchivesTracking.js'
         },
     output: {
         filename: '[name].bundle.js',
