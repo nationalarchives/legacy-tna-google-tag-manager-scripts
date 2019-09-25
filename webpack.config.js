@@ -13,7 +13,7 @@ module.exports = {
             bookmarkClick: './src/bookmarkLinkCapture.js',
             bookmarkSorting: './src/bookmarkSorting.js',
             wtegTracking: './src/wtegTracking.js',
-            otherArchivesTracking: './src/otherArchivesTracking.js'
+            otherArchivesRecordsTracking: './src/otherArchivesRecordsTracking.js'
         },
     output: {
         filename: '[name].bundle.js',
