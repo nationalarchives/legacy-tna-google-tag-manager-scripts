@@ -13,4 +13,8 @@ describe('Checking the word in string', () => {
 		expect(checkWord('version', 1)).toBe(false);
 		expect(checkWord(1, 1)).toBe(false);
 	});
+	it('Should check if id exists', () => {
+		expect(checkWord('versions', 'Hey')).toBe(false);
+		expect(checkWord('version', 'Hey')).toBe(true);
+	});
 });
