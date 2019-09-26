@@ -12,11 +12,12 @@ describe('Check for empty fields', () => {
 	const field1 = document.getElementById('inputField-1');
 	const field2 = document.getElementById('inputField-2');
 	it('Should check for empty fields', () => {
-		expect(checkEmptyField(field2)).toBe(false);
-		expect(checkEmptyField(field1)).toBeTruthy();
+		expect(checkEmptyField(field2)).toBe('No');
+		expect(checkEmptyField(field1)).toBe('Yes');
 	});
 	it('Should check the type passed as parameter', () => {
 		expect(checkEmptyField('hello')).toBeNull();
 		expect(checkEmptyField(1)).toBeNull();
+		expect(checkEmptyField({})).not.toBeNull();
 	});
 });
