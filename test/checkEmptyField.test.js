@@ -1,5 +1,4 @@
 import { checkEmptyField } from '../src/modules/checkEmptyField';
-import { type } from 'os';
 
 // Define the DOM
 document.body.innerHTML = `
