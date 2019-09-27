@@ -27,7 +27,7 @@ window.addEventListener('DOMContentLoaded', () => {
 				'text'
 			)}) > (${heldById} : ${getOptionTextById(heldById)})`;
 
-		searchFrom.addEventListener('submit', e => {
+		searchFrom.addEventListener('submit', () => {
 			if (error.children.length === 0) {
 				pushInDataLayer(
 					renderObjFunc(
@@ -38,7 +38,6 @@ window.addEventListener('DOMContentLoaded', () => {
 					)
 				);
 			}
-			e.preventDefault();
 		});
 	}
 });
