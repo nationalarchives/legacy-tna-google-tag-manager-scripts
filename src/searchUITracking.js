@@ -1,6 +1,7 @@
 import { checkEmptyField } from './modules/checkEmptyField';
 import { renderObjFunc } from './modules/renderObjFunc';
-//import { pushInDataLayer } from './modules/pushInDataLayer';
+import { getOptionTextById } from './modules/getOptionTextById';
+import { pushInDataLayer } from './modules/pushInDataLayer';
 
 window.addEventListener('DOMContentLoaded', () => {
 	if (document.getElementById('discovery-home-page-search')) {
@@ -8,19 +9,27 @@ window.addEventListener('DOMContentLoaded', () => {
 		const searchFor = document.getElementById('search-for');
 		const startDate = document.getElementById('start-date');
 		const endDate = document.getElementById('end-date');
-		const heldby = document.getElementById('held-by');
+		const heldBy = document.getElementById('held-by');
 		const error = document.querySelector('#discovery-home-page-search .Headline');
+		const searchForId = searchFor.getAttribute('id');
+		const startDateId = startDate.getAttribute('id');
+		const endDateId = endDate.getAttribute('id');
+		const heldById = heldBy.getAttribute('id');
 		const eventLabel = () =>
-			`(${searchFor.getAttribute('id')} : ${checkEmptyField(
-				searchFor
-			)}) > (${startDate.getAttribute('id')} : ${checkEmptyField(
-				startDate
-			)}) > (${endDate.getAttribute('id')} : ${checkEmptyField(endDate)})`;
-
+			`(${searchForId} : ${checkEmptyField(
+				searchFor,
+				'text'
+			)}) > (${startDateId} : ${checkEmptyField(
+				startDate,
+				'text'
+			)}) > (${endDateId} : ${checkEmptyField(
+				endDate,
+				'text'
+			)}) > (${heldById} : ${getOptionTextById(heldById)})`;
 
 		searchFrom.addEventListener('submit', e => {
 			if (error.children.length === 0) {
-				console.log(
+				pushInDataLayer(
 					renderObjFunc(
 						'Discovery search',
 						'Discovery homepage search',
