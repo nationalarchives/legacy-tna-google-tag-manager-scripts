@@ -4,24 +4,37 @@ import{watermarkObject} from '../src/modules/discoveryServerSide/watermarkObj';
 import{defaultDiscoveryServerSideObject} from '../src/modules/discoveryServerSide/defaultDiscoveryServerSideObj';
 import{extractMetaTagContent} from '../src/modules/extractMetaTagContent';
 import{watermarkCheck} from '../src/modules/discoveryServerSide/watermarkCheck';
+import {otherArchivesObj} from '../src/modules/otherArchivesObj';
 
-document.body.innerHTML =
-    '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
-    //<meta name="WT.cg_n" content="View records of other archives">
-    '<meta name="DCSext.filtertype" content="Date">' +
-    '<meta name="DCSext.searchtype" content="Records filtered search">' +
-    '<meta name="DCSext.colltype" content="NRA" />' +
-    '<meta name="DCSext.dsource" content="MDR" />' +
-    '<meta name="DCSext.place" content="Hornby, Yorkshire" />' +
-    '<meta name="DCSext.rdata" content="GB/NNAF/M172908">' +
-    '<meta name="DCSext.repository" content="London Metropolitan Archives" />' +
-    '<meta name="WT.cg_n" content="View TNA record description">' +
-    '<meta name="DCSext.docref" content="Division within WO">' +
+let initialiseDOM = () => {
+    document.body.innerHTML =
+        '<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>' +
+        '<meta name="DCSext.filtertype" content="Date">' +
+        '<meta name="DCSext.searchtype" content="Records filtered search">' +
+        '<meta name="DCSext.place" content="Hornby, Yorkshire" />' +
+        '<meta name="DCSext.rdata" content="GB/NNAF/M172908">' +
+        '<meta name="DCSext.repository" content="London Metropolitan Archives" />' +
+        '<meta name="WT.cg_n" content="View TNA record description">' +
+        '<meta name="DCSext.docref" content="Division within WO">' +
 
-    //Stage 1 Default
-    '<meta name="DCSext.signedin" content="Not signed-in" />' +
-    '<meta name="DCSext.subscription" content="not subscribed">' +
-    '<meta name="DCSext.imgviewer" content="Image Viewer Watermarked">';
+        //Stage 1 Default
+        '<meta name="DCSext.signedin" content="Not signed-in" />' +
+        '<meta name="DCSext.subscription" content="not subscribed">' +
+        '<meta name="DCSext.imgviewer" content="Image Viewer Watermarked">';
+
+};
+
+let addMetaTag = (metaTag, name, content) => {
+    let body = document.querySelector('body');
+    metaTag = document.createElement('meta');
+    metaTag.setAttribute('name', name);
+    metaTag.setAttribute('content', content);
+    body.appendChild(metaTag);
+};
+
+beforeEach(() => {
+    initialiseDOM();
+});
 
 describe('Gets meta tag content', () => {
     it('Should return value of content attribute', () => {
@@ -67,11 +80,27 @@ describe('Checking that null values are removed', () => {
 
 describe('Checking the correct elements are added/subtracted from the object', () => {
     it('Should return ecommerce if the watermark exists, else excludes it', () => {
-        expect(buildObject(true)).toEqual(Object.assign(watermarkObject('ivp', extractMetaTagContent(
-            'DCSext\\.imgviewer'), 'Image viewer', 'Below record description'), defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'),
-            extractMetaTagContent('DCSext\\.docref'), extractMetaTagContent('DCSext\\.subscription'),
-            extractMetaTagContent('DCSext\\.signedin'))));
-        expect(buildObject(false)).toEqual(defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'), extractMetaTagContent('DCSext\\.docref'), extractMetaTagContent('DCSext\\.subscription'), extractMetaTagContent('DCSext\\.signedin')));
+        expect(buildObject(true)).toEqual(Object.assign(
+            watermarkObject(
+                'ivp',
+                extractMetaTagContent('DCSext\\.imgviewer'),
+                'Image viewer',
+                'Below record description'
+            ),
+            defaultDiscoveryServerSideObject(extractMetaTagContent('WT\\.cg_n'),
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        ));
+        expect(buildObject(false)).toEqual(
+            defaultDiscoveryServerSideObject(
+                extractMetaTagContent('WT\\.cg_n'),
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        );
     });
 });
 
@@ -117,5 +146,62 @@ describe('Checking the response depending on whether a watermark exists or not',
     it('Should return true if watermark exists, else return false', () => {
         expect(watermarkCheck('DCSext\\.imgviewer')).toBeTruthy();
         expect(watermarkCheck('metaTagDoesNotExist')).toBeFalsy();
+    });
+});
+
+describe('Checking the correct elements are added/subtracted from the other archives object', () => {
+    it('Should append otherArchivesObj to discoveryServerSideObj with the colltype value', () => {
+        let colltypeMetaTag;
+        addMetaTag(colltypeMetaTag, 'DCSext.colltype', 'NRA');
+
+        expect(buildObject(false)).toEqual(Object.assign(
+            otherArchivesObj(
+                extractMetaTagContent('DCSext\\.colltype'),
+                extractMetaTagContent('DCSext\\.place'),
+                extractMetaTagContent('DCSext\\.rdata'),
+                extractMetaTagContent('DCSext\\.reposlocate')
+            ),
+            defaultDiscoveryServerSideObject(
+                extractMetaTagContent('WT\\.cg_n'),
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        ));
+    });
+
+    it('Should append otherArchivesObj to discoveryServerSideObj with the dsource value', () => {
+        let dsourceMetaTag;
+        addMetaTag(dsourceMetaTag, 'DCSext.dsource', 'Manor');
+
+        expect(buildObject(false)).toEqual(Object.assign(
+            otherArchivesObj(
+                extractMetaTagContent('DCSext\\.dsource'),
+                extractMetaTagContent('DCSext\\.place'),
+                extractMetaTagContent('DCSext\\.rdata'),
+                extractMetaTagContent('DCSext\\.reposlocate')
+            ),
+            defaultDiscoveryServerSideObject(
+                extractMetaTagContent('WT\\.cg_n'),
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        ));
+    });
+});
+
+describe('Checking the other archives object has correct properties and value types', () => {
+    it('Should have the defined property', () => {
+        expect(otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension4');
+        expect(otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension5');
+        expect(otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension6');
+        expect(otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4')).toHaveProperty('customDimension7');
+    });
+    it('Should have the defined value types', () => {
+        expect(typeof otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4').customDimension4).toBe('string');
+        expect(typeof otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4').customDimension5).toBe('string');
+        expect(typeof otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4').customDimension6).toBe('string');
+        expect(typeof otherArchivesObj('arg1', 'arg2', 'arg3', 'arg4').customDimension7).toBe('string');
     });
 });

@@ -3,11 +3,14 @@ import{baseWTEGObjFunc} from '../baseWTEGPromoObj';
 import{defaultDiscoveryServerSideObject} from './defaultDiscoveryServerSideObj';
 import{extractMetaTagContent} from '../extractMetaTagContent';
 import{verifyUrl} from './verifyURL';
+import{otherArchivesObj} from '../otherArchivesObj';
 
 export let buildObject = (watermarkPresent) => {
     let gtmDL;
     let contentGroup = verifyUrl(window.location.pathname, '/account/', extractMetaTagContent('DCSext\\.signedin'), extractMetaTagContent('WT\\.cg_n'));
     let wtegMetaTag = document.querySelector('meta[name = DCSext\\.wteg]');
+    let dsource = extractMetaTagContent('DCSext\\.dsource');
+    let colltype = extractMetaTagContent('DCSext\\.colltype');
 
     if (watermarkPresent) {
         gtmDL = Object.assign(
@@ -23,6 +26,38 @@ export let buildObject = (watermarkPresent) => {
             baseWTEGObjFunc('wteg', extractMetaTagContent('DCSext\\.wteg'), 'Expanding button', 'Below catalogue description'),
             defaultDiscoveryServerSideObject(contentGroup,
                 extractMetaTagContent('DCSext\\.docref'), extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        );
+    }
+    else if(colltype !== null){
+        gtmDL = Object.assign(
+            otherArchivesObj(
+                colltype,
+                extractMetaTagContent('DCSext\\.place'),
+                extractMetaTagContent('DCSext\\.rdata'),
+                extractMetaTagContent('DCSext\\.reposlocate')
+            ),
+            defaultDiscoveryServerSideObject(
+                contentGroup,
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
+                extractMetaTagContent('DCSext\\.signedin')
+            )
+        );
+    }
+    else if(dsource !== null){
+        gtmDL = Object.assign(
+            otherArchivesObj(
+                dsource,
+                extractMetaTagContent('DCSext\\.place'),
+                extractMetaTagContent('DCSext\\.rdata'),
+                extractMetaTagContent('DCSext\\.reposlocate')
+            ),
+            defaultDiscoveryServerSideObject(
+                contentGroup,
+                extractMetaTagContent('DCSext\\.docref'),
+                extractMetaTagContent('DCSext\\.subscription'),
                 extractMetaTagContent('DCSext\\.signedin')
             )
         );
