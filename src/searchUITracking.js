@@ -1,4 +1,5 @@
 import { checkEmptyField } from './modules/checkEmptyField';
+import { renderObjFunc } from './modules/renderObjFunc';
 //import { pushInDataLayer } from './modules/pushInDataLayer';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -9,23 +10,24 @@ window.addEventListener('DOMContentLoaded', () => {
 		const endDate = document.getElementById('end-date');
 		const heldby = document.getElementById('held-by');
 		const error = document.querySelector('#discovery-home-page-search .Headline');
+		const eventLabel = () =>
+			`(${searchFor.getAttribute('id')} : ${checkEmptyField(
+				searchFor
+			)}) > (${startDate.getAttribute('id')} : ${checkEmptyField(
+				startDate
+			)}) > (${endDate.getAttribute('id')} : ${checkEmptyField(endDate)})`;
 
-		const successObj = () => {
-			return {
-				event: 'Discovery search',
-				eventCategory: 'Discovery homepage search',
-				eventAction: 'Successful search',
-				eventLabel: `(${searchFor.getAttribute('id')} : ${checkEmptyField(
-					searchFor
-				)}) > (${startDate.getAttribute('id')} : ${checkEmptyField(
-					startDate
-				)}) > (${endDate.getAttribute('id')} : ${checkEmptyField(endDate)})`
-			};
-		};
 
 		searchFrom.addEventListener('submit', e => {
 			if (error.children.length === 0) {
-				console.log(successObj());
+				console.log(
+					renderObjFunc(
+						'Discovery search',
+						'Discovery homepage search',
+						'Successful search',
+						eventLabel()
+					)
+				);
 			}
 			e.preventDefault();
 		});
