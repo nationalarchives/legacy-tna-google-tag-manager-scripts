@@ -41,7 +41,14 @@ window.addEventListener('DOMContentLoaded', () => {
 			}
 		});
 		if (error.children.length >= 1) {
-			console.log('Error');
+			console.log(
+				renderObjFunc(
+					'Discovery search',
+					'Discovery homepage search',
+					'Search errors',
+					'Error'
+				)
+			);
 		}
 	}
 });
