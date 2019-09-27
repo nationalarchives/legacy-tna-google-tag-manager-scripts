@@ -51,6 +51,11 @@
                     action="/results/r">
                     <div class="grid-container" role="search">
                         <div class="Headline">
+                            <div class="validation-summary-errors emphasis-block" data-valmsg-summary="true" role="alert">
+                                <ul>
+                                    <li>Enter keyword or catalogue reference.</li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="MainSearch">
                             <label for="search-for">
@@ -65,14 +70,16 @@
                             <label for="start-date">Between</label>
                             <input aria-describedby="between" id="start-date"
                                 name="_sd" placeholder="yyyy" size="10"
-                                style="margin-top:15px;" type="text" value="">
+                                style="margin-top:15px;" type="text" value=""
+                                class="hp-search-error">
                             <span id="between">This is a between text field</span>
                         </div>
                         <div class="InputAnd">
                             <label for="end-date">and</label>
                             <input aria-describedby="and" id="end-date"
                                 name="_ed" placeholder="yyyy" size="10"
-                                style="margin-top:15px;" type="text" value="">
+                                style="margin-top:15px;" type="text" value=""
+                                class="hp-search-error">
                             <span id="and">This is a between text field</span>
                         </div>
                         <div class="InputAcross">
