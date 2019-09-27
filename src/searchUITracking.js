@@ -16,16 +16,16 @@ window.addEventListener('DOMContentLoaded', () => {
 			endDateId = endDate.getAttribute('id'),
 			heldById = heldBy.getAttribute('id'),
 			eventLabel = () =>
-				`(${searchForId} : ${checkEmptyField(
+				`${searchForId} : ${checkEmptyField(
 					searchFor,
 					'text'
-				)}) > (${startDateId} : ${checkEmptyField(
+				)} > ${startDateId} : ${checkEmptyField(
 					startDate,
 					'text'
-				)}) > (${endDateId} : ${checkEmptyField(
+				)} > ${endDateId} : ${checkEmptyField(
 					endDate,
 					'text'
-				)}) > (${heldById} : ${getOptionTextById(heldById)})`;
+				)} > ${heldById} : ${getOptionTextById(heldById)}`;
 
 		searchFrom.addEventListener('submit', e => {
 			if (error.children.length === 0) {
