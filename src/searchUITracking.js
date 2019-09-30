@@ -7,16 +7,6 @@ window.addEventListener('DOMContentLoaded', () => {
 	if (document.getElementById('discovery-home-page-search')) {
 		const error = document.querySelector('#discovery-home-page-search .Headline');
 
-		let errorMessages, errorString;
-
-		if (error.children.length >= 1) {
-			errorMessages = error.querySelector('.validation-summary-errors ul li')
-				.innerHTML;
-			errorString = [...document.querySelectorAll('.hp-search-error')]
-				.map(error => error.getAttribute('id') + ':' + errorMessages)
-				.join(' > ');
-		}
-
 		const searchForm = document.querySelector('#discovery-home-page-search'),
 			searchFor = document.getElementById('search-for'),
 			searchForId = searchFor.getAttribute('id');
@@ -52,12 +42,19 @@ window.addEventListener('DOMContentLoaded', () => {
 			);
 		};
 
-		if (error.children.length === 0) {
-			searchForm.addEventListener('submit', submitObj);
-			searchForm.removeEventListener('submit', submitObj);
-		}
+		searchForm.addEventListener('submit', submitObj);
 
 		if (error.children.length >= 1) {
+			let errorMessages, errorString;
+
+			if (error.children.length >= 1) {
+				errorMessages = error.querySelector('.validation-summary-errors ul li')
+					.innerHTML;
+				errorString = [...document.querySelectorAll('.hp-search-error')]
+					.map(error => error.getAttribute('id') + ':' + errorMessages)
+					.join(' > ');
+			}
+
 			pushInDataLayer(
 				renderObjFunc(
 					'Discovery search',
