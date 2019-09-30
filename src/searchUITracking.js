@@ -5,48 +5,65 @@ import { pushInDataLayer } from './modules/pushInDataLayer';
 
 window.addEventListener('DOMContentLoaded', () => {
 	if (document.getElementById('discovery-home-page-search')) {
-		const searchFrom = document.querySelector('#discovery-home-page-search'),
-			searchFor = document.getElementById('search-for'),
-			startDate = document.getElementById('start-date'),
-			endDate = document.getElementById('end-date'),
-			heldBy = document.getElementById('held-by'),
-			error = document.querySelector('#discovery-home-page-search .Headline'),
-			searchForId = searchFor.getAttribute('id'),
-			startDateId = startDate.getAttribute('id'),
-			endDateId = endDate.getAttribute('id'),
-			heldById = heldBy.getAttribute('id'),
-			eventLabel = () =>
-				`${searchForId}:${checkEmptyField(
-					searchFor,
-					'text'
-				)} > ${startDateId}:${checkEmptyField(
-					startDate,
-					'text'
-				)} > ${endDateId}:${checkEmptyField(
-					endDate,
-					'text'
-				)} > ${heldById}:${getOptionTextById(heldById)}`;
+		const error = document.querySelector('#discovery-home-page-search .Headline');
 
-		searchFrom.addEventListener('submit', e => {
-			if (error.children.length === 0) {
-				pushInDataLayer(
-					renderObjFunc(
-						'Discovery search',
-						'Discovery homepage search',
-						'Search submitted',
-						eventLabel()
-					)
-				);
-				e.preventDefault();
-			}
-		});
+		let errorMessages, errorString;
+
 		if (error.children.length >= 1) {
-			console.log(
+			errorMessages = error.querySelector('.validation-summary-errors ul li')
+				.innerHTML;
+			errorString = [...document.querySelectorAll('.hp-search-error')]
+				.map(error => error.getAttribute('id') + ':' + errorMessages)
+				.join(' > ');
+		}
+
+		const searchForm = document.querySelector('#discovery-home-page-search'),
+			searchFor = document.getElementById('search-for'),
+			searchForId = searchFor.getAttribute('id');
+
+		const startDate = document.getElementById('start-date'),
+			startDateId = startDate.getAttribute('id'),
+			endDate = document.getElementById('end-date'),
+			endDateId = endDate.getAttribute('id');
+
+		const heldBy = document.getElementById('held-by'),
+			heldById = heldBy.getAttribute('id');
+
+		const eventLabel = () =>
+			`${searchForId}:${checkEmptyField(
+				searchFor,
+				'text'
+			)} > ${startDateId}:${checkEmptyField(
+				startDate,
+				'text'
+			)} > ${endDateId}:${checkEmptyField(
+				endDate,
+				'text'
+			)} > ${heldById}:${getOptionTextById(heldById)}`;
+
+		const submitObj = () => {
+			pushInDataLayer(
+				renderObjFunc(
+					'Discovery search',
+					'Discovery homepage search',
+					'Search submitted',
+					eventLabel()
+				)
+			);
+		};
+
+		if (error.children.length === 0) {
+			searchForm.addEventListener('submit', submitObj);
+			searchForm.removeEventListener('submit', submitObj);
+		}
+
+		if (error.children.length >= 1) {
+			pushInDataLayer(
 				renderObjFunc(
 					'Discovery search',
 					'Discovery homepage search',
 					'Search errors',
-					'Error'
+					errorString
 				)
 			);
 		}
