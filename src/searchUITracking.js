@@ -43,26 +43,23 @@ window.addEventListener('DOMContentLoaded', () => {
 		};
 
 		searchForm.addEventListener('submit', submitObj);
+		let errorMessages, errorString;
 
 		if (error.children.length >= 1) {
-			let errorMessages, errorString;
-
-			if (error.children.length >= 1) {
-				errorMessages = error.querySelector('.validation-summary-errors ul li')
-					.innerHTML;
-				errorString = [...document.querySelectorAll('.hp-search-error')]
-					.map(error => error.getAttribute('id') + ':' + errorMessages)
-					.join(' > ');
-			}
-
-			pushInDataLayer(
-				renderObjFunc(
-					'Discovery search',
-					'Discovery homepage search',
-					'Search errors',
-					errorString
-				)
-			);
+			errorMessages = error.querySelector('.validation-summary-errors ul li')
+				.innerHTML;
+			errorString = [...document.querySelectorAll('.hp-search-error')]
+				.map(error => error.getAttribute('id') + ':' + errorMessages)
+				.join(' > ');
 		}
+
+		pushInDataLayer(
+			renderObjFunc(
+				'Discovery search',
+				'Discovery homepage search',
+				'Search errors',
+				errorString
+			)
+		);
 	}
 });
