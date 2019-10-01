@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="WT.cg_n" content="View records of other archives">
+        <meta name="DCSext.docref" content="Division within WO">
+        <meta name="DCSext.filtertype" content="Date">
+        <meta name="DCSext.searchtype" content="Records filtered search">
+        <meta name="DCSext.colltype" content="NRA" />
+        <meta name="DCSext.dsource" content="MDR" />
+        <meta name="DCSext.place" content="Hornby, Yorkshire" />
+        <meta name="DCSext.rdata" content="GB/NNAF/M172908">
+        <meta name="DCSext.repository" content="London Metropolitan Archives" />
+        <link rel="stylesheet" id="tna-parent-styles-css"
+            href="https://nationalarchives.gov.uk/wp-content/themes/tna-base/css/base-sass.css.min"
+            type="text/css"
+            media="all">
+
+        <title>Testing GTM</title>
+
+        <script src="../dist/searchUITracking.bundle.js"></script>
+        <!-- Google Tag Manager -->
+        <script>
+        (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-T8DSWV');
+    </script>
+        <!-- End Google Tag Manager -->
+
+    </head>
+
+    <body>
+
+        <main id="primary" role="main" class="content-area">
+
+            <section class="homepage-search-ui" role="search">
+                <h1>Explore The National Archives and more than 2,500 other
+                    archives</h1>
+                <form id="discovery-home-page-search" method="get"
+                    action="/results/r">
+                    <div class="grid-container" role="search">
+                        <div class="Headline">
+
+                            <!--This block is to test the error messages - Do Not Delete-->
+                            <div class="validation-summary-errors
+                                emphasis-block" data-valmsg-summary="true"
+                                role="alert">
+                                <ul>
+                                    <li>Enter keyword or catalogue reference.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="MainSearch">
+                            <label for="search-for">
+                                Search for
+                            </label>
+                            <input id="search-for"
+                                name="_q" placeholder="Enter keyword(s)"
+                                type="text"
+                                value="">
+                        </div>
+                        <div class="InputBetween">
+                            <label for="start-date">Between</label>
+                            <input aria-describedby="between" id="start-date"
+                                name="_sd" placeholder="yyyy" size="10"
+                                style="margin-top:15px;" type="text" value=""
+                                class="hp-search-error">
+                            <span id="between">This is a between text field</span>
+                        </div>
+                        <div class="InputAnd">
+                            <label for="end-date">and</label>
+                            <input aria-describedby="and" id="end-date"
+                                name="_ed" placeholder="yyyy" size="10"
+                                style="margin-top:15px;" type="text" value=""
+                                class="hp-search-error">
+                            <span id="and">This is a between text field</span>
+                        </div>
+                        <div class="InputAcross">
+                            <label for="held-by"
+                                style="color:white;margin-top:15px;">Held by</label>
+                            <select id="held-by" name="_hb"
+                                style="margin-top:15px;">
+                                <option selected="selected" value="all-records">All
+                                    Records</option>
+                                <option value="tna">The National Archives only</option>
+                                <option value="oth">Other archives only</option>
+                            </select>
+                        </div>
+                        ​
+                        <div class="MoreOptions">
+                            <a href="/advanced-search">Advanced search</a> or <a
+                                href="/browse">browse</a>
+                        </div>
+                        <div class="Search">
+                            <button type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+                ​
+            </section>
+
+
+        </main>
+
+        <footer>
+            <div class="container">
+
+                <p>Copyright 2018 The National Archives</p>
+            </div>
+
+            <div id="version">
+                Version 6.0 - August 2019 - OnSitePublic
+            </div>
+        </footer>
+
+    </body>
+
+</html>
