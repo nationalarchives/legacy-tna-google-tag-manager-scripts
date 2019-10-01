@@ -14,7 +14,11 @@ import{populateActionField} from './modules/ecommerceTracking/populateActionFiel
 import{pushInDataLayer} from './modules/pushInDataLayer';
 
 //Extracts the current step number of the payment process
-let step = extractMetaTagContent('WT\\.si_p').split(' ')[1];
+let step = extractMetaTagContent('WT\\.si_p');
+
+if (step) {
+    step = step.split(' ')[1];
+}
 
 //Creates an array from the 'content' attribute, using the semi-colon as a delimiter
 let categoriesArray = splitToArray(extractMetaTagContent('WT\\.pn_fa'));
