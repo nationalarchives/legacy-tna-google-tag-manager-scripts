@@ -13,7 +13,7 @@ module.exports = {
 		bookmarkSorting: './src/bookmarkSorting.js',
 		wtegTracking: './src/wtegTracking.js',
 		searchUITracking: './src/searchUITracking.js',
-		detectUserType: './src/detectUserType.js'
+		discoveryUserType: './src/discoveryUserType.js'
 	},
 	output: {
 		filename: '[name].bundle.js',
