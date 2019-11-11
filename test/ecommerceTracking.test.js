@@ -111,7 +111,7 @@ describe('Checking that the correct data types are passed to buildEcommerceObj.j
 
 describe('Checks that the actionField object is populated with the correct properties', () => {
     it('Should return all properties as null if step != "Step 4"', () => {
-        expect(populateActionField('Step 1')).toEqual({
+        expect(populateActionField('1')).toEqual({
             id : null,
             affiliation : null,
             revenue : null,
@@ -120,7 +120,7 @@ describe('Checks that the actionField object is populated with the correct prope
         });
     });
     it('Should use content from meta tags to populate the actionField object if step="Step 4"', () => {
-        expect(populateActionField('Step 4')).toEqual({
+        expect(populateActionField('4')).toEqual({
             id : extractMetaTagContent('WT\\.tx_id'),
             affiliation : extractMetaTagContent('WT\\.si_n'),
             revenue : extractMetaTagContent('WT\\.tx_total'),
@@ -132,17 +132,17 @@ describe('Checks that the actionField object is populated with the correct prope
 
 describe('Checks that actionField object is built correctly', () => {
     it('Should have the defined properties', () => {
-        expect(populateActionField('Step 4')).toHaveProperty('id');
-        expect(populateActionField('Step 4')).toHaveProperty('affiliation');
-        expect(populateActionField('Step 4')).toHaveProperty('revenue');
-        expect(populateActionField('Step 4')).toHaveProperty('tax');
-        expect(populateActionField('Step 4')).toHaveProperty('shipping');
+        expect(populateActionField('4')).toHaveProperty('id');
+        expect(populateActionField('4')).toHaveProperty('affiliation');
+        expect(populateActionField('4')).toHaveProperty('revenue');
+        expect(populateActionField('4')).toHaveProperty('tax');
+        expect(populateActionField('4')).toHaveProperty('shipping');
     });
     it('Should have the defined types', () => {
-        expect(typeof populateActionField('Step 4').id).toBe('string');
-        expect(typeof populateActionField('Step 4').affiliation).toBe('string');
-        expect(typeof populateActionField('Step 4').revenue).toBe('string');
-        expect(typeof populateActionField('Step 4').tax).toBe('string');
-        expect(typeof populateActionField('Step 4').shipping).toBe('string');
+        expect(typeof populateActionField('4').id).toBe('string');
+        expect(typeof populateActionField('4').affiliation).toBe('string');
+        expect(typeof populateActionField('4').revenue).toBe('string');
+        expect(typeof populateActionField('4').tax).toBe('string');
+        expect(typeof populateActionField('4').shipping).toBe('string');
     });
 });
