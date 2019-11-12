@@ -123,7 +123,7 @@ describe('Checks that the actionField object is populated with the correct prope
         expect(populateActionField('4')).toEqual({
             id : extractMetaTagContent('WT\\.tx_id'),
             affiliation : extractMetaTagContent('WT\\.si_n'),
-            revenue : extractMetaTagContent('WT\\.tx_total'),
+            revenue : extractMetaTagContent('WT\\.tx_total').slice(1, extractMetaTagContent('WT\\.tx_total').length),
             tax : '0',
             shipping : '0'
         });
