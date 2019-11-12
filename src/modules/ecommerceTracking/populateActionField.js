@@ -9,7 +9,7 @@ export let populateActionField = (step) => {
         shipping : '0'
     };
 
-    if (step !== 'Step 4'){
+    if (step !== '4'){
         return {
             id : null,
             affiliation : null,
