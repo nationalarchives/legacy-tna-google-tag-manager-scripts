@@ -71,7 +71,7 @@ window.addEventListener('DOMContentLoaded', () => {
         )}`;
     };
 
-    regForm.addEventListener('submit', (e) => {
+    regForm.addEventListener('submit', () => {
         pushInDataLayer({
             eventCategory: 'Account Registration',
             eventAction: 'Registration submits',
