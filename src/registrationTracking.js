@@ -4,7 +4,7 @@ import{checkEmptyField} from './modules/checkEmptyField';
 window.addEventListener('DOMContentLoaded', () => {
     const regForm = document.getElementById('regForm');
     const errorsArray = Array.from(document.querySelectorAll('.field-validation-error'));
-    let errorMessages = [];
+    const errorMessages = [];
     let errorString;
 
     const nameField = document.getElementById('Name'),
