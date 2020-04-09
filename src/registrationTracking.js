@@ -88,6 +88,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     regForm.addEventListener('submit', () => {
         pushInDataLayer({
+            event: 'Discovery',
             eventCategory: 'Account Registration',
             eventAction: 'Registration submits',
             eventLabel: eventLabel()
@@ -101,6 +102,7 @@ window.addEventListener('DOMContentLoaded', () => {
         errorString = errorMessages.join(' > ');
 
         pushInDataLayer({
+            event: 'Discovery',
             eventCategory: 'Account Registration',
             eventAction: 'Registration errors',
             eventLabel: errorString
