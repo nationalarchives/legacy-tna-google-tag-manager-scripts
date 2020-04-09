@@ -16,7 +16,7 @@ Having installed the Webpack CLI, run '**npm start**' to run ESLint, Babel, Ugli
 
 To run unit tests, run '**npm test**' in the terminal. This will run all test suites.
 
-This repository also provides a test page (index.html) which is used for debugging.
+This repository also provides test pages (available through index.html) which are used for debugging; the GTM scripts can be run on these pages and the data layer can be consulted in the console to verify that the correct data is being collected.
 
 To start running the `index.html` just run the command from the route folder `php -S localhost:9000`
 
@@ -339,5 +339,177 @@ If the above Document Object Model (DOM) elements are available, the following o
   eventAction:"Discovery",
   eventCategory:"Refine subjects",
   eventLabel: "Armed Forces (General Administration),Army,Operations, battles and campaigns"
+}
+```
+
+## Registration tracking
+This script is rendered inside Google Tag Manager ( GTM ) and is pushing an object to the data layer containing data regarding the registration process and whether the registration form fields have been filled in. It will run on every submit or whenever form errors occur.
+
+### Location
+Inside Google Tag Manager ( GTM )
+
+### How to test/testing guidelines
+Once on the registration page, the registration form should be available in the DOM (countries have been removed from ```<select id="Country">``` for conciseness). For example:
+
+```html
+<div class="breather register">
+
+                <form action="/Login/register" class="cmxform" id="regForm" method="post">
+                    <fieldset>
+                        <legend><span><span>Registration form</span></span></legend>
+                        <p>
+                            Fill in the form below to register an account. All fields are mandatory except those marked
+                            as optional.
+                            Already registered?
+                            <a href="/Login/sign-in?wa=wsignin1.0">Sign in</a>.
+                        </p>
+
+                        <div class="grid-within-grid-two-item">
+                            <div>
+
+                                <div class="field-row clr">
+                                    <label for="Name">Name<span>(optional)</span></label>
+                                    <input id="Name" name="Name" type="text" value=""/>
+                                </div>
+
+                                <div class="field-row clr">
+                                    <label for="Email">Email</label>
+                                    <input autocomplete="off" data-val="true"
+                                           data-val-email="Email is not a valid email format."
+                                           data-val-required="The Email field is required." id="Email" name="Email"
+                                           oncopy="return false" onpaste="return false" type="text" value=""/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Email"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="ConfirmEmail">Confirm email</label>
+                                    <input autocomplete="off" data-val="true"
+                                           data-val-email="ConfirmEmail is not a valid email format."
+                                           data-val-equalto="The email address and confirmation email address do not match."
+                                           data-val-equalto-other="*.Email"
+                                           data-val-required="The ConfirmEmail field is required." id="ConfirmEmail"
+                                           name="ConfirmEmail" oncopy="return false" onpaste="return false" type="text"
+                                           value=""/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="ConfirmEmail"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="Country">Country<span>(optional)</span></label>
+                                    <select id="Country" name="Country">
+                                        <option></option>
+                                        <option>United Kingdom</option>
+                                    </select>
+
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Country"
+                                      data-valmsg-replace="true"></span>
+                                <div class="toolTip">
+                                    <div>
+                                        <strong>Password rules: </strong>Password needs to be at least 8 characters long
+                                        and should be a combination of upper and lowercase characters, with at least one
+                                        numerical value.
+                                    </div>
+                                </div>
+                                <div class="field-row clr">
+                                    <label for="Password">Password</label>
+                                    <input data-val="true"
+                                           data-val-password="Password must be at least 8 characters long and should be a combination of upper and lowercase characters, with at least one numerical value."
+                                           data-val-required="The Password field is required." id="Password"
+                                           name="Password" type="password"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Password"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="ConfirmPassword">Confirm password</label>
+                                    <input data-val="true"
+                                           data-val-equalto="The password and confirmation password do not match."
+                                           data-val-equalto-other="*.Password"
+                                           data-val-required="The ConfirmPassword field is required."
+                                           id="ConfirmPassword" name="ConfirmPassword" type="password"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword"
+                                      data-valmsg-replace="true"></span>
+                            </div>
+                            <div>
+                                <div class="field-row clr">
+                                    <label for="ReaderTicket">Reader's ticket number<span>(optional)</span></label>
+                                    <input data-val="true" data-val-number="The field ReaderTicket must be a number."
+                                           id="ReaderTicket" name="ReaderTicket" type="text" value=""/>
+                                    <span class="field-validation-valid" data-valmsg-for="ReaderTicket"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="field-row clr">
+                                    <label for="acceptTCs" id="tcLabel" class="checkInputLabel">
+                                        I accept the <a href="http://www.nationalarchives.gov.uk/legal/privacy.htm"
+                                                        target="_blank">Privacy</a> and <a
+                                            href="http://nationalarchives.gov.uk/legal/cookies.htm" target="_blank">Cookie</a>
+                                        policies.
+                                    </label>
+                                    <input data-val="true" data-val-required="You must accept the terms and conditions."
+                                           id="acceptTCs" name="TermNCondition" type="checkbox" value="true"/><input
+                                        name="TermNCondition" type="hidden" value="false"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="TermNCondition"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <input data-val="true" data-val-required="The MailingCondition field is required."
+                                           id="MailingCondition" name="MailingCondition" type="checkbox"
+                                           value="true"/><input name="MailingCondition" type="hidden" value="false"/>
+                                    <label for="MailingCondition" id="mlLabel" class="checkInputLabel">
+                                        I want to join the mailing list, and be the first to hear about news, events,
+                                        services and publications from The National Archives.
+                                        <span>(optional)</span>
+                                    </label>
+                                </div>
+                                <div class="field-row clr">
+                                    <input data-val="true" data-val-required="The ContactCondition field is required."
+                                           id="ContactCondition" name="ContactCondition" type="checkbox"
+                                           value="true"/><input name="ContactCondition" type="hidden" value="false"/>
+                                    <label for="ContactCondition" id="frLabel" class="checkInputLabel">
+                                        I would like to take part in market research for The National Archives.<span>(optional)</span>
+                                    </label>
+
+                                </div>
+                                <div class="field-row clr">
+                                    <input class="submit discoveryPrimaryCallToActionLink" type="submit"
+                                           value="Register">
+
+                                    <input id="wreply" name="wreply" type="hidden" value=""/>
+                                    <input id="wtrealm" name="wtrealm" type="hidden" value=""/>
+                                </div>
+                            </div>
+                        </div> <!-- end of .grid-within-grid-two-item -->
+                        <div class="emphasisBlock no-bg-color"><h2>Data protection</h2>When you sign up to our mailing
+                            list the information that you provide will be used to send you our monthly newsletter and
+                            other information that we have not included in the newsletter but think may be of interest
+                            to you. We use an email distribution company to send out our e-marketing communications but
+                            your data will not be passed on to any other third parties. You can remove your details from
+                            our mailing database at any time by following the link at the bottom of every email that we
+                            send you. For more information read our <a
+                                    href="http://www.nationalarchives.gov.uk/legal/privacy.htm">Privacy policy</a>.
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+```
+		
+If the above Document Object Model (DOM) elements are available and the registration form is successfully completed, the following object is built and pushed to the data layer (indicating whether the form fields have been filled in):
+
+```javascript
+{
+  eventAction:"Account registration",
+  eventCategory:"Registration submits",
+  eventLabel: "Name: Yes > Email: Yes > ConfirmEmail: No > Password: No etc..."
+}
+```
+
+If errors have occurred in the form (e.g. required fields were not filled in), the following object is built and pushed to the data layer:
+
+```javascript
+{
+  eventAction:"Account registration",
+  eventCategory:"Registration errors",
+  eventLabel: "ConfirmEmail: The email address and confirmation email address do not match. > Password: The Password field is required. etc..."
 }
 ```
