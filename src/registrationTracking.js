@@ -5,37 +5,52 @@ window.addEventListener('DOMContentLoaded', () => {
     const regForm = document.getElementById('regForm');
     const errorsArray = Array.from(document.querySelectorAll('.field-validation-error'));
     const errorMessages = [];
-    let errorString;
+    let errorString,
+        nameField, nameLabel,
+        emailField, emailLabel,
+        confirmEmailField, confirmEmailLabel,
+        countryField, countryLabel,
+        passwordField, passwordLabel,
+        confirmPasswordField, confirmPasswordLabel,
+        readerTicketField, readerTicketLabel,
+        TCField, TCLabel,
+        mailingConditionField, mailingConditionLabel,
+        contactConditionField, contactConditionLabel;
 
-    const nameField = document.getElementById('Name'),
+    try {
+        nameField = document.getElementById('Name');
         nameLabel = nameField.getAttribute('name');
 
-    const emailField = document.getElementById('Email'),
+        emailField = document.getElementById('Email');
         emailLabel = emailField.getAttribute('name');
 
-    const confirmEmailField = document.getElementById('ConfirmEmail'),
+        confirmEmailField = document.getElementById('ConfirmEmail');
         confirmEmailLabel = confirmEmailField.getAttribute('name');
 
-    const countryField = document.getElementById('Country'),
+        countryField = document.getElementById('Country');
         countryLabel = countryField.getAttribute('name');
 
-    const passwordField = document.getElementById('Password'),
+        passwordField = document.getElementById('Password');
         passwordLabel = passwordField.getAttribute('name');
 
-    const confirmPasswordField = document.getElementById('ConfirmPassword'),
+        confirmPasswordField = document.getElementById('ConfirmPassword');
         confirmPasswordLabel = confirmPasswordField.getAttribute('name');
 
-    const readerTicketField = document.getElementById('ReaderTicket'),
+        readerTicketField = document.getElementById('ReaderTicket');
         readerTicketLabel = readerTicketField.getAttribute('name');
 
-    const TCField = document.getElementById('acceptTCs'),
+        TCField = document.getElementById('acceptTCs');
         TCLabel = TCField.getAttribute('name');
 
-    const mailingConditionField = document.getElementById('MailingCondition'),
+        mailingConditionField = document.getElementById('MailingCondition');
         mailingConditionLabel = mailingConditionField.getAttribute('name');
 
-    const contactConditionField = document.getElementById('ContactCondition'),
+        contactConditionField = document.getElementById('ContactCondition');
         contactConditionLabel = contactConditionField.getAttribute('name');
+    }
+    catch(e){
+        console.error(`Error in registrationTracking.js: ${e}`);
+    }
 
     const eventLabel = () => {
         return `${nameLabel}: ${checkEmptyField(
