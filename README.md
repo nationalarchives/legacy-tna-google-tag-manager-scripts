@@ -500,7 +500,7 @@ If the above Document Object Model (DOM) elements are available and the registra
 {
   eventAction:"Account registration",
   eventCategory:"Registration submits",
-  eventLabel: "Name: Yes > Email: Yes > ConfirmEmail: No etc..."
+  eventLabel: "Name: Yes > Email: Yes > ConfirmEmail: No > Password: No etc..."
 }
 ```
 
