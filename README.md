@@ -504,7 +504,7 @@ If the above Document Object Model (DOM) elements are available and the registra
 }
 ```
 
-If errors have occurred in the form, the following object is built and pushed to the data layer:
+If errors have occurred in the form (e.g. required fields were not filled in), the following object is built and pushed to the data layer:
 
 ```javascript
 {
