@@ -1,27 +1,32 @@
-
 <!DOCTYPE html>
 <html lang="en-gb" class="no-js">
 <head>
     <!-- _Redesign2013Layout.cshtml -->
     <meta charset="utf-8">
     <title>Register</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="initial-scale=1.0">
-    <meta name="keywords" content="government information, archive, history, information management, national archives, public records, manuscripts, documents" />
-    <meta name="description" content="The official archive of the UK government. Our vision is to lead and transform information management, guarantee the survival of today's information for tomorrow and bring history to life for everyone." />
-
+    <meta name="keywords"
+          content="government information, archive, history, information management, national archives, public records, manuscripts, documents"/>
+    <meta name="description"
+          content="The official archive of the UK government. Our vision is to lead and transform information management, guarantee the survival of today's information for tomorrow and bring history to life for everyone."/>
 
 
     <!-- Google Tag Manager -->
     <script>
         (function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
+            w[l] = w[l] || [];
+            w[l].push({
                 'gtm.start':
                     new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            });
+            var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src =
+                'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-T8DSWV');
     </script>
     <!-- End Google Tag Manager -->
@@ -56,346 +61,395 @@
             <!-- end .header-holding-banner -->
             <div class="breather register">
 
-                <form action="/Login/register" class="cmxform" id="regForm" method="post">                <fieldset>
-                    <legend><span><span>Registration form</span></span></legend>
-                    <p>
-                        Fill in the form below to register an account. All fields are mandatory except those marked as optional.
-                        Already registered?
-                        <a href="/Login/sign-in?wa=wsignin1.0">Sign in</a>.
-                    </p>
+                <form action="/Login/register" class="cmxform" id="regForm" method="post">
+                    <fieldset>
+                        <legend><span><span>Registration form</span></span></legend>
+                        <p>
+                            Fill in the form below to register an account. All fields are mandatory except those marked
+                            as optional.
+                            Already registered?
+                            <a href="/Login/sign-in?wa=wsignin1.0">Sign in</a>.
+                        </p>
 
-                    <div class="grid-within-grid-two-item">
-                        <div>
+                        <div class="grid-within-grid-two-item">
+                            <div>
 
-                            <div class="field-row clr">
-                                <label for="Name">Name<span>(optional)</span></label>
-                                <input id="Name" name="Name" type="text" value="" />
-                            </div>
+                                <div class="field-row clr">
+                                    <label for="Name">Name<span>(optional)</span></label>
+                                    <input id="Name" name="Name" type="text" value=""/>
+                                </div>
 
-                            <div class="field-row clr">
-                                <label for="Email">Email</label>
-                                <input autocomplete="off" data-val="true" data-val-email="Email is not a valid email format." data-val-required="The Email field is required." id="Email" name="Email" oncopy="return false" onpaste="return false" type="text" value="" />
-                            </div>
-                            <span class="field-validation-valid" data-valmsg-for="Email" data-valmsg-replace="true"></span>
-                            <div class="field-row clr">
-                                <label for="ConfirmEmail">Confirm email</label>
-                                <input autocomplete="off" data-val="true" data-val-email="ConfirmEmail is not a valid email format." data-val-equalto="The email address and confirmation email address do not match." data-val-equalto-other="*.Email" data-val-required="The ConfirmEmail field is required." id="ConfirmEmail" name="ConfirmEmail" oncopy="return false" onpaste="return false" type="text" value="" />
-                            </div>
-                            <span class="field-validation-valid" data-valmsg-for="ConfirmEmail" data-valmsg-replace="true"></span>
-                            <div class="field-row clr">
-                                <label for="Country">Country<span>(optional)</span></label>
-                                <select id="Country" name="Country"><option></option>
-                                    <option>United Kingdom</option>
-                                    <option>United States</option>
-                                    <option>Australia</option>
-                                    <option>Afghanistan</option>
-                                    <option>Aland Islands</option>
-                                    <option>Albania</option>
-                                    <option>Algeria</option>
-                                    <option>American Samoa</option>
-                                    <option>Andorra</option>
-                                    <option>Angola</option>
-                                    <option>Anguilla</option>
-                                    <option>Antarctica</option>
-                                    <option>Antigua and Barbuda</option>
-                                    <option>Argentina</option>
-                                    <option>Armenia</option>
-                                    <option>Aruba</option>
-                                    <option>Australia</option>
-                                    <option>Austria</option>
-                                    <option>Azerbaijan</option>
-                                    <option>Bahamas (the)</option>
-                                    <option>Bahrain</option>
-                                    <option>Bangladesh</option>
-                                    <option>Barbados</option>
-                                    <option>Belarus</option>
-                                    <option>Belgium</option>
-                                    <option>Belize</option>
-                                    <option>Benin</option>
-                                    <option>Bermuda</option>
-                                    <option>Bhutan</option>
-                                    <option>Bolivia, Plurinational State of</option>
-                                    <option>Bonaire, Sint Eustatius and Saba</option>
-                                    <option>Bosnia and Herzegovina</option>
-                                    <option>Botswana</option>
-                                    <option>Bouvet Island</option>
-                                    <option>Brazil</option>
-                                    <option>British Indian Ocean Territory (the)</option>
-                                    <option>Brunei Darussalam</option>
-                                    <option>Bulgaria</option>
-                                    <option>Burkina Faso</option>
-                                    <option>Burundi</option>
-                                    <option>Cabo Verde</option>
-                                    <option>Cambodia</option>
-                                    <option>Cameroon</option>
-                                    <option>Canada</option>
-                                    <option>Cayman Islands (the)</option>
-                                    <option>Central African Republic (the)</option>
-                                    <option>Chad</option>
-                                    <option>Chile</option>
-                                    <option>China</option>
-                                    <option>Christmas Island</option>
-                                    <option>Cocos (Keeling) Islands (the)</option>
-                                    <option>Colombia</option>
-                                    <option>Comoros</option>
-                                    <option>Congo</option>
-                                    <option>Congo (the Democratic Republic of the)</option>
-                                    <option>Cook Islands (the)</option>
-                                    <option>Costa Rica</option>
-                                    <option>Cote d&#39;Ivoire</option>
-                                    <option>Croatia</option>
-                                    <option>Cuba</option>
-                                    <option>Curacao</option>
-                                    <option>Cyprus</option>
-                                    <option>Czech Republic (the)</option>
-                                    <option>Denmark</option>
-                                    <option>Djibouti</option>
-                                    <option>Dominica</option>
-                                    <option>Dominican Republic (the)</option>
-                                    <option>Ecuador</option>
-                                    <option>Egypt</option>
-                                    <option>El Salvador</option>
-                                    <option>Equatorial Guinea</option>
-                                    <option>Eritrea</option>
-                                    <option>Estonia</option>
-                                    <option>Ethiopia</option>
-                                    <option>Falkland Islands (the) [Malvinas]</option>
-                                    <option>Faroe Islands (the)</option>
-                                    <option>Fiji</option>
-                                    <option>Finland</option>
-                                    <option>France</option>
-                                    <option>French Guiana</option>
-                                    <option>French Polynesia</option>
-                                    <option>French Southern Territories (the)</option>
-                                    <option>Gabon</option>
-                                    <option>Gambia (The)</option>
-                                    <option>Georgia</option>
-                                    <option>Germany</option>
-                                    <option>Ghana</option>
-                                    <option>Gibraltar</option>
-                                    <option>Greece</option>
-                                    <option>Greenland</option>
-                                    <option>Grenada</option>
-                                    <option>Guadeloupe</option>
-                                    <option>Guam</option>
-                                    <option>Guatemala</option>
-                                    <option>Guernsey</option>
-                                    <option>Guinea</option>
-                                    <option>Guinea-Bissau</option>
-                                    <option>Guyana</option>
-                                    <option>Haiti</option>
-                                    <option>Heard Island and McDonald Islands</option>
-                                    <option>Holy See (the) [Vatican City State]</option>
-                                    <option>Honduras</option>
-                                    <option>Hong Kong</option>
-                                    <option>Hungary</option>
-                                    <option>Iceland</option>
-                                    <option>India</option>
-                                    <option>Indonesia</option>
-                                    <option>Iran (the Islamic Republic of)</option>
-                                    <option>Iraq</option>
-                                    <option>Ireland</option>
-                                    <option>Isle of Man</option>
-                                    <option>Israel</option>
-                                    <option>Italy</option>
-                                    <option>Jamaica</option>
-                                    <option>Japan</option>
-                                    <option>Jersey</option>
-                                    <option>Jordan</option>
-                                    <option>Kazakhstan</option>
-                                    <option>Kenya</option>
-                                    <option>Kiribati</option>
-                                    <option>Korea (the Democratic People&#39;s Republic of)</option>
-                                    <option>Korea (the Republic of)</option>
-                                    <option>Kuwait</option>
-                                    <option>Kyrgyzstan</option>
-                                    <option>Lao People&#39;s Democratic Republic (the)</option>
-                                    <option>Latvia</option>
-                                    <option>Lebanon</option>
-                                    <option>Lesotho</option>
-                                    <option>Liberia</option>
-                                    <option>Libya</option>
-                                    <option>Liechtenstein</option>
-                                    <option>Lithuania</option>
-                                    <option>Luxembourg</option>
-                                    <option>Macao</option>
-                                    <option>Macedonia (the former Yugoslav Republic of)</option>
-                                    <option>Madagascar</option>
-                                    <option>Malawi</option>
-                                    <option>Malaysia</option>
-                                    <option>Maldives</option>
-                                    <option>Mali</option>
-                                    <option>Malta</option>
-                                    <option>Marshall Islands (the)</option>
-                                    <option>Martinique</option>
-                                    <option>Mauritania</option>
-                                    <option>Mauritius</option>
-                                    <option>Mayotte</option>
-                                    <option>Mexico</option>
-                                    <option>Micronesia (the Federated States of)</option>
-                                    <option>Moldova (the Republic of)</option>
-                                    <option>Monaco</option>
-                                    <option>Mongolia</option>
-                                    <option>Montenegro</option>
-                                    <option>Montserrat</option>
-                                    <option>Morocco</option>
-                                    <option>Mozambique</option>
-                                    <option>Myanmar</option>
-                                    <option>Namibia</option>
-                                    <option>Nauru</option>
-                                    <option>Nepal</option>
-                                    <option>Netherlands (the)</option>
-                                    <option>New Caledonia</option>
-                                    <option>New Zealand</option>
-                                    <option>Nicaragua</option>
-                                    <option>Niger (the)</option>
-                                    <option>Nigeria</option>
-                                    <option>Niue</option>
-                                    <option>Norfolk Island</option>
-                                    <option>Northern Mariana Islands (the)</option>
-                                    <option>Norway</option>
-                                    <option>Oman</option>
-                                    <option>Pakistan</option>
-                                    <option>Palau</option>
-                                    <option>Palestine, State of</option>
-                                    <option>Panama</option>
-                                    <option>Papua New Guinea</option>
-                                    <option>Paraguay</option>
-                                    <option>Peru</option>
-                                    <option>Philippines (the)</option>
-                                    <option>Pitcairn</option>
-                                    <option>Poland</option>
-                                    <option>Portugal</option>
-                                    <option>Puerto Rico</option>
-                                    <option>Qatar</option>
-                                    <option>Reunion</option>
-                                    <option>Romania</option>
-                                    <option>Russian Federation (the)</option>
-                                    <option>Rwanda</option>
-                                    <option>Saint Barthelemy</option>
-                                    <option>Saint Helena, Ascension and Tristan da Cunha</option>
-                                    <option>Saint Kitts and Nevis</option>
-                                    <option>Saint Lucia</option>
-                                    <option>Saint Martin (French part)</option>
-                                    <option>Saint Pierre and Miquelon</option>
-                                    <option>Saint Vincent and the Grenadines</option>
-                                    <option>Samoa</option>
-                                    <option>San Marino</option>
-                                    <option>Sao Tome and Principe</option>
-                                    <option>Saudi Arabia</option>
-                                    <option>Senegal</option>
-                                    <option>Serbia</option>
-                                    <option>Seychelles</option>
-                                    <option>Sierra Leone</option>
-                                    <option>Singapore</option>
-                                    <option>Sint Maarten (Dutch part)</option>
-                                    <option>Slovakia</option>
-                                    <option>Slovenia</option>
-                                    <option>Solomon Islands (the)</option>
-                                    <option>Somalia</option>
-                                    <option>South Africa</option>
-                                    <option>South Georgia and the South Sandwich Islands</option>
-                                    <option>South Sudan </option>
-                                    <option>Spain</option>
-                                    <option>Sri Lanka</option>
-                                    <option>Sudan (the)</option>
-                                    <option>Suriname</option>
-                                    <option>Svalbard and Jan Mayen</option>
-                                    <option>Swaziland</option>
-                                    <option>Sweden</option>
-                                    <option>Switzerland</option>
-                                    <option>Syrian Arab Republic (the)</option>
-                                    <option>Taiwan (Province of China)</option>
-                                    <option>Tajikistan</option>
-                                    <option>Tanzania, United Republic of</option>
-                                    <option>Thailand</option>
-                                    <option>Timor-Leste</option>
-                                    <option>Togo</option>
-                                    <option>Tokelau</option>
-                                    <option>Tonga</option>
-                                    <option>Trinidad and Tobago</option>
-                                    <option>Tunisia</option>
-                                    <option>Turkey</option>
-                                    <option>Turkmenistan</option>
-                                    <option>Turks and Caicos Islands (the)</option>
-                                    <option>Tuvalu</option>
-                                    <option>Uganda</option>
-                                    <option>Ukraine</option>
-                                    <option>United Arab Emirates (the)</option>
-                                    <option>United Kingdom</option>
-                                    <option>United States</option>
-                                    <option>United States Minor Outlying Islands (the)</option>
-                                    <option>Uruguay</option>
-                                    <option>Uzbekistan</option>
-                                    <option>Vanuatu</option>
-                                    <option>Venezuela, Bolivarian Republic of</option>
-                                    <option>Viet Nam</option>
-                                    <option>Virgin Islands (British)</option>
-                                    <option>Virgin Islands (U.S.)</option>
-                                    <option>Wallis and Futuna</option>
-                                    <option>Western Sahara</option>
-                                    <option>Yemen</option>
-                                    <option>Zambia</option>
-                                    <option>Zimbabwe</option>
-                                </select>
+                                <div class="field-row clr">
+                                    <label for="Email">Email</label>
+                                    <input autocomplete="off" data-val="true"
+                                           data-val-email="Email is not a valid email format."
+                                           data-val-required="The Email field is required." id="Email" name="Email"
+                                           oncopy="return false" onpaste="return false" type="text" value=""/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Email"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="ConfirmEmail">Confirm email</label>
+                                    <input autocomplete="off" data-val="true"
+                                           data-val-email="ConfirmEmail is not a valid email format."
+                                           data-val-equalto="The email address and confirmation email address do not match."
+                                           data-val-equalto-other="*.Email"
+                                           data-val-required="The ConfirmEmail field is required." id="ConfirmEmail"
+                                           name="ConfirmEmail" oncopy="return false" onpaste="return false" type="text"
+                                           value=""/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="ConfirmEmail"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="Country">Country<span>(optional)</span></label>
+                                    <select id="Country" name="Country">
+                                        <option></option>
+                                        <option>United Kingdom</option>
+                                        <option>United States</option>
+                                        <option>Australia</option>
+                                        <option>Afghanistan</option>
+                                        <option>Aland Islands</option>
+                                        <option>Albania</option>
+                                        <option>Algeria</option>
+                                        <option>American Samoa</option>
+                                        <option>Andorra</option>
+                                        <option>Angola</option>
+                                        <option>Anguilla</option>
+                                        <option>Antarctica</option>
+                                        <option>Antigua and Barbuda</option>
+                                        <option>Argentina</option>
+                                        <option>Armenia</option>
+                                        <option>Aruba</option>
+                                        <option>Australia</option>
+                                        <option>Austria</option>
+                                        <option>Azerbaijan</option>
+                                        <option>Bahamas (the)</option>
+                                        <option>Bahrain</option>
+                                        <option>Bangladesh</option>
+                                        <option>Barbados</option>
+                                        <option>Belarus</option>
+                                        <option>Belgium</option>
+                                        <option>Belize</option>
+                                        <option>Benin</option>
+                                        <option>Bermuda</option>
+                                        <option>Bhutan</option>
+                                        <option>Bolivia, Plurinational State of</option>
+                                        <option>Bonaire, Sint Eustatius and Saba</option>
+                                        <option>Bosnia and Herzegovina</option>
+                                        <option>Botswana</option>
+                                        <option>Bouvet Island</option>
+                                        <option>Brazil</option>
+                                        <option>British Indian Ocean Territory (the)</option>
+                                        <option>Brunei Darussalam</option>
+                                        <option>Bulgaria</option>
+                                        <option>Burkina Faso</option>
+                                        <option>Burundi</option>
+                                        <option>Cabo Verde</option>
+                                        <option>Cambodia</option>
+                                        <option>Cameroon</option>
+                                        <option>Canada</option>
+                                        <option>Cayman Islands (the)</option>
+                                        <option>Central African Republic (the)</option>
+                                        <option>Chad</option>
+                                        <option>Chile</option>
+                                        <option>China</option>
+                                        <option>Christmas Island</option>
+                                        <option>Cocos (Keeling) Islands (the)</option>
+                                        <option>Colombia</option>
+                                        <option>Comoros</option>
+                                        <option>Congo</option>
+                                        <option>Congo (the Democratic Republic of the)</option>
+                                        <option>Cook Islands (the)</option>
+                                        <option>Costa Rica</option>
+                                        <option>Cote d&#39;Ivoire</option>
+                                        <option>Croatia</option>
+                                        <option>Cuba</option>
+                                        <option>Curacao</option>
+                                        <option>Cyprus</option>
+                                        <option>Czech Republic (the)</option>
+                                        <option>Denmark</option>
+                                        <option>Djibouti</option>
+                                        <option>Dominica</option>
+                                        <option>Dominican Republic (the)</option>
+                                        <option>Ecuador</option>
+                                        <option>Egypt</option>
+                                        <option>El Salvador</option>
+                                        <option>Equatorial Guinea</option>
+                                        <option>Eritrea</option>
+                                        <option>Estonia</option>
+                                        <option>Ethiopia</option>
+                                        <option>Falkland Islands (the) [Malvinas]</option>
+                                        <option>Faroe Islands (the)</option>
+                                        <option>Fiji</option>
+                                        <option>Finland</option>
+                                        <option>France</option>
+                                        <option>French Guiana</option>
+                                        <option>French Polynesia</option>
+                                        <option>French Southern Territories (the)</option>
+                                        <option>Gabon</option>
+                                        <option>Gambia (The)</option>
+                                        <option>Georgia</option>
+                                        <option>Germany</option>
+                                        <option>Ghana</option>
+                                        <option>Gibraltar</option>
+                                        <option>Greece</option>
+                                        <option>Greenland</option>
+                                        <option>Grenada</option>
+                                        <option>Guadeloupe</option>
+                                        <option>Guam</option>
+                                        <option>Guatemala</option>
+                                        <option>Guernsey</option>
+                                        <option>Guinea</option>
+                                        <option>Guinea-Bissau</option>
+                                        <option>Guyana</option>
+                                        <option>Haiti</option>
+                                        <option>Heard Island and McDonald Islands</option>
+                                        <option>Holy See (the) [Vatican City State]</option>
+                                        <option>Honduras</option>
+                                        <option>Hong Kong</option>
+                                        <option>Hungary</option>
+                                        <option>Iceland</option>
+                                        <option>India</option>
+                                        <option>Indonesia</option>
+                                        <option>Iran (the Islamic Republic of)</option>
+                                        <option>Iraq</option>
+                                        <option>Ireland</option>
+                                        <option>Isle of Man</option>
+                                        <option>Israel</option>
+                                        <option>Italy</option>
+                                        <option>Jamaica</option>
+                                        <option>Japan</option>
+                                        <option>Jersey</option>
+                                        <option>Jordan</option>
+                                        <option>Kazakhstan</option>
+                                        <option>Kenya</option>
+                                        <option>Kiribati</option>
+                                        <option>Korea (the Democratic People&#39;s Republic of)</option>
+                                        <option>Korea (the Republic of)</option>
+                                        <option>Kuwait</option>
+                                        <option>Kyrgyzstan</option>
+                                        <option>Lao People&#39;s Democratic Republic (the)</option>
+                                        <option>Latvia</option>
+                                        <option>Lebanon</option>
+                                        <option>Lesotho</option>
+                                        <option>Liberia</option>
+                                        <option>Libya</option>
+                                        <option>Liechtenstein</option>
+                                        <option>Lithuania</option>
+                                        <option>Luxembourg</option>
+                                        <option>Macao</option>
+                                        <option>Macedonia (the former Yugoslav Republic of)</option>
+                                        <option>Madagascar</option>
+                                        <option>Malawi</option>
+                                        <option>Malaysia</option>
+                                        <option>Maldives</option>
+                                        <option>Mali</option>
+                                        <option>Malta</option>
+                                        <option>Marshall Islands (the)</option>
+                                        <option>Martinique</option>
+                                        <option>Mauritania</option>
+                                        <option>Mauritius</option>
+                                        <option>Mayotte</option>
+                                        <option>Mexico</option>
+                                        <option>Micronesia (the Federated States of)</option>
+                                        <option>Moldova (the Republic of)</option>
+                                        <option>Monaco</option>
+                                        <option>Mongolia</option>
+                                        <option>Montenegro</option>
+                                        <option>Montserrat</option>
+                                        <option>Morocco</option>
+                                        <option>Mozambique</option>
+                                        <option>Myanmar</option>
+                                        <option>Namibia</option>
+                                        <option>Nauru</option>
+                                        <option>Nepal</option>
+                                        <option>Netherlands (the)</option>
+                                        <option>New Caledonia</option>
+                                        <option>New Zealand</option>
+                                        <option>Nicaragua</option>
+                                        <option>Niger (the)</option>
+                                        <option>Nigeria</option>
+                                        <option>Niue</option>
+                                        <option>Norfolk Island</option>
+                                        <option>Northern Mariana Islands (the)</option>
+                                        <option>Norway</option>
+                                        <option>Oman</option>
+                                        <option>Pakistan</option>
+                                        <option>Palau</option>
+                                        <option>Palestine, State of</option>
+                                        <option>Panama</option>
+                                        <option>Papua New Guinea</option>
+                                        <option>Paraguay</option>
+                                        <option>Peru</option>
+                                        <option>Philippines (the)</option>
+                                        <option>Pitcairn</option>
+                                        <option>Poland</option>
+                                        <option>Portugal</option>
+                                        <option>Puerto Rico</option>
+                                        <option>Qatar</option>
+                                        <option>Reunion</option>
+                                        <option>Romania</option>
+                                        <option>Russian Federation (the)</option>
+                                        <option>Rwanda</option>
+                                        <option>Saint Barthelemy</option>
+                                        <option>Saint Helena, Ascension and Tristan da Cunha</option>
+                                        <option>Saint Kitts and Nevis</option>
+                                        <option>Saint Lucia</option>
+                                        <option>Saint Martin (French part)</option>
+                                        <option>Saint Pierre and Miquelon</option>
+                                        <option>Saint Vincent and the Grenadines</option>
+                                        <option>Samoa</option>
+                                        <option>San Marino</option>
+                                        <option>Sao Tome and Principe</option>
+                                        <option>Saudi Arabia</option>
+                                        <option>Senegal</option>
+                                        <option>Serbia</option>
+                                        <option>Seychelles</option>
+                                        <option>Sierra Leone</option>
+                                        <option>Singapore</option>
+                                        <option>Sint Maarten (Dutch part)</option>
+                                        <option>Slovakia</option>
+                                        <option>Slovenia</option>
+                                        <option>Solomon Islands (the)</option>
+                                        <option>Somalia</option>
+                                        <option>South Africa</option>
+                                        <option>South Georgia and the South Sandwich Islands</option>
+                                        <option>South Sudan</option>
+                                        <option>Spain</option>
+                                        <option>Sri Lanka</option>
+                                        <option>Sudan (the)</option>
+                                        <option>Suriname</option>
+                                        <option>Svalbard and Jan Mayen</option>
+                                        <option>Swaziland</option>
+                                        <option>Sweden</option>
+                                        <option>Switzerland</option>
+                                        <option>Syrian Arab Republic (the)</option>
+                                        <option>Taiwan (Province of China)</option>
+                                        <option>Tajikistan</option>
+                                        <option>Tanzania, United Republic of</option>
+                                        <option>Thailand</option>
+                                        <option>Timor-Leste</option>
+                                        <option>Togo</option>
+                                        <option>Tokelau</option>
+                                        <option>Tonga</option>
+                                        <option>Trinidad and Tobago</option>
+                                        <option>Tunisia</option>
+                                        <option>Turkey</option>
+                                        <option>Turkmenistan</option>
+                                        <option>Turks and Caicos Islands (the)</option>
+                                        <option>Tuvalu</option>
+                                        <option>Uganda</option>
+                                        <option>Ukraine</option>
+                                        <option>United Arab Emirates (the)</option>
+                                        <option>United Kingdom</option>
+                                        <option>United States</option>
+                                        <option>United States Minor Outlying Islands (the)</option>
+                                        <option>Uruguay</option>
+                                        <option>Uzbekistan</option>
+                                        <option>Vanuatu</option>
+                                        <option>Venezuela, Bolivarian Republic of</option>
+                                        <option>Viet Nam</option>
+                                        <option>Virgin Islands (British)</option>
+                                        <option>Virgin Islands (U.S.)</option>
+                                        <option>Wallis and Futuna</option>
+                                        <option>Western Sahara</option>
+                                        <option>Yemen</option>
+                                        <option>Zambia</option>
+                                        <option>Zimbabwe</option>
+                                    </select>
 
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Country"
+                                      data-valmsg-replace="true"></span>
+                                <div class="toolTip">
+                                    <div>
+                                        <strong>Password rules: </strong>Password needs to be at least 8 characters long
+                                        and should be a combination of upper and lowercase characters, with at least one
+                                        numerical value.
+                                    </div>
+                                </div>
+                                <div class="field-row clr">
+                                    <label for="Password">Password</label>
+                                    <input data-val="true"
+                                           data-val-password="Password must be at least 8 characters long and should be a combination of upper and lowercase characters, with at least one numerical value."
+                                           data-val-required="The Password field is required." id="Password"
+                                           name="Password" type="password"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="Password"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <label for="ConfirmPassword">Confirm password</label>
+                                    <input data-val="true"
+                                           data-val-equalto="The password and confirmation password do not match."
+                                           data-val-equalto-other="*.Password"
+                                           data-val-required="The ConfirmPassword field is required."
+                                           id="ConfirmPassword" name="ConfirmPassword" type="password"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="ConfirmPassword"
+                                      data-valmsg-replace="true"></span>
                             </div>
-                            <span class="field-validation-valid" data-valmsg-for="Country" data-valmsg-replace="true"></span>
-                            <div class="toolTip">
-                                <div>
-                                    <strong>Password rules: </strong>Password needs to be at least 8 characters long and should be a combination of upper and lowercase characters, with at least one numerical value.
+                            <div>
+                                <div class="field-row clr">
+                                    <label for="ReaderTicket">Reader's ticket number<span>(optional)</span></label>
+                                    <input data-val="true" data-val-number="The field ReaderTicket must be a number."
+                                           id="ReaderTicket" name="ReaderTicket" type="text" value=""/>
+                                    <span class="field-validation-valid" data-valmsg-for="ReaderTicket"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="field-row clr">
+                                    <label for="acceptTCs" id="tcLabel" class="checkInputLabel">
+                                        I accept the <a href="http://www.nationalarchives.gov.uk/legal/privacy.htm"
+                                                        target="_blank">Privacy</a> and <a
+                                            href="http://nationalarchives.gov.uk/legal/cookies.htm" target="_blank">Cookie</a>
+                                        policies.
+                                    </label>
+                                    <input data-val="true" data-val-required="You must accept the terms and conditions."
+                                           id="acceptTCs" name="TermNCondition" type="checkbox" value="true"/><input
+                                        name="TermNCondition" type="hidden" value="false"/>
+                                </div>
+                                <span class="field-validation-valid" data-valmsg-for="TermNCondition"
+                                      data-valmsg-replace="true"></span>
+                                <div class="field-row clr">
+                                    <input data-val="true" data-val-required="The MailingCondition field is required."
+                                           id="MailingCondition" name="MailingCondition" type="checkbox"
+                                           value="true"/><input name="MailingCondition" type="hidden" value="false"/>
+                                    <label for="MailingCondition" id="mlLabel" class="checkInputLabel">
+                                        I want to join the mailing list, and be the first to hear about news, events,
+                                        services and publications from The National Archives.
+                                        <span>(optional)</span>
+                                    </label>
+                                </div>
+                                <div class="field-row clr">
+                                    <input data-val="true" data-val-required="The ContactCondition field is required."
+                                           id="ContactCondition" name="ContactCondition" type="checkbox"
+                                           value="true"/><input name="ContactCondition" type="hidden" value="false"/>
+                                    <label for="ContactCondition" id="frLabel" class="checkInputLabel">
+                                        I would like to take part in market research for The National Archives.<span>(optional)</span>
+                                    </label>
+
+                                </div>
+                                <div class="field-row clr">
+                                    <input class="submit discoveryPrimaryCallToActionLink" type="submit"
+                                           value="Register">
+
+                                    <input id="wreply" name="wreply" type="hidden" value=""/>
+                                    <input id="wtrealm" name="wtrealm" type="hidden" value=""/>
                                 </div>
                             </div>
-                            <div class="field-row clr">
-                                <label for="Password">Password</label>
-                                <input data-val="true" data-val-password="Password must be at least 8 characters long and should be a combination of upper and lowercase characters, with at least one numerical value." data-val-required="The Password field is required." id="Password" name="Password" type="password" />
-                            </div>
-                            <span class="field-validation-valid" data-valmsg-for="Password" data-valmsg-replace="true"></span>
-                            <div class="field-row clr">
-                                <label for="ConfirmPassword">Confirm password</label>
-                                <input data-val="true" data-val-equalto="The password and confirmation password do not match." data-val-equalto-other="*.Password" data-val-required="The ConfirmPassword field is required." id="ConfirmPassword" name="ConfirmPassword" type="password" />
-                            </div>
-                            <span class="field-validation-valid" data-valmsg-for="ConfirmPassword" data-valmsg-replace="true"></span>
+                        </div> <!-- end of .grid-within-grid-two-item -->
+                        <div class="emphasisBlock no-bg-color"><h2>Data protection</h2>When you sign up to our mailing
+                            list the information that you provide will be used to send you our monthly newsletter and
+                            other information that we have not included in the newsletter but think may be of interest
+                            to you. We use an email distribution company to send out our e-marketing communications but
+                            your data will not be passed on to any other third parties. You can remove your details from
+                            our mailing database at any time by following the link at the bottom of every email that we
+                            send you. For more information read our <a
+                                    href="http://www.nationalarchives.gov.uk/legal/privacy.htm">Privacy policy</a>.
                         </div>
-                        <div>
-                            <div class="field-row clr">
-                                <label for="ReaderTicket">Reader's ticket number<span>(optional)</span></label>
-                                <input data-val="true" data-val-number="The field ReaderTicket must be a number." id="ReaderTicket" name="ReaderTicket" type="text" value="" />
-                                <span class="field-validation-valid" data-valmsg-for="ReaderTicket" data-valmsg-replace="true"></span>
-                            </div>
-
-                            <div class="field-row clr">
-                                <label for="acceptTCs" id="tcLabel" class="checkInputLabel">
-                                    I accept the <a href="http://www.nationalarchives.gov.uk/legal/privacy.htm" target="_blank">Privacy</a> and <a href="http://nationalarchives.gov.uk/legal/cookies.htm" target="_blank">Cookie</a> policies.
-                                </label>
-                                <input data-val="true" data-val-required="You must accept the terms and conditions." id="acceptTCs" name="TermNCondition" type="checkbox" value="true" /><input name="TermNCondition" type="hidden" value="false" />
-                            </div>
-                            <span class="field-validation-valid" data-valmsg-for="TermNCondition" data-valmsg-replace="true"></span>
-                            <div class="field-row clr">
-                                <input data-val="true" data-val-required="The MailingCondition field is required." id="MailingCondition" name="MailingCondition" type="checkbox" value="true" /><input name="MailingCondition" type="hidden" value="false" />
-                                <label for="MailingCondition" id="mlLabel" class="checkInputLabel">
-                                    I want to join the mailing list, and be the first to hear about news, events, services and publications from The National Archives.
-                                    <span>(optional)</span>
-                                </label>
-                            </div>
-                            <div class="field-row clr">
-                                <input data-val="true" data-val-required="The ContactCondition field is required." id="ContactCondition" name="ContactCondition" type="checkbox" value="true" /><input name="ContactCondition" type="hidden" value="false" />
-                                <label for="ContactCondition" id="frLabel" class="checkInputLabel">
-                                    I would like to take part in market research for The National Archives.<span>(optional)</span>
-                                </label>
-
-                            </div>
-                            <div class="field-row clr">
-                                <input class="submit discoveryPrimaryCallToActionLink" type="submit" value="Register">
-
-                                <input id="wreply" name="wreply" type="hidden" value="" />
-                                <input id="wtrealm" name="wtrealm" type="hidden" value="" />
-                            </div>
-                        </div>
-                    </div> <!-- end of .grid-within-grid-two-item -->
-                    <div class="emphasisBlock no-bg-color"><h2>Data protection</h2>When you sign up to our mailing list the information that you provide will be used to send you our monthly newsletter and other information that we have not included in the newsletter but think may be of interest to you. We use an email distribution company to send out our e-marketing communications but your data will not be passed on to any other third parties. You can remove your details from our mailing database at any time by following the link at the bottom of every email that we send you. For more information read our <a href="http://www.nationalarchives.gov.uk/legal/privacy.htm">Privacy policy</a>.</div>
-                </fieldset>
-                </form>        </div><!-- end of breather -->
+                    </fieldset>
+                </form>
+            </div><!-- end of breather -->
         </div><!-- end of col -->
     </div><!-- end of row -->
 </div>
