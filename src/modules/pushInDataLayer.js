@@ -9,5 +9,6 @@ export const pushInDataLayer = (obj) => {
         window.dataLayer = [];
     }
     (!!obj || typeof obj === 'object') ? window.dataLayer.push(obj) : '';
+
     return obj;
 };

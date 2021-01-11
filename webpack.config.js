@@ -13,7 +13,8 @@ module.exports = {
 		bookmarkSorting: './src/bookmarkSorting.js',
 		wtegTracking: './src/wtegTracking.js',
 		searchUITracking: './src/searchUITracking.js',
-		registrationTracking: './src/registrationTracking.js'
+		registrationTracking: './src/registrationTracking.js',
+		withLoveTracking: './src/withLoveTracking.js'
 	},
 	output: {
 		filename: '[name].bundle.js',
