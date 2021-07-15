@@ -1,4 +1,6 @@
-# Google Tag Manager scripts for all tna applications
+# Google Tag Manager scripts for those tna applications which pre-date Project Etna
+
+For scripts relating to the new application stack introduced in Project Etna see https://github.com/nationalarchives/ds-wagtail-google-tag-manager
 
 ## Development setup
 
